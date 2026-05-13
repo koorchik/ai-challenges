@@ -436,6 +436,28 @@
   margin: 0.3em auto 0;
 }
 
+.reveal .sim-controls-quad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6em;
+  max-width: 1000px;
+  margin: 0.1em auto 0;
+}
+
+.reveal .sim-controls-quad .slider-wrap {
+  margin: 0;
+  gap: 0.2em;
+}
+
+.reveal .sim-controls-quad .slider-label {
+  font-size: 0.45em;
+}
+
+.reveal .sim-controls-quad .slider-readout {
+  font-size: 0.7em;
+  min-width: 3em;
+}
+
 .reveal .preset-caption {
   font-size: 0.7em;
   opacity: 0.6;

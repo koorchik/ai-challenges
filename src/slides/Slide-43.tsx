@@ -1,166 +1,80 @@
-// 43 · Бізнеси · Нова структура витрат
-import { useEffect, useState } from 'react';
-import { ChartSvg } from '../components/charts/Svg';
-import { Bar } from '../components/charts/Bar';
-import { useInView } from '../components/hooks/useInView';
+// 43 · Бізнеси · Спроможність ≠ Надійність
+type Quadrant = 'reliable' | 'inconsistent' | 'augment' | 'dont-trust';
 
-type Cost = { label: string; before: number; after: number };
+type Chip = {
+  id: string;
+  label: string;
+  quadrant: Quadrant;
+};
 
-const costs: Cost[] = [
-  { label: 'оплата праці', before: 70, after: 45 },
-  { label: 'інференс / токени', before: 1, after: 8 },
-  { label: 'інфра / клауд', before: 12, after: 15 },
-  { label: 'інструменти / SaaS', before: 5, after: 10 },
-  { label: 'evals / якість', before: 2, after: 8 },
-  { label: 'інше', before: 10, after: 14 },
+const chips: Chip[] = [
+  { id: 'crud',          label: 'CRUD endpoint',                 quadrant: 'reliable' },
+  { id: 'json-ts',       label: 'JSON ↔ TS типи',                 quadrant: 'reliable' },
+  { id: 'unit-test',     label: 'Юніт-тест зі специфікації',     quadrant: 'reliable' },
+  { id: 'refactor',      label: 'Рефактор у 200k LoC',            quadrant: 'inconsistent' },
+  { id: 'agent-loop',    label: 'Agent-loop на 8 годин',          quadrant: 'inconsistent' },
+  { id: 'arch',          label: 'Архітектура у новому домені',   quadrant: 'augment' },
+  { id: 'investigation', label: 'Розслідування інциденту',        quadrant: 'augment' },
+  { id: 'prod-deploy',   label: 'Production deploy без людини',  quadrant: 'dont-trust' },
+  { id: 'med-code',      label: 'Код для медичного приладу',      quadrant: 'dont-trust' },
 ];
 
-type Year = 2023 | 2026;
+const QUADRANT_META: Record<Quadrant, {
+  accent: 'green' | 'yellow' | 'blue' | 'red';
+  badge: string;
+  reasoning: string;
+}> = {
+  reliable:     { accent: 'green',  badge: '✓ Reliable today', reasoning: 'Чітка специфікація, низька автономія, перевірка тестами — зона, де ШІ виграє стабільно.' },
+  inconsistent: { accent: 'yellow', badge: '~ Inconsistent',   reasoning: 'Спроможність висока, але багатогодинна автономія розпадається. Робіть короткими кроками з checkpoint-ами.' },
+  augment:      { accent: 'blue',   badge: '○ Augment-only',   reasoning: 'ШІ не має домен-контексту, людина має. Використовуйте ШІ як читач/чорновик, не як автора.' },
+  'dont-trust': { accent: 'red',    badge: '✗ Don\'t trust',   reasoning: 'Високі ставки + автономія = недопустимо без людини в колі. Закон, медицина, гроші, фронт.' },
+};
 
-export function Slide36() {
-  const [year, setYear] = useState<Year>(2023);
-  const [auto, setAuto] = useState(false);
-  const { ref, inView } = useInView<HTMLDivElement>(0.3);
-
-  // Auto-toggle when "auto" is on and the slide is visible — otherwise the
-  // animation burns cycles while the audience is on another slide.
-  useEffect(() => {
-    if (!auto || !inView) return;
-    const id = window.setInterval(() => setYear((y) => (y === 2023 ? 2026 : 2023)), 2200);
-    return () => window.clearInterval(id);
-  }, [auto, inView]);
-
-  const margin = { top: 60, left: 110, right: 80 };
-  const baselineY = 360;
-  const maxPct = 80;
-  const barW = 70;
-  const groupGap = 60;
-  const heightPerPct = 270 / maxPct;
-  const beforeColor = '#bfdbfe';
-  const afterColor = '#facc15';
-  const activeColor = year === 2023 ? beforeColor : afterColor;
+export function Slide20() {
+  const chipsByQuadrant = (q: Quadrant) => chips.filter((c) => c.quadrant === q);
 
   return (
-    <div ref={ref}>
-      <h2>Структура витрат на R&amp;D — куди вони зсуваються</h2>
+    <>
+      <h2>Висока спроможність ≠ висока надійність</h2>
       <p className="lede">
-        Ілюстративний сценарій. Перемикайте 2023 ↔ 2026 — <em>інференс, інструменти й evals</em> стають
-        рядками в P&amp;L, частка зарплат скорочується.
+        ШІ може пройти SWE-bench на 70–80% і провалитися на 8-годинній автономній задачі.
+        Питання — де її <em>можна довіряти</em>.
       </p>
 
-      <div className="year-toggle">
-        <button
-          type="button"
-          className={`preset-btn ${year === 2023 ? 'active' : ''}`}
-          onClick={() => { setAuto(false); setYear(2023); }}
-        >
-          2023
-        </button>
-        <button
-          type="button"
-          className={`preset-btn ${year === 2026 ? 'active' : ''}`}
-          onClick={() => { setAuto(false); setYear(2026); }}
-        >
-          2026
-        </button>
-        <button
-          type="button"
-          className={`preset-btn ${auto ? 'active' : ''}`}
-          onClick={() => setAuto((a) => !a)}
-          aria-pressed={auto}
-        >
-          {auto ? '⏸ пауза' : '▶ авто'}
-        </button>
+      <div className="matrix-2x2">
+        <div></div>
+        <div className="matrix-header">низька автономія</div>
+        <div className="matrix-header">висока автономія</div>
+
+        <div className="matrix-row-label">висока спроможність</div>
+        <MatrixCell quadrant="reliable"     placed={chipsByQuadrant('reliable')} />
+        <MatrixCell quadrant="inconsistent" placed={chipsByQuadrant('inconsistent')} />
+
+        <div className="matrix-row-label">низька спроможність</div>
+        <MatrixCell quadrant="augment"      placed={chipsByQuadrant('augment')} />
+        <MatrixCell quadrant="dont-trust"   placed={chipsByQuadrant('dont-trust')} />
       </div>
 
-      <ChartSvg height={360}>
-        <text x={500} y={36} textAnchor="middle" className="chart-title">
-          Орієнтовна структура R&amp;D-витрат продуктової компанії (%) — {year}
-        </text>
-
-        {[0, 20, 40, 60, 80].map((v) => (
-          <g key={v}>
-            <line
-              x1={margin.left}
-              x2={1000 - margin.right}
-              y1={baselineY - v * heightPerPct}
-              y2={baselineY - v * heightPerPct}
-              stroke="rgba(255,255,255,0.06)"
-            />
-            <text x={margin.left - 8} y={baselineY - v * heightPerPct + 4} textAnchor="end" fill="rgba(255,255,255,0.5)" fontSize={11}>
-              {v}%
-            </text>
-          </g>
-        ))}
-
-        {costs.map((c, i) => {
-          const value = year === 2023 ? c.before : c.after;
-          const otherValue = year === 2023 ? c.after : c.before;
-          const h = value * heightPerPct;
-          const hOther = otherValue * heightPerPct;
-          const gx = margin.left + 20 + i * (barW + groupGap);
-
-          return (
-            <g key={c.label}>
-              {/* Ghost outline of the other year for comparison. */}
-              <rect
-                x={gx}
-                y={baselineY - hOther}
-                width={barW}
-                height={hOther}
-                fill="none"
-                stroke="rgba(255,255,255,0.18)"
-                strokeWidth={1}
-                strokeDasharray="3 4"
-                rx={4}
-                style={{ transition: 'y 0.55s ease, height 0.55s ease' }}
-              />
-              <Bar
-                x={gx}
-                y={baselineY - h}
-                width={barW}
-                height={h}
-                fill={activeColor}
-                valueLabel={`${value}%`}
-              />
-              <text x={gx + barW / 2} y={baselineY + 22} textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize={11}>
-                {c.label}
-              </text>
-              {/* Delta tag */}
-              <text
-                x={gx + barW / 2}
-                y={baselineY + 38}
-                textAnchor="middle"
-                fill={c.after > c.before ? '#86efac' : '#fda4ae'}
-                fontSize={10}
-                fontWeight={600}
-                opacity={0.85}
-              >
-                {c.after > c.before ? '+' : ''}{c.after - c.before}пп
-              </text>
-            </g>
-          );
-        })}
-
-        {/* legend */}
-        <g transform={`translate(820, 60)`}>
-          <rect width={14} height={14} fill={beforeColor} opacity={year === 2023 ? 1 : 0.35} style={{ transition: 'opacity 0.4s ease' }} />
-          <text x={22} y={11} fill="rgba(255,255,255,0.8)" fontSize={12}>2023</text>
-          <rect y={22} width={14} height={14} fill={afterColor} opacity={year === 2026 ? 1 : 0.35} style={{ transition: 'opacity 0.4s ease' }} />
-          <text x={22} y={33} fill="rgba(255,255,255,0.8)" fontSize={12}>2026</text>
-          <rect y={44} width={14} height={14} fill="none" stroke="rgba(255,255,255,0.5)" strokeDasharray="3 3" />
-          <text x={22} y={55} fill="rgba(255,255,255,0.6)" fontSize={11}>інший рік</text>
-        </g>
-      </ChartSvg>
-
-      <p className="callout callout-yellow">
-        Інференс <em>дешевшає</em> ~10×/рік. Реальна історія — менші команди + більше витрат на якість,
-        не «токени з'їли бюджет».
-      </p>
-
       <p className="slide-footnote">
-        Орієнтири: a16z «Cost of AI» 2025; Stack Overflow Developer Survey 2024–25. Конкретний міксей — оцінка автора.
+        Орієнтири: METR task-horizon (2024–25); SWE-bench Verified leaderboard.
       </p>
+    </>
+  );
+}
+
+function MatrixCell({ quadrant, placed }: { quadrant: Quadrant; placed: Chip[] }) {
+  const meta = QUADRANT_META[quadrant];
+  return (
+    <div className="matrix-cell task-cell" data-accent={meta.accent}>
+      <strong className="accent">{meta.badge}</strong>
+      <p className="muted task-cell-hint">{meta.reasoning}</p>
+      <div className="task-cell-chips">
+        {placed.map((c) => (
+          <span key={c.id} className="task-chip task-chip-placed">
+            {c.label}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }

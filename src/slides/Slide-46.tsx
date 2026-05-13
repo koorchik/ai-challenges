@@ -1,54 +1,41 @@
-// 46 · Бізнеси · Де живуть рови у 2026
-export function Slide11() {
+// 46 · Бізнеси · The Wrapper Trap
+export function Slide37() {
   return (
     <>
-      <h2>Де <em>насправді</em> живуть рови у 2026</h2>
+      <h2>The Wrapper Trap</h2>
       <p className="lede">
-        Доступ до моделі — більше не рів. Open-source (DeepSeek, Llama, Mistral) робить
-        <em> модель</em> товаром. Лишається п'ять категорій, що насправді захищають продукт від клонів за тиждень.
+        Що відрізняє обгортку, яка <em>тримається</em>, від обгортки, яку клонують за тиждень?
       </p>
 
-      <ul className="text-md wide" style={{ textAlign: 'left', lineHeight: 1.5 }}>
-        <li>
-          <strong className="accent" data-accent="yellow">
-            1. Дані з feedback-петлею
-          </strong>
-          . Не «лог у S3», а <em>розмічений потік</em>, що замикає цикл «використання → метрики → дотюнінг».
-          Кожен корисний клік — це data-asset. Приклади: Grammarly, GitHub, Tesla.
-        </li>
-        <li>
-          <strong className="accent" data-accent="blue">
-            2. Дистрибуція через існуючі workflow
-          </strong>
-          . Ваш продукт уже в IDE, у Slack, у Salesforce — куди користувач уже приходить. Конкурент
-          мусить пробитися крізь зміну звички. Приклади: Copilot у VSCode, Notion AI, Apple Intelligence.
-        </li>
-        <li>
-          <strong className="accent" data-accent="green">
-            3. Довіра / регуляція
-          </strong>
-          . SOC2 Type II + HIPAA + ISO 27001 + FedRAMP — типово 12–24 міс і шести- до семизначні суми.
-          Повільний рів, що накопичується роками. Defense-tech, fintech, healthtech, gov-tech.
-        </li>
-        <li>
-          <strong className="accent" data-accent="purple">
-            4. Network effects
-          </strong>
-          . Кожен новий користувач робить продукт ціннішим для попередніх — marketplace, OSS-екосистема,
-          shared knowledge base.
-        </li>
-        <li>
-          <strong className="accent" data-accent="red">
-            5. Bundling із не-AI продуктом
-          </strong>
-          . У вас уже є щось куплене — додаєте AI як фічу, не як продукт. Тут грають великі.
-          Маленьким лишається співпраця або смак: те, що <strong>не</strong> робимо, як виглядає інтерфейс, що каже бренд.
-        </li>
-      </ul>
+      <div className="matrix-2x2 wide">
+        <div></div>
+        <div className="matrix-header">тонка інтеграція</div>
+        <div className="matrix-header">глибока інтеграція</div>
 
-      <p className="callout callout-yellow">
-        Тест: <em>«якщо завтра з'явиться 50 ідентичних AI-стартапів — що в нас залишається?»</em>
-        Якщо відповідь — «нічого», ви побудували функцію. Якщо хоч одна з п'яти причин — стартап.
+        <div className="matrix-row-label">тонкий шар продукту</div>
+        <div className="matrix-cell" data-accent="red">
+          <strong className="accent">✗ Обгортка-смерть</strong>
+          <p className="muted text-sm">Chat + системний промпт. Конкурує з фічею OpenAI завтра.</p>
+        </div>
+        <div className="matrix-cell" data-accent="yellow">
+          <strong className="accent">~ Інтегратор</strong>
+          <p className="muted text-sm">Хороша інтеграція, але рів — у платформи, не у вас.</p>
+        </div>
+
+        <div className="matrix-row-label">опініонований продукт</div>
+        <div className="matrix-cell" data-accent="blue">
+          <strong className="accent">○ Нішевий лідер</strong>
+          <p className="muted text-sm">UX + ніша, але без даних — клонується повільніше.</p>
+        </div>
+        <div className="matrix-cell" data-accent="green">
+          <strong className="accent">✓ Стійкий продукт</strong>
+          <p className="muted text-sm">Дані + feedback + workflow + дистрибуція. Copilot, Linear, Cursor.</p>
+        </div>
+      </div>
+
+      <p className="callout">
+        Якщо продукт — це 70% UI поверх API-ключа: будуйте, але як <em>функцію</em>, не стартап.
+        Або додавайте дані / інтеграцію / domain-context — єдиний шанс проти платформи.
       </p>
     </>
   );

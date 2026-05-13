@@ -1,42 +1,47 @@
-// 58 · Україна · Таланти й діаспора
-export function Slide47() {
+// 58 · Україна · Освіта
+export function Slide46() {
   return (
     <>
-      <h2>Талант: утримати, повернути, перетворити на капітал</h2>
+      <h2>Освіта: що треба міняти просто зараз</h2>
       <p className="lede">
-        У 2026 у нас одночасно три аудиторії: (1) люди в Україні, (2) діаспора 2014+, (3) діаспора 2022+.
-        Кожна потребує своєї стратегії. «Всі повертайтеся» — нереалістично для жодної.
+        Університети 2025-го готують випускників 2029-го до робіт 2026-го. Що конкретно мають змінити
+        три рівні системи.
       </p>
 
-      <ul className="text-md wide" style={{ textAlign: 'left' }}>
-        <li>
-          <strong>Утримати всередині.</strong> Diia.City + R&amp;D tax credit + housing/career-tracks для
-          defense-tech.
-        </li>
-        <li>
-          <strong>Діаспора в AI-компаніях.</strong> Brain-trust програма: 2–3 щорічні зустрічі в Києві,
-          mentorship, доступ до даних. Не «повертайтеся», а «допомагайте на дистанції».
-        </li>
-        <li>
-          <strong>Знання, не люди.</strong> Open-source, інвестиції в українські стартапи, дошки директорів.
-          Повільний канал — масштабний.
-        </li>
-        <li>
-          <strong>Молодь, що не виїжджала.</strong> Стипендії на обмін у топ-AI-лабораторії з умовою: 2р
-          роботи в українському defense / dual-use після.
-        </li>
-      </ul>
+      <div className="three-col wide text-md" style={{ marginTop: '0.4em', gap: '1em' }}>
+        <div data-accent="yellow">
+          <h3 className="accent">Університети</h3>
+          <ul className="checklist">
+            <li>Робота з ШІ — обов'язковий курс на 2-му році, не факультатив</li>
+            <li>Evals, prompt-design, RAG — у складі CS-фундаменту</li>
+            <li>Diploma-projects з реальними користувачами, не «лабораторні»</li>
+            <li>Менше «теорія БД 14 тижнів», більше системного мислення</li>
+            <li>Партнерства з defense-tech: реальні задачі замість абстрактних</li>
+          </ul>
+        </div>
+        <div data-accent="blue">
+          <h3 className="accent">Бутки / Bootcamps</h3>
+          <ul className="checklist">
+            <li>Bootcamp «junior за 4 міс» — мертвий формат</li>
+            <li>Нова модель: domain-bootcamp (medical AI, defense AI, fintech AI)</li>
+            <li>Apprenticeship-моделі з реальною роботою</li>
+            <li>Сертифікація evals/safety — як CompTIA для AI</li>
+          </ul>
+        </div>
+        <div data-accent="green">
+          <h3 className="accent">Перекваліфікація</h3>
+          <ul className="checklist">
+            <li>Програма для ветеранів — defense-tech expertise</li>
+            <li>Mid-career переходи: інженер 5+р → AI-engineer / domain expert</li>
+            <li>Diia.Education має масштабуватися: цільові курси з ваучером</li>
+            <li>Англійська як infra: без неї немає глобального ринку</li>
+          </ul>
+        </div>
+      </div>
 
-      <p className="callout">
-        Реалістичний фрейм: довоєнна галузь — ~300к спеціалістів, ~37% тих, хто виїхав, не планують
-        повертатися (опитування ITC.ua 2025). Ми <em>не</em> компенсуємо цей відтік поверненцями.
-        Компенсуємо за рахунок (а) глобальних звʼязків діаспори, (б) переорієнтації решти на вищу
-        маржу — defense-tech, dual-use, специфічні домени.
-      </p>
-
-      <p className="slide-footnote">
-        Дані: IT Ukraine Association 2023–2024; ITC.ua «48% IT-фахівців планують емігрувати» 2025;
-        DOU developer census.
+      <p className="callout callout-yellow">
+        Швидке вирішення — приватні партнерства: компанії беруть третину навчального плану в обмін на
+        доступ до студентів. Працює в Естонії, Польщі, Ізраїлі.
       </p>
     </>
   );

@@ -1,116 +1,166 @@
-// 44 · Бізнеси · Крива вартості MVP
-import { scaleLinear, scaleLog } from 'd3-scale';
-import { ChartSvg, CHART_W } from '../components/charts/Svg';
-import { Line } from '../components/charts/Line';
-import { Annotation } from '../components/charts/Annotation';
+// 44 · Бізнеси · Нова структура витрат
+import { useEffect, useState } from 'react';
+import { ChartSvg } from '../components/charts/Svg';
+import { Bar } from '../components/charts/Bar';
+import { useInView } from '../components/hooks/useInView';
 
-type Point = { year: number; cost: number; label: string };
+type Cost = { label: string; before: number; after: number };
 
-const data: Point[] = [
-  { year: 2005, cost: 100_000, label: 'on-prem, власний фреймворк' },
-  { year: 2008, cost: 50_000, label: 'Rails + Heroku' },
-  { year: 2011, cost: 25_000, label: 'AWS, mobile-first' },
-  { year: 2014, cost: 15_000, label: 'Stripe, Twilio, SaaS-кубики' },
-  { year: 2018, cost: 8_000, label: 'JAMstack, no-code' },
-  { year: 2022, cost: 4_000, label: 'GPT-стартери' },
-  { year: 2025, cost: 1_500, label: 'LLM-codegen + IDE-агенти' },
-  { year: 2026, cost: 600, label: 'агенти "ship-a-feature"' },
+const costs: Cost[] = [
+  { label: 'оплата праці', before: 70, after: 45 },
+  { label: 'інференс / токени', before: 1, after: 8 },
+  { label: 'інфра / клауд', before: 12, after: 15 },
+  { label: 'інструменти / SaaS', before: 5, after: 10 },
+  { label: 'evals / якість', before: 2, after: 8 },
+  { label: 'інше', before: 10, after: 14 },
 ];
 
-export function Slide10() {
-  const margin = { top: 50, right: 200, bottom: 60, left: 90 };
-  const innerW = CHART_W - margin.left - margin.right;
-  const innerH = 380;
+type Year = 2023 | 2026;
 
-  const x = scaleLinear()
-    .domain([2005, 2026])
-    .range([margin.left, margin.left + innerW]);
+export function Slide36() {
+  const [year, setYear] = useState<Year>(2023);
+  const [auto, setAuto] = useState(false);
+  const { ref, inView } = useInView<HTMLDivElement>(0.3);
 
-  const y = scaleLog()
-    .domain([300, 200_000])
-    .range([margin.top + innerH, margin.top]);
+  // Auto-toggle when "auto" is on and the slide is visible — otherwise the
+  // animation burns cycles while the audience is on another slide.
+  useEffect(() => {
+    if (!auto || !inView) return;
+    const id = window.setInterval(() => setYear((y) => (y === 2023 ? 2026 : 2023)), 2200);
+    return () => window.clearInterval(id);
+  }, [auto, inView]);
 
-  const pts = data.map((d) => ({ x: x(d.year), y: y(d.cost) }));
+  const margin = { top: 60, left: 110, right: 80 };
+  const baselineY = 360;
+  const maxPct = 80;
+  const barW = 70;
+  const groupGap = 60;
+  const heightPerPct = 270 / maxPct;
+  const beforeColor = '#bfdbfe';
+  const afterColor = '#facc15';
+  const activeColor = year === 2023 ? beforeColor : afterColor;
 
   return (
-    <>
-      <h2>Скільки коштувало запустити MVP</h2>
+    <div ref={ref}>
+      <h2>Структура витрат на R&amp;D — куди вони зсуваються</h2>
       <p className="lede">
-        Двадцять років вартість запуску падала на ~порядок щодесятиліття. ШІ — наступний крок тієї ж кривої.
+        Ілюстративний сценарій. Перемикайте 2023 ↔ 2026 — <em>інференс, інструменти й evals</em> стають
+        рядками в P&amp;L, частка зарплат скорочується.
       </p>
 
-      <ChartSvg height={420}>
-        <text x={CHART_W / 2 - 50} y={36} textAnchor="middle" className="chart-title">
-          Орієнтовна вартість MVP (USD, лог. шкала)
+      <div className="year-toggle">
+        <button
+          type="button"
+          className={`preset-btn ${year === 2023 ? 'active' : ''}`}
+          onClick={() => { setAuto(false); setYear(2023); }}
+        >
+          2023
+        </button>
+        <button
+          type="button"
+          className={`preset-btn ${year === 2026 ? 'active' : ''}`}
+          onClick={() => { setAuto(false); setYear(2026); }}
+        >
+          2026
+        </button>
+        <button
+          type="button"
+          className={`preset-btn ${auto ? 'active' : ''}`}
+          onClick={() => setAuto((a) => !a)}
+          aria-pressed={auto}
+        >
+          {auto ? '⏸ пауза' : '▶ авто'}
+        </button>
+      </div>
+
+      <ChartSvg height={360}>
+        <text x={500} y={36} textAnchor="middle" className="chart-title">
+          Орієнтовна структура R&amp;D-витрат продуктової компанії (%) — {year}
         </text>
-        {[1000, 10_000, 100_000].map((v) => (
+
+        {[0, 20, 40, 60, 80].map((v) => (
           <g key={v}>
             <line
               x1={margin.left}
-              x2={margin.left + innerW}
-              y1={y(v)}
-              y2={y(v)}
-              stroke="rgba(255,255,255,0.08)"
+              x2={1000 - margin.right}
+              y1={baselineY - v * heightPerPct}
+              y2={baselineY - v * heightPerPct}
+              stroke="rgba(255,255,255,0.06)"
             />
-            <text x={margin.left - 10} y={y(v) + 4} textAnchor="end" fill="rgba(255,255,255,0.6)" fontSize={11}>
-              ${v >= 1000 ? `${v / 1000}k` : v}
+            <text x={margin.left - 8} y={baselineY - v * heightPerPct + 4} textAnchor="end" fill="rgba(255,255,255,0.5)" fontSize={11}>
+              {v}%
             </text>
           </g>
         ))}
-        <line
-          x1={margin.left}
-          y1={margin.top + innerH}
-          x2={margin.left + innerW}
-          y2={margin.top + innerH}
-          stroke="rgba(255,255,255,0.25)"
-        />
-        {[2005, 2010, 2015, 2020, 2025].map((yr) => (
-          <text
-            key={yr}
-            x={x(yr)}
-            y={margin.top + innerH + 22}
-            textAnchor="middle"
-            fill="rgba(255,255,255,0.6)"
-            fontSize={11}
-          >
-            {yr}
-          </text>
-        ))}
 
-        <Line points={pts.slice(0, 7)} stroke="#facc15" strokeWidth={3} />
-        <Line points={pts.slice(6)} stroke="#facc15" strokeWidth={3} dasharray="6 5" />
-        <text
-          x={pts[7].x + 10}
-          y={pts[7].y + 4}
-          fill="rgba(250,204,21,0.85)"
-          fontSize={11}
-          fontStyle="italic"
-        >
-          проєкція
-        </text>
-        {data.map((d, i) => (
-          <Annotation
-            key={d.year}
-            x={pts[i].x}
-            y={pts[i].y}
-            dx={i % 2 === 0 ? 14 : -14}
-            dy={i % 2 === 0 ? -22 : 22}
-            align={i % 2 === 0 ? 'start' : 'end'}
-            showLeader={false}
-          >
-            {d.label}
-          </Annotation>
-        ))}
+        {costs.map((c, i) => {
+          const value = year === 2023 ? c.before : c.after;
+          const otherValue = year === 2023 ? c.after : c.before;
+          const h = value * heightPerPct;
+          const hOther = otherValue * heightPerPct;
+          const gx = margin.left + 20 + i * (barW + groupGap);
+
+          return (
+            <g key={c.label}>
+              {/* Ghost outline of the other year for comparison. */}
+              <rect
+                x={gx}
+                y={baselineY - hOther}
+                width={barW}
+                height={hOther}
+                fill="none"
+                stroke="rgba(255,255,255,0.18)"
+                strokeWidth={1}
+                strokeDasharray="3 4"
+                rx={4}
+                style={{ transition: 'y 0.55s ease, height 0.55s ease' }}
+              />
+              <Bar
+                x={gx}
+                y={baselineY - h}
+                width={barW}
+                height={h}
+                fill={activeColor}
+                valueLabel={`${value}%`}
+              />
+              <text x={gx + barW / 2} y={baselineY + 22} textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize={11}>
+                {c.label}
+              </text>
+              {/* Delta tag */}
+              <text
+                x={gx + barW / 2}
+                y={baselineY + 38}
+                textAnchor="middle"
+                fill={c.after > c.before ? '#86efac' : '#fda4ae'}
+                fontSize={10}
+                fontWeight={600}
+                opacity={0.85}
+              >
+                {c.after > c.before ? '+' : ''}{c.after - c.before}пп
+              </text>
+            </g>
+          );
+        })}
+
+        {/* legend */}
+        <g transform={`translate(820, 60)`}>
+          <rect width={14} height={14} fill={beforeColor} opacity={year === 2023 ? 1 : 0.35} style={{ transition: 'opacity 0.4s ease' }} />
+          <text x={22} y={11} fill="rgba(255,255,255,0.8)" fontSize={12}>2023</text>
+          <rect y={22} width={14} height={14} fill={afterColor} opacity={year === 2026 ? 1 : 0.35} style={{ transition: 'opacity 0.4s ease' }} />
+          <text x={22} y={33} fill="rgba(255,255,255,0.8)" fontSize={12}>2026</text>
+          <rect y={44} width={14} height={14} fill="none" stroke="rgba(255,255,255,0.5)" strokeDasharray="3 3" />
+          <text x={22} y={55} fill="rgba(255,255,255,0.6)" fontSize={11}>інший рік</text>
+        </g>
       </ChartSvg>
 
       <p className="callout callout-yellow">
-        Наслідок: <strong>побудувати</strong> — більше не вузьке місце. Ним стає{' '}
-        <strong>дистрибуція та утримання</strong>. Хороша новина для одинаків; погана — для тонких SaaS-обгорток.
+        Інференс <em>дешевшає</em> ~10×/рік. Реальна історія — менші команди + більше витрат на якість,
+        не «токени з'їли бюджет».
       </p>
 
       <p className="slide-footnote">
-        Дані-орієнтири: a16z «cost of starting a software company» серії (2010–2024); розрахунки автора.
+        Орієнтири: a16z «Cost of AI» 2025; Stack Overflow Developer Survey 2024–25. Конкретний міксей — оцінка автора.
       </p>
-    </>
+    </div>
   );
 }

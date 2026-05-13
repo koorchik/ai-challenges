@@ -1,46 +1,94 @@
-// 52 · Бізнеси · 90-day playbook
-export function Slide41() {
+// 52 · Бізнеси · Часті пастки
+import type { ReactNode } from 'react';
+import { FlipCard } from '../components/FlipCard';
+
+type Accent = 'yellow' | 'blue' | 'green' | 'red' | 'purple' | 'amber';
+
+type Pitfall = {
+  accent: Accent;
+  title: string;
+  symptom: ReactNode;
+  fix: ReactNode;
+};
+
+const pitfalls: Pitfall[] = [
+  {
+    accent: 'red',
+    title: 'POC-пастка',
+    symptom: <>Demo на двох прикладах вражає; прод провалюється.</>,
+    fix: <>Eval-set з 50+ кейсами до релізу. Без evals — не релізите.</>,
+  },
+  {
+    accent: 'amber',
+    title: 'Wrapper-пастка',
+    symptom: <>API ≠ продукт. Платформа додала вашу фічу — ви зникли.</>,
+    fix: <>Власні дані / інтеграція / domain — або продавайте як фічу, не стартап.</>,
+  },
+  {
+    accent: 'yellow',
+    title: 'Hallucination-сертифікат',
+    symptom: <>ШІ-бот пообіцяв знижку — і суд каже «платіть». <em>Moffatt v. Air Canada</em>, BCCRT 2024 (CA$812).</>,
+    fix: <>Structured outputs + людська верифікація на high-stakes відповідях. Жодних обіцянок без людини.</>,
+  },
+  {
+    accent: 'red',
+    title: 'Prompt-injection',
+    symptom: <>Агент із доступом до даних читає вхід без sanitization. CWE-77 з LLM-присмаком.</>,
+    fix: <>Sanitize inputs. Tool-use whitelist. Least-privilege для агентів. Аудит ланцюга викликів.</>,
+  },
+  {
+    accent: 'purple',
+    title: 'Скоротили команду рано',
+    symptom: <>Ще нема evals — а 7 людей з контекстом пішли. Бага рятуєте тиждень.</>,
+    fix: <>Eval-set + runbooks + wiki до офбордінгу. Контекст-фон → документ, а не голова.</>,
+  },
+  {
+    accent: 'blue',
+    title: 'AI-pivot заради AI',
+    symptom: <>Зміна продукту під моду; користувачі не просили.</>,
+    fix: <>Roadmap → користувачі → AI як засіб. ШІ — інструмент під задачу, не задача сам по собі.</>,
+  },
+  {
+    accent: 'green',
+    title: 'Інференс без бюджету',
+    symptom: <>$50k/міс, бо нема rate-limit. Виправляється за день, після першого рахунку.</>,
+    fix: <>Rate-limit + token-budget + per-user quota + observability на токени з дня один.</>,
+  },
+];
+
+export function Slide40() {
   return (
     <>
-      <h2>90-денний план для бізнесу</h2>
+      <h2>Часті пастки 2024–2026</h2>
       <p className="lede">
-        Не «зробити AI-стратегію», а конкретний квартал, після якого ви знаєте, де ШІ дає вам гроші
-        — і де ні.
+        Кожна — у кожного третього AI-проєкту, що зупинився. Натисніть на картку, щоб побачити, як її уникнути.
       </p>
 
-      <div className="three-col wide text-md" style={{ marginTop: '0.5em', gap: '1em' }}>
-        <div data-accent="yellow">
-          <h3 className="accent">Дні 1–30 · Аудит</h3>
-          <ul className="checklist">
-            <li>Перерахувати топ-20 процесів, у яких ваші люди витрачають час</li>
-            <li>Для кожного: чи це rule-based, judgment-based, чи domain-specific?</li>
-            <li>Вибрати <em>один</em> процес, де AI дає очевидний lift</li>
-            <li>Зрозуміти ваш єдиний справжній рів — або визнати його відсутність</li>
-          </ul>
-        </div>
-        <div data-accent="blue">
-          <h3 className="accent">Дні 31–60 · Пілот</h3>
-          <ul className="checklist">
-            <li>Запустити <em>один</em> end-to-end AI-процес у проді з real users</li>
-            <li>Збудувати eval і моніторинг до запуску, не після</li>
-            <li>Зафіксувати baseline: продуктивність, помилки, NPS — без ШІ</li>
-            <li>Виміряти різницю на 2–4 тижнях. Чесно. Без округлень догори</li>
-          </ul>
-        </div>
-        <div data-accent="green">
-          <h3 className="accent">Дні 61–90 · Масштаб або стоп</h3>
-          <ul className="checklist">
-            <li>Якщо ефект є — підготувати investment case на 4× scope</li>
-            <li>Якщо ні — закрийте, не «дайте ще місяць»</li>
-            <li>Документуйте знайдене для команди (eval-кейси, prompts, помилки)</li>
-            <li>Перенесіть найкращі практики на наступний кандидат-процес</li>
-          </ul>
-        </div>
+      <div className="flip-grid">
+        {pitfalls.map((p) => (
+          <FlipCard
+            key={p.title}
+            accent={p.accent}
+            front={
+              <>
+                <h4>{p.title}</h4>
+                <p>{p.symptom}</p>
+                <span className="flip-card-hint">клік → як уникнути</span>
+              </>
+            }
+            back={
+              <>
+                <h4>Як уникнути</h4>
+                <p>{p.fix}</p>
+                <span className="flip-card-hint">клік → назад</span>
+              </>
+            }
+          />
+        ))}
       </div>
 
-      <p className="callout callout-green">
-        <strong>Найважливіший слайд для бізнесу:</strong> рішення в AI-епосі не приймаються один раз. Вони
-        приймаються щоквартально, на основі evals. Це нова операційна модель, не одноразовий проєкт.
+      <p className="callout">
+        У 2026 рішення йде у прод тільки з evals, бюджетом, security-перевіркою і human-in-loop планом.
       </p>
     </>
   );

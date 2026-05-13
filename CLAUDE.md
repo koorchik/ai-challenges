@@ -8,7 +8,7 @@ Never add a `Co-Authored-By: Claude …` trailer (or any other co-author trailer
 
 ## What this is
 
-A 61-slide presentation for **DOU Day 2026**, topic **«Що робити в часи ШІ?»**.
+A 62-slide presentation for **DOU Day 2026**, topic **«Що робити в часи ШІ?»**.
 Built with [`@revealjs/react`](https://www.npmjs.com/package/@revealjs/react) (React wrapper around reveal.js 5), TypeScript, Vite. Deployed as a static site to GitHub Pages.
 
 Audience: developers (talk is in **Ukrainian** — slide copy stays in Ukrainian unless explicitly asked otherwise).
@@ -63,10 +63,10 @@ The deck spine: declare per-audience challenges (06–09), set transversal conce
 | 06–09 | Виклики (declarations per audience: Студенти / Розробники / Бізнеси / Україна) |
 | 10–16 | Концепції (vibe vs agentic engineering · verifiability · LLM-as-judge · human/AI Venn · X+AI inequality) |
 | 17–29 | Студенти |
-| 30–40 | Розробники |
-| 41–52 | Бізнеси |
-| 53–59 | Україна |
-| 60–61 | Закриття |
+| 30–41 | Розробники |
+| 42–53 | Бізнеси |
+| 54–60 | Україна |
+| 61–62 | Закриття |
 
 ## Authoring conventions
 
