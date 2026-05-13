@@ -1,4 +1,4 @@
-// 26 · Ринок · ШІ — це skill-leveling, а не skill-bias
+// 33 · Ринок · ШІ — це skill-leveling, а не skill-bias
 import { ChartSvg } from '../components/charts/Svg';
 import { Bar } from '../components/charts/Bar';
 

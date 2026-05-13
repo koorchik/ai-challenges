@@ -1,4 +1,4 @@
-// 41 · Бізнеси · Парадокс Джевонса
+// 48 · Бізнеси · Парадокс Джевонса
 import { JevonsSim } from '../components/sims/JevonsSim';
 
 export function Slide13() {

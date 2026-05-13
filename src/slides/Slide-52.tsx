@@ -1,4 +1,4 @@
-// 45 · Бізнеси · 90-day playbook
+// 52 · Бізнеси · 90-day playbook
 export function Slide41() {
   return (
     <>

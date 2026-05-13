@@ -1,4 +1,4 @@
-// 47 · Україна · Експорт IT-послуг
+// 54 · Україна · Експорт IT-послуг
 import { scaleLinear } from 'd3-scale';
 import { ChartSvg, CHART_W } from '../components/charts/Svg';
 import { Line } from '../components/charts/Line';

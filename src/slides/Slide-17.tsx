@@ -1,4 +1,4 @@
-// 10 · Студенти · Header
+// 17 · Студенти · Header
 import { SectionHeader } from '../components/SectionHeader';
 
 export function Slide21() {

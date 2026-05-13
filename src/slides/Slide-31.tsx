@@ -1,4 +1,4 @@
-// 24 · Розробники · Куди зсувається час
+// 31 · Розробники · Куди зсувається час
 import { ChartSvg } from '../components/charts/Svg';
 
 type Segment = { label: string; value: number; color: string };

@@ -1,4 +1,4 @@
-// 27 · Розробники · Cui-крива: продуктивність × досвід
+// 34 · Розробники · Cui-крива: продуктивність × досвід
 import { scaleLinear } from 'd3-scale';
 import { ChartSvg, CHART_W } from '../components/charts/Svg';
 import { Line } from '../components/charts/Line';

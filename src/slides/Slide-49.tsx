@@ -1,4 +1,4 @@
-// 42 · Бізнеси · J-крива продуктивності
+// 49 · Бізнеси · J-крива продуктивності
 import { scaleLinear } from 'd3-scale';
 import { ChartSvg, CHART_W } from '../components/charts/Svg';
 import { Line } from '../components/charts/Line';

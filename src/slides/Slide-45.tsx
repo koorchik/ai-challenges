@@ -1,4 +1,4 @@
-// 38 · Бізнеси · The Wrapper Trap
+// 45 · Бізнеси · The Wrapper Trap
 export function Slide37() {
   return (
     <>

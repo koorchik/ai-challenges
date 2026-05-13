@@ -1,4 +1,4 @@
-// 33 · Розробники · 90-day playbook
+// 40 · Розробники · 90-day playbook
 export function Slide34() {
   return (
     <>

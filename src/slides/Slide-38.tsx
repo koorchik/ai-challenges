@@ -1,4 +1,4 @@
-// 31 · Розробники · Новий workflow з ШІ
+// 38 · Розробники · Новий workflow з ШІ
 import { ChartSvg } from '../components/charts/Svg';
 import { useInView } from '../components/hooks/useInView';
 

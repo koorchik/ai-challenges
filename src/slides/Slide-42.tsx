@@ -1,4 +1,4 @@
-// 35 · Бізнеси · Спроможність ≠ Надійність
+// 42 · Бізнеси · Спроможність ≠ Надійність
 type Quadrant = 'reliable' | 'inconsistent' | 'augment' | 'dont-trust';
 
 type Chip = {

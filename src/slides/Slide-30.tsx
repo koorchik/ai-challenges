@@ -1,4 +1,4 @@
-// 23 · Розробники · Header
+// 30 · Розробники · Header
 import { SectionHeader } from '../components/SectionHeader';
 
 export function Slide28() {

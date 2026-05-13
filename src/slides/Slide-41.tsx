@@ -1,4 +1,4 @@
-// 34 · Бізнеси · Header
+// 41 · Бізнеси · Header
 import { SectionHeader } from '../components/SectionHeader';
 
 export function Slide35() {

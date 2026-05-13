@@ -1,4 +1,4 @@
-// 14 · Студенти · Bloom's Taxonomy перевертається
+// 21 · Студенти · Bloom's Taxonomy перевертається
 import { ChartSvg, CHART_W } from '../components/charts/Svg';
 
 type Level = { name: string; role: string; pct: number; color: string };

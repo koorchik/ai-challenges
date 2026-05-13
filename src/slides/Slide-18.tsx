@@ -1,4 +1,4 @@
-// 11 · Студенти · Junior job-postings 2022→2026
+// 18 · Студенти · Junior job-postings 2022→2026
 import { scaleLinear } from 'd3-scale';
 import { ChartSvg, CHART_W } from '../components/charts/Svg';
 import { Line } from '../components/charts/Line';

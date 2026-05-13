@@ -1,4 +1,4 @@
-// 13 · Студенти · Класична піраміда Блума
+// 20 · Студенти · Класична піраміда Блума
 import { ChartSvg, CHART_W } from '../components/charts/Svg';
 
 type Level = { name: string; sw: string };

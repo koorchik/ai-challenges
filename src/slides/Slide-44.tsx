@@ -1,4 +1,4 @@
-// 37 · Бізнеси · Крива вартості MVP
+// 44 · Бізнеси · Крива вартості MVP
 import { scaleLinear, scaleLog } from 'd3-scale';
 import { ChartSvg, CHART_W } from '../components/charts/Svg';
 import { Line } from '../components/charts/Line';

@@ -1,4 +1,4 @@
-// 43 · Бізнеси · Pipeline наступного покоління
+// 50 · Бізнеси · Pipeline наступного покоління
 export function Slide37() {
   return (
     <>

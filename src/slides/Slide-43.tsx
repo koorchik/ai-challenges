@@ -1,4 +1,4 @@
-// 36 · Бізнеси · Нова структура витрат
+// 43 · Бізнеси · Нова структура витрат
 import { useEffect, useState } from 'react';
 import { ChartSvg } from '../components/charts/Svg';
 import { Bar } from '../components/charts/Bar';

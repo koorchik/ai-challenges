@@ -1,4 +1,4 @@
-// 17 · Студенти · Engineer's Playbook — де людина ще краща
+// 24 · Студенти · Engineer's Playbook — де людина ще краща
 export function Slide15() {
   return (
     <>

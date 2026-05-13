@@ -1,4 +1,4 @@
-// 40 · Бізнеси · Build / Buy / Orchestrate
+// 47 · Бізнеси · Build / Buy / Orchestrate
 import { useEffect, useState } from 'react';
 import { ChartSvg } from '../components/charts/Svg';
 

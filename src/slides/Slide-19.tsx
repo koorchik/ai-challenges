@@ -1,4 +1,4 @@
-// 12 · Студенти · Перейменування junior → tech-lead
+// 19 · Студенти · Перейменування junior → tech-lead
 export function Slide12() {
   return (
     <>

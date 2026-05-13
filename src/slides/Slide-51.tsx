@@ -1,4 +1,4 @@
-// 44 · Бізнеси · Часті пастки
+// 51 · Бізнеси · Часті пастки
 import type { ReactNode } from 'react';
 import { FlipCard } from '../components/FlipCard';
 
