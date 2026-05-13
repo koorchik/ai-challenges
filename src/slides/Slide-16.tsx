@@ -25,8 +25,8 @@ export function Slide16() {
 
       <ul className="checklist text-md" style={{ textAlign: 'left' }}>
         <li><strong>Користуєтесь:</strong> виграєте час там, де AI допомагає.</li>
-        <li><strong>Не користуєтесь:</strong> все одно бачите конкурентів — і де з ними не змагатись.</li>
-        <li><strong>Не вивчили зовсім:</strong> здогадки на пальцях. Ринок уже перерахував ваші ціни.</li>
+        <li><strong>Не користуєтесь:</strong> розумієте свою перевагу.</li>
+        <li><strong>Не вивчили зовсім:</strong> здогадки на пальцях й відстутність фокусу.</li>
       </ul>
     </div>
   );

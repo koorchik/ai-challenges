@@ -14,9 +14,6 @@ export function Slide15() {
   return (
     <>
       <h2>Де живе людська цінність? Ми не знаємо</h2>
-      <p className="lede">
-        Чотири картинки. Чотири різних набори ставок. Жодна не доведена.
-      </p>
 
       <div className="four-col wide" style={{ marginTop: '0.5em', alignItems: 'start', gap: '0.9em' }}>
         <div style={cellStyle}>
@@ -36,7 +33,7 @@ export function Slide15() {
             <circle cx="100" cy="68" r="55" fill={aiFill} stroke={aiStroke} strokeWidth="1.5" />
             <circle cx="115" cy="72" r="22" fill={humanFill} stroke={humanStroke} strokeWidth="1.5" />
             <text x="60" y="35" fontSize="11" fill={aiLabel} textAnchor="middle">AI</text>
-            <text x="148" y="72" fontSize="10" fill={humanLabel} textAnchor="middle">Люд.</text>
+            <text x="148" y="72" fontSize="10" fill={humanLabel} textAnchor="middle">Людина</text>
           </svg>
           <p className="text-sm" style={captionStyle}>
             <strong>AI робить майже все.</strong> Тонкий шар людини згори.
@@ -69,7 +66,8 @@ export function Slide15() {
 
       <p className="slide-footnote" style={{ marginTop: '0.6em' }}>
         Dell'Acqua, Mollick et al., «Navigating the Jagged Technological Frontier» (Harvard/BCG 2023):
-        +40% / −19 п.п. залежно від боку межі — і консультанти не вгадували, де яка задача.{' '}
+        758 консультантів із GPT-4 vs без. У зоні AI якість зростала на +40%; поза зоною
+        правильних відповідей ставало на 19 п.п. менше. Заздалегідь по який бік межі задача — консультанти не вгадували.{' '}
         <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321">papers.ssrn.com/abstract=4573321</a>
         {' '}· E. Mollick, «Co-Intelligence» (2024){' '}
         <a href="https://www.oneusefulthing.org/">oneusefulthing.org</a>
