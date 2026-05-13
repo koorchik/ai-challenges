@@ -1,0 +1,27 @@
+{
+  "name": "dou-day-2026",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Slides for DOU Day 2026 — «Що робити в часи ШІ?»",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@revealjs/react": "^0.2.1",
+    "d3-scale": "^4.0.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "reveal.js": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/d3-scale": "^4.0.9",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.6.0",
+    "vite": "^5.4.0"
+  }
+}
