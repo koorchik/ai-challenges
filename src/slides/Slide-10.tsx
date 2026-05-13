@@ -5,7 +5,6 @@ export function Slide10() {
   return (
     <SectionHeader
       title="Концепції"
-      subtitle="Дві лінзи, через які варто дивитися на все решту."
     />
   );
 }
