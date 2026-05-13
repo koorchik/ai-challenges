@@ -1,101 +1,46 @@
-// 24 · Розробники · Куди зсувається час
-import { ChartSvg } from '../components/charts/Svg';
-
-type Segment = { label: string; value: number; color: string };
-
-const BEFORE: Segment[] = [
-  { label: 'писати код', value: 45, color: '#facc15' },
-  { label: 'дизайн / специфікація', value: 10, color: '#bfdbfe' },
-  { label: 'читання / ревʼю', value: 15, color: '#fde68a' },
-  { label: 'відлагодження', value: 15, color: '#fda4ae' },
-  { label: 'інтеграція / релізи', value: 10, color: '#86efac' },
-  { label: 'координація', value: 5, color: '#c4b5fd' },
-];
-
-const AFTER: Segment[] = [
-  { label: 'писати код', value: 15, color: '#facc15' },
-  { label: 'дизайн / специфікація', value: 20, color: '#bfdbfe' },
-  { label: 'читання / ревʼю', value: 25, color: '#fde68a' },
-  { label: 'відлагодження', value: 18, color: '#fda4ae' },
-  { label: 'інтеграція / релізи', value: 12, color: '#86efac' },
-  { label: 'координація', value: 10, color: '#c4b5fd' },
-];
-
-function StackedBar({
-  x,
-  y,
-  width,
-  height,
-  segments,
-}: {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  segments: Segment[];
-}) {
-  let offset = 0;
-  return (
-    <g transform={`translate(${x}, ${y})`}>
-      {segments.map((s) => {
-        const h = (s.value / 100) * height;
-        const rect = (
-          <g key={s.label} transform={`translate(0, ${offset})`}>
-            <rect width={width} height={h} fill={s.color} opacity={0.85} />
-            {s.value >= 8 && (
-              <text
-                x={width / 2}
-                y={h / 2 + 4}
-                textAnchor="middle"
-                fill="rgba(0,0,0,0.85)"
-                fontSize={12}
-                fontWeight={600}
-              >
-                {s.label} · {s.value}%
-              </text>
-            )}
-          </g>
-        );
-        offset += h;
-        return rect;
-      })}
-    </g>
-  );
-}
-
-export function Slide07() {
+// 17 · Студенти · Engineer's Playbook — де людина ще краща
+export function Slide15() {
   return (
     <>
-      <h2>Куди зсувається час</h2>
+      <h2>5 точок, де людина системно випереджає ШІ</h2>
       <p className="lede">
-        ШІ стискає саме кодування. Усе, що не код, росте у відносній вазі.
+        Якщо tech-lead — твоя нова стартова, ось 5 конкретних місць, де ШІ програє і де твоя цінність
+        вимірюється у проді.
       </p>
 
-      <ChartSvg height={460}>
-        <text x={300} y={36} textAnchor="middle" className="chart-title">
-          до ШІ
-        </text>
-        <text x={700} y={36} textAnchor="middle" className="chart-title">
-          з ШІ
-        </text>
-        <StackedBar x={200} y={60} width={200} height={340} segments={BEFORE} />
-        <StackedBar x={600} y={60} width={200} height={340} segments={AFTER} />
-
-        <text x={500} y={230} textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize={28}>
-          →
-        </text>
-
-      </ChartSvg>
+      <ol
+        className="text-md wide"
+        style={{ textAlign: 'left', maxWidth: 1040, margin: '0.4em auto', lineHeight: 1.45 }}
+      >
+        <li style={{ margin: '0.25em 0' }}>
+          <strong>Парадокс автоматизації.</strong> Фундаменти не зникли — вони стали підступними.{' '}
+          <em>Race condition у concurrent-DB: у тестах зелено, у проді падає.</em>
+        </li>
+        <li style={{ margin: '0.25em 0' }}>
+          <strong>Домен.</strong> ШІ за замовчуванням дає generic-патерн.{' '}
+          <em>HIPAA, offline-first для віддалених регіонів, регуляторика — твоє.</em>
+        </li>
+        <li style={{ margin: '0.25em 0' }}>
+          <strong>Identity рев'юера.</strong> ШІ-код = junior PR. Швидке читання коду важливіше за швидке
+          писання. <em>ШІ галюцинує — ти ловиш.</em>
+        </li>
+        <li style={{ margin: '0.25em 0' }}>
+          <strong>Ефективність.</strong> ШІ оптимізує ймовірність токена, не ресурси.{' '}
+          <em>Аудит O(n²)-патернів, compute-ціни, scalability — твоє.</em>
+        </li>
+        <li style={{ margin: '0.25em 0' }}>
+          <strong>Безпека + галюцинації.</strong> Фейкові npm/pip пакети, supply-chain ризики.{' '}
+          <em>Перевірка існування — твоя обов'язкова дисципліна.</em>
+        </li>
+      </ol>
 
       <p className="callout">
-        Висновок: коли код дешевшає — <strong>дорожчає все, що не код</strong>. Дизайн, ревʼю, відлагодження
-        між системами, інтеграція, домен. І ще координація.
+        Це не «ШІ ніколи не зможе». Це «сьогодні системно не робить — і кожна з 5 точок коштує грошей
+        у проді».
       </p>
 
       <p className="slide-footnote">
-        Ілюстративний розподіл — оцінка автора за даними команд 2025–2026. Напрямок підтверджують
-        DORA 2024 (75% розробників відчували приріст, throughput команди −1.5%) і GitClear / Stack
-        Overflow 2024–25; точні відсотки не є виміряними.
+        Turskyi (2026), «AI-Integrated Bloom's Taxonomy: From "Coder" to "Tech Lead"» — Engineer's Playbook.
       </p>
     </>
   );

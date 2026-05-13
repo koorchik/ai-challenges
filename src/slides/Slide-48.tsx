@@ -1,6 +1,6 @@
-// 48 · Україна · Ерозія цінового арбітражу
-import { OutsourcingErosion } from '../components/sims/OutsourcingErosion';
+// 41 · Бізнеси · Парадокс Джевонса
+import { JevonsSim } from '../components/sims/JevonsSim';
 
-export function Slide44() {
-  return <OutsourcingErosion />;
+export function Slide13() {
+  return <JevonsSim />;
 }

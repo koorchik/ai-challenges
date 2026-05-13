@@ -1,6 +1,11 @@
-// 41 · Бізнеси · Парадокс Джевонса
-import { JevonsSim } from '../components/sims/JevonsSim';
+// 34 · Бізнеси · Header
+import { SectionHeader } from '../components/SectionHeader';
 
-export function Slide13() {
-  return <JevonsSim />;
+export function Slide35() {
+  return (
+    <SectionHeader
+      title="Бізнеси"
+      subtitle="Компанії, що створюють софт — або софт використовують. Дванадцять слайдів про економіку, рови та наступне покоління."
+    />
+  );
 }

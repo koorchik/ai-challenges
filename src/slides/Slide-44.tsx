@@ -1,94 +1,115 @@
-// 44 · Бізнеси · Часті пастки
-import type { ReactNode } from 'react';
-import { FlipCard } from '../components/FlipCard';
+// 37 · Бізнеси · Крива вартості MVP
+import { scaleLinear, scaleLog } from 'd3-scale';
+import { ChartSvg, CHART_W } from '../components/charts/Svg';
+import { Line } from '../components/charts/Line';
+import { Annotation } from '../components/charts/Annotation';
 
-type Accent = 'yellow' | 'blue' | 'green' | 'red' | 'purple' | 'amber';
+type Point = { year: number; cost: number; label: string };
 
-type Pitfall = {
-  accent: Accent;
-  title: string;
-  symptom: ReactNode;
-  fix: ReactNode;
-};
-
-const pitfalls: Pitfall[] = [
-  {
-    accent: 'red',
-    title: 'POC-пастка',
-    symptom: <>Demo на двох прикладах вражає; прод провалюється.</>,
-    fix: <>Eval-set з 50+ кейсами до релізу. Без evals — не релізите.</>,
-  },
-  {
-    accent: 'amber',
-    title: 'Wrapper-пастка',
-    symptom: <>API ≠ продукт. Платформа додала вашу фічу — ви зникли.</>,
-    fix: <>Власні дані / інтеграція / domain — або продавайте як фічу, не стартап.</>,
-  },
-  {
-    accent: 'yellow',
-    title: 'Hallucination-сертифікат',
-    symptom: <>ШІ-бот пообіцяв знижку — і суд каже «платіть». <em>Moffatt v. Air Canada</em>, BCCRT 2024 (CA$812).</>,
-    fix: <>Structured outputs + людська верифікація на high-stakes відповідях. Жодних обіцянок без людини.</>,
-  },
-  {
-    accent: 'red',
-    title: 'Prompt-injection',
-    symptom: <>Агент із доступом до даних читає вхід без sanitization. CWE-77 з LLM-присмаком.</>,
-    fix: <>Sanitize inputs. Tool-use whitelist. Least-privilege для агентів. Аудит ланцюга викликів.</>,
-  },
-  {
-    accent: 'purple',
-    title: 'Скоротили команду рано',
-    symptom: <>Ще нема evals — а 7 людей з контекстом пішли. Бага рятуєте тиждень.</>,
-    fix: <>Eval-set + runbooks + wiki до офбордінгу. Контекст-фон → документ, а не голова.</>,
-  },
-  {
-    accent: 'blue',
-    title: 'AI-pivot заради AI',
-    symptom: <>Зміна продукту під моду; користувачі не просили.</>,
-    fix: <>Roadmap → користувачі → AI як засіб. ШІ — інструмент під задачу, не задача сам по собі.</>,
-  },
-  {
-    accent: 'green',
-    title: 'Інференс без бюджету',
-    symptom: <>$50k/міс, бо нема rate-limit. Виправляється за день, після першого рахунку.</>,
-    fix: <>Rate-limit + token-budget + per-user quota + observability на токени з дня один.</>,
-  },
+const data: Point[] = [
+  { year: 2005, cost: 100_000, label: 'on-prem, власний фреймворк' },
+  { year: 2008, cost: 50_000, label: 'Rails + Heroku' },
+  { year: 2011, cost: 25_000, label: 'AWS, mobile-first' },
+  { year: 2014, cost: 15_000, label: 'Stripe, Twilio, SaaS-кубики' },
+  { year: 2018, cost: 8_000, label: 'JAMstack, no-code' },
+  { year: 2022, cost: 4_000, label: 'GPT-стартери' },
+  { year: 2025, cost: 1_500, label: 'LLM-codegen + IDE-агенти' },
+  { year: 2026, cost: 600, label: 'агенти "ship-a-feature"' },
 ];
 
-export function Slide40() {
+export function Slide10() {
+  const margin = { top: 50, right: 200, bottom: 60, left: 90 };
+  const innerW = CHART_W - margin.left - margin.right;
+  const innerH = 380;
+
+  const x = scaleLinear()
+    .domain([2005, 2026])
+    .range([margin.left, margin.left + innerW]);
+
+  const y = scaleLog()
+    .domain([300, 200_000])
+    .range([margin.top + innerH, margin.top]);
+
+  const pts = data.map((d) => ({ x: x(d.year), y: y(d.cost) }));
+
   return (
     <>
-      <h2>Часті пастки 2024–2026</h2>
+      <h2>Скільки коштувало запустити MVP</h2>
       <p className="lede">
-        Кожна — у кожного третього AI-проєкту, що зупинився. Натисніть на картку, щоб побачити, як її уникнути.
+        Двадцять років вартість запуску падала на ~порядок щодесятиліття. ШІ — наступний крок тієї ж кривої.
       </p>
 
-      <div className="flip-grid">
-        {pitfalls.map((p) => (
-          <FlipCard
-            key={p.title}
-            accent={p.accent}
-            front={
-              <>
-                <h4>{p.title}</h4>
-                <p>{p.symptom}</p>
-                <span className="flip-card-hint">клік → як уникнути</span>
-              </>
-            }
-            back={
-              <>
-                <h4>Як уникнути</h4>
-                <p>{p.fix}</p>
-                <span className="flip-card-hint">клік → назад</span>
-              </>
-            }
-          />
+      <ChartSvg height={420}>
+        <text x={CHART_W / 2 - 50} y={36} textAnchor="middle" className="chart-title">
+          Орієнтовна вартість MVP (USD, лог. шкала)
+        </text>
+        {[1000, 10_000, 100_000].map((v) => (
+          <g key={v}>
+            <line
+              x1={margin.left}
+              x2={margin.left + innerW}
+              y1={y(v)}
+              y2={y(v)}
+              stroke="rgba(255,255,255,0.08)"
+            />
+            <text x={margin.left - 10} y={y(v) + 4} textAnchor="end" fill="rgba(255,255,255,0.6)" fontSize={11}>
+              ${v >= 1000 ? `${v / 1000}k` : v}
+            </text>
+          </g>
         ))}
-      </div>
+        <line
+          x1={margin.left}
+          y1={margin.top + innerH}
+          x2={margin.left + innerW}
+          y2={margin.top + innerH}
+          stroke="rgba(255,255,255,0.25)"
+        />
+        {[2005, 2010, 2015, 2020, 2025].map((yr) => (
+          <text
+            key={yr}
+            x={x(yr)}
+            y={margin.top + innerH + 22}
+            textAnchor="middle"
+            fill="rgba(255,255,255,0.6)"
+            fontSize={11}
+          >
+            {yr}
+          </text>
+        ))}
 
-      <p className="callout">
-        У 2026 рішення йде у прод тільки з evals, бюджетом, security-перевіркою і human-in-loop планом.
+        <Line points={pts.slice(0, 7)} stroke="#facc15" strokeWidth={3} />
+        <Line points={pts.slice(6)} stroke="#facc15" strokeWidth={3} dasharray="6 5" />
+        <text
+          x={pts[7].x + 10}
+          y={pts[7].y + 4}
+          fill="rgba(250,204,21,0.85)"
+          fontSize={11}
+          fontStyle="italic"
+        >
+          проєкція
+        </text>
+        {data.map((d, i) => (
+          <Annotation
+            key={d.year}
+            x={pts[i].x}
+            y={pts[i].y}
+            dx={i % 2 === 0 ? 14 : -14}
+            dy={i % 2 === 0 ? -22 : 22}
+            align={i % 2 === 0 ? 'start' : 'end'}
+            showLeader={false}
+          >
+            {d.label}
+          </Annotation>
+        ))}
+      </ChartSvg>
+
+      <p className="callout callout-yellow">
+        Наслідок: <strong>побудувати</strong> — більше не вузьке місце. Ним стає{' '}
+        <strong>дистрибуція та утримання</strong>. Хороша новина для одинаків; погана — для тонких SaaS-обгорток.
+      </p>
+
+      <p className="slide-footnote">
+        Дані-орієнтири: a16z «cost of starting a software company» серії (2010–2024); розрахунки автора.
       </p>
     </>
   );

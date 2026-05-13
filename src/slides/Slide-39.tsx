@@ -1,55 +1,47 @@
-// 39 · Бізнеси · Де живуть рови у 2026
-export function Slide11() {
+// 32 · Розробники · Калібрація на собі
+export function Slide33() {
   return (
     <>
-      <h2>Де <em>насправді</em> живуть рови у 2026</h2>
+      <h2>Як виміряти <em>власний</em> ШІ-приріст</h2>
       <p className="lede">
-        Доступ до моделі — більше не рів. Open-source (DeepSeek, Llama, Mistral) робить
-        <em> модель</em> товаром. Лишається п'ять категорій, що насправді захищають продукт від клонів за тиждень.
+        METR показав: розрив між відчутою і реальною продуктивністю ≈ 40 п.п. Якщо ви не міряєте —
+        приймаєте рішення на відчуттях. Ось простий протокол, який ви можете зробити за 4 тижні.
       </p>
 
-      <ul className="text-md wide" style={{ textAlign: 'left', lineHeight: 1.5 }}>
+      <ol className="text-md wide" style={{ textAlign: 'left' }}>
         <li>
-          <strong className="accent" data-accent="yellow">
-            1. Дані з feedback-петлею
-          </strong>
-          . Не «лог у S3», а <em>розмічений потік</em>, що замикає цикл «використання → метрики → дотюнінг».
-          Кожен корисний клік — це data-asset. Приклади: Grammarly, GitHub, Tesla.
+          <strong>Т1. Категоризуйте задачі</strong> на 3 типи: greenfield, legacy-інтеграції, дослідницькі.
         </li>
         <li>
-          <strong className="accent" data-accent="blue">
-            2. Дистрибуція через існуючі workflow
-          </strong>
-          . Ваш продукт уже в IDE, у Slack, у Salesforce — куди користувач уже приходить. Конкурент
-          мусить пробитися крізь зміну звички. Приклади: Copilot у VSCode, Notion AI, Apple Intelligence.
+          <strong>Т2. «Без ШІ»:</strong> по 3 задачі кожного типу. Записуйте фактичний час, не оцінку.
         </li>
         <li>
-          <strong className="accent" data-accent="green">
-            3. Довіра / регуляція
-          </strong>
-          . SOC2 Type II + HIPAA + ISO 27001 + FedRAMP — типово 12–24 міс і шести- до семизначні суми.
-          Повільний рів, що накопичується роками. Defense-tech, fintech, healthtech, gov-tech.
+          <strong>Т3. «З ШІ»:</strong> 3 нові схожі задачі кожного типу. Окремо рахуйте rollback-и.
         </li>
         <li>
-          <strong className="accent" data-accent="purple">
-            4. Network effects
-          </strong>
-          . Кожен новий користувач робить продукт ціннішим для попередніх — marketplace, OSS-екосистема,
-          shared knowledge base.
+          <strong>Т4. Підбийте.</strong> Очікуйте: +30–50% на greenfield, ~0 на legacy, можливо −Х на
+          дослідженнях.
         </li>
-        <li>
-          <strong className="accent" data-accent="red">
-            5. Bundling із не-AI продуктом
-          </strong>
-          . У вас уже є щось куплене — додаєте AI як фічу, не як продукт. Тут грають великі.
-          Маленьким лишається співпраця або смак: те, що <strong>не</strong> робимо, як виглядає інтерфейс, що каже бренд.
-        </li>
-      </ul>
+      </ol>
 
-      <p className="callout callout-yellow">
-        Тест: <em>«якщо завтра з'явиться 50 ідентичних AI-стартапів — що в нас залишається?»</em>
-        Якщо відповідь — «нічого», ви побудували функцію. Якщо хоч одна з п'яти причин — стартап.
-      </p>
+      <div className="two-col wide text-md" style={{ marginTop: '0.4em' }}>
+        <div data-accent="green">
+          <h3 className="accent">що отримаєте</h3>
+          <ul className="checklist">
+            <li>Власну Cui-криву, не теоретичну</li>
+            <li>Розуміння, де ставити ШІ, а де — ні</li>
+            <li>Аргументи для переговорів про роль</li>
+          </ul>
+        </div>
+        <div data-accent="red">
+          <h3 className="accent">пастки в зборі даних</h3>
+          <ul className="checklist">
+            <li>«Я б все одно зробив за той самий час» (ні)</li>
+            <li>Не рахувати час на review AI-коду</li>
+            <li>Виключати «провалені» спроби з підрахунку</li>
+          </ul>
+        </div>
+      </div>
     </>
   );
 }

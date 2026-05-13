@@ -1,59 +1,40 @@
-// 29 · Розробники · Карʼєрні розгалуження
-export function Slide32() {
+// 22 · Студенти · Практичний план
+export function Slide27() {
   return (
     <>
-      <h2>Карʼєрні шляхи з 2026 — чотири розгалуження</h2>
+      <h2>Практичний план для студента — 6 місяців</h2>
       <p className="lede">
-        «Залишитися просто розробником» — теж шлях, але вузький. Чотири усталеніші напрямки,
-        кожен з власною компонентою «що ШІ не вміє».
+        Не «що б почитати», а що б <em>зробити</em>. По одному завданню на місяць.
       </p>
 
-      <div className="fork wide">
-        <div className="fork-node" data-accent="yellow">
-          <h3>Domain expert</h3>
-          <p className="muted">медицина · фінанси · оборонка · енергія · geo</p>
-          <ul style={{ paddingLeft: '1em', margin: '0.2em 0' }}>
-            <li>Глибина домену &gt; широта стеку</li>
-            <li>Регуляція, ліцензії, ризик</li>
-            <li>Працюєте з не-розробниками</li>
-          </ul>
-          <p className="muted">ШІ не має «років у домені»</p>
-        </div>
-        <div className="fork-node" data-accent="green">
-          <h3>Tech / staff lead</h3>
-          <p className="muted">архітектура · координація</p>
-          <ul style={{ paddingLeft: '1em', margin: '0.2em 0' }}>
-            <li>Дизайн систем, RFC</li>
-            <li>Mentoring &amp; найм</li>
-            <li>Cross-team координація</li>
-          </ul>
-          <p className="muted">ШІ не несе відповідальності</p>
-        </div>
-        <div className="fork-node" data-accent="blue">
-          <h3>Founder / solo product</h3>
-          <p className="muted">сам собі продукт</p>
-          <ul style={{ paddingLeft: '1em', margin: '0.2em 0' }}>
-            <li>1–3 людини, ШІ як «команда»</li>
-            <li>Дистрибуція &gt; код</li>
-            <li>Готовність до невизначеності</li>
-          </ul>
-          <p className="muted">найбільший upside, найбільший ризик</p>
-        </div>
-        <div className="fork-node" data-accent="purple">
-          <h3>AI infra / platform</h3>
-          <p className="muted">той, хто будує інструменти</p>
-          <ul style={{ paddingLeft: '1em', margin: '0.2em 0' }}>
-            <li>RAG, evals, observability, агенти</li>
-            <li>ML-ops, vector DB, serving</li>
-            <li>Security для LLM</li>
-          </ul>
-          <p className="muted">найвища премія, найшвидша гонитва</p>
-        </div>
+      <div className="wide text-md" style={{ marginTop: '0.5em' }}>
+        <ol style={{ textAlign: 'left', lineHeight: 1.6 }}>
+          <li>
+            <strong>Місяць 1.</strong> Закрити три відомі вам прогалини у фундаменті. Прочитати один
+            класичний підручник до кінця, з виконанням вправ (CSAPP, DDIA, AOSA — на вибір).
+          </li>
+          <li>
+            <strong>Місяць 2.</strong> Обрати один домен, що вас цікавить (не «AI», а — медицина, освіта,
+            оборонка, енергія, geo). Прочитати 5 best-paper з останнього року.
+          </li>
+          <li>
+            <strong>Місяці 3–4.</strong> Збудувати малий продукт у цьому домені. Запустити для 10 живих
+            користувачів. Виміряти результати.
+          </li>
+          <li>
+            <strong>Місяць 5.</strong> Написати чесний technical post-mortem. Опублікувати код, опублікувати
+            пост. Поділитися в спільнотах домену, не лише в технічних.
+          </li>
+          <li>
+            <strong>Місяць 6.</strong> Зробити 50 цілеспрямованих контактів. Не «давайте дружити», а
+            «я зробив X у вашому домені, можна 20 хвилин фідбеку?». Серед них знайдеться перша робота.
+          </li>
+        </ol>
       </div>
 
-      <p className="callout callout-yellow">
-        Жодне з цих розгалужень не <em>гарантоване</em>. Усі — це інвестиція в навичку, яку ШІ не закриває.
-        Виберіть одне і йдіть глибоко, замість трохи від усіх.
+      <p className="callout callout-green">
+        <strong>Ключова метрика 6 місяців:</strong> чи можете ви показати на скрін під час інтервʼю одну
+        річ, що ви зробили, для якої є справжні користувачі. Так — ви наймана сила. Ні — ще робота.
       </p>
     </>
   );

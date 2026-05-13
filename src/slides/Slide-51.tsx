@@ -1,42 +1,94 @@
-// 51 · Україна · Таланти й діаспора
-export function Slide47() {
+// 44 · Бізнеси · Часті пастки
+import type { ReactNode } from 'react';
+import { FlipCard } from '../components/FlipCard';
+
+type Accent = 'yellow' | 'blue' | 'green' | 'red' | 'purple' | 'amber';
+
+type Pitfall = {
+  accent: Accent;
+  title: string;
+  symptom: ReactNode;
+  fix: ReactNode;
+};
+
+const pitfalls: Pitfall[] = [
+  {
+    accent: 'red',
+    title: 'POC-пастка',
+    symptom: <>Demo на двох прикладах вражає; прод провалюється.</>,
+    fix: <>Eval-set з 50+ кейсами до релізу. Без evals — не релізите.</>,
+  },
+  {
+    accent: 'amber',
+    title: 'Wrapper-пастка',
+    symptom: <>API ≠ продукт. Платформа додала вашу фічу — ви зникли.</>,
+    fix: <>Власні дані / інтеграція / domain — або продавайте як фічу, не стартап.</>,
+  },
+  {
+    accent: 'yellow',
+    title: 'Hallucination-сертифікат',
+    symptom: <>ШІ-бот пообіцяв знижку — і суд каже «платіть». <em>Moffatt v. Air Canada</em>, BCCRT 2024 (CA$812).</>,
+    fix: <>Structured outputs + людська верифікація на high-stakes відповідях. Жодних обіцянок без людини.</>,
+  },
+  {
+    accent: 'red',
+    title: 'Prompt-injection',
+    symptom: <>Агент із доступом до даних читає вхід без sanitization. CWE-77 з LLM-присмаком.</>,
+    fix: <>Sanitize inputs. Tool-use whitelist. Least-privilege для агентів. Аудит ланцюга викликів.</>,
+  },
+  {
+    accent: 'purple',
+    title: 'Скоротили команду рано',
+    symptom: <>Ще нема evals — а 7 людей з контекстом пішли. Бага рятуєте тиждень.</>,
+    fix: <>Eval-set + runbooks + wiki до офбордінгу. Контекст-фон → документ, а не голова.</>,
+  },
+  {
+    accent: 'blue',
+    title: 'AI-pivot заради AI',
+    symptom: <>Зміна продукту під моду; користувачі не просили.</>,
+    fix: <>Roadmap → користувачі → AI як засіб. ШІ — інструмент під задачу, не задача сам по собі.</>,
+  },
+  {
+    accent: 'green',
+    title: 'Інференс без бюджету',
+    symptom: <>$50k/міс, бо нема rate-limit. Виправляється за день, після першого рахунку.</>,
+    fix: <>Rate-limit + token-budget + per-user quota + observability на токени з дня один.</>,
+  },
+];
+
+export function Slide40() {
   return (
     <>
-      <h2>Талант: утримати, повернути, перетворити на капітал</h2>
+      <h2>Часті пастки 2024–2026</h2>
       <p className="lede">
-        У 2026 у нас одночасно три аудиторії: (1) люди в Україні, (2) діаспора 2014+, (3) діаспора 2022+.
-        Кожна потребує своєї стратегії. «Всі повертайтеся» — нереалістично для жодної.
+        Кожна — у кожного третього AI-проєкту, що зупинився. Натисніть на картку, щоб побачити, як її уникнути.
       </p>
 
-      <ul className="text-md wide" style={{ textAlign: 'left' }}>
-        <li>
-          <strong>Утримати всередині.</strong> Diia.City + R&amp;D tax credit + housing/career-tracks для
-          defense-tech.
-        </li>
-        <li>
-          <strong>Діаспора в AI-компаніях.</strong> Brain-trust програма: 2–3 щорічні зустрічі в Києві,
-          mentorship, доступ до даних. Не «повертайтеся», а «допомагайте на дистанції».
-        </li>
-        <li>
-          <strong>Знання, не люди.</strong> Open-source, інвестиції в українські стартапи, дошки директорів.
-          Повільний канал — масштабний.
-        </li>
-        <li>
-          <strong>Молодь, що не виїжджала.</strong> Стипендії на обмін у топ-AI-лабораторії з умовою: 2р
-          роботи в українському defense / dual-use після.
-        </li>
-      </ul>
+      <div className="flip-grid">
+        {pitfalls.map((p) => (
+          <FlipCard
+            key={p.title}
+            accent={p.accent}
+            front={
+              <>
+                <h4>{p.title}</h4>
+                <p>{p.symptom}</p>
+                <span className="flip-card-hint">клік → як уникнути</span>
+              </>
+            }
+            back={
+              <>
+                <h4>Як уникнути</h4>
+                <p>{p.fix}</p>
+                <span className="flip-card-hint">клік → назад</span>
+              </>
+            }
+          />
+        ))}
+      </div>
 
       <p className="callout">
-        Реалістичний фрейм: довоєнна галузь — ~300к спеціалістів, ~37% тих, хто виїхав, не планують
-        повертатися (опитування ITC.ua 2025). Ми <em>не</em> компенсуємо цей відтік поверненцями.
-        Компенсуємо за рахунок (а) глобальних звʼязків діаспори, (б) переорієнтації решти на вищу
-        маржу — defense-tech, dual-use, специфічні домени.
-      </p>
-
-      <p className="slide-footnote">
-        Дані: IT Ukraine Association 2023–2024; ITC.ua «48% IT-фахівців планують емігрувати» 2025;
-        DOU developer census.
+        У 2026 рішення йде у прод тільки з evals, бюджетом, security-перевіркою і human-in-loop планом.
       </p>
     </>
   );

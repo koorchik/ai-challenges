@@ -1,48 +1,35 @@
-// 50 · Україна · Освіта
-export function Slide46() {
+// 43 · Бізнеси · Pipeline наступного покоління
+export function Slide37() {
   return (
     <>
-      <h2>Освіта: що треба міняти просто зараз</h2>
+      <h2>Pipeline наступного покоління</h2>
       <p className="lede">
-        Університети 2025-го готують випускників 2029-го до робіт 2026-го. Що конкретно мають змінити
-        три рівні системи.
+        Якщо ніхто не наймає junior-ів сьогодні — звідки візьмуться senior-и за п'ять років?
       </p>
 
-      <div className="three-col wide text-md" style={{ marginTop: '0.4em', gap: '1em' }}>
-        <div data-accent="yellow">
-          <h3 className="accent">Університети</h3>
-          <ul className="checklist">
-            <li>Робота з ШІ — обов'язковий курс на 2-му році, не факультатив</li>
-            <li>Evals, prompt-design, RAG — у складі CS-фундаменту</li>
-            <li>Diploma-projects з реальними користувачами, не «лабораторні»</li>
-            <li>Менше «теорія БД 14 тижнів», більше системного мислення</li>
-            <li>Партнерства з defense-tech: реальні задачі замість абстрактних</li>
-          </ul>
-        </div>
-        <div data-accent="blue">
-          <h3 className="accent">Бутки / Bootcamps</h3>
-          <ul className="checklist">
-            <li>Bootcamp «junior за 4 міс» — мертвий формат</li>
-            <li>Нова модель: domain-bootcamp (medical AI, defense AI, fintech AI)</li>
-            <li>Apprenticeship-моделі з реальною роботою</li>
-            <li>Сертифікація evals/safety — як CompTIA для AI</li>
+      <div className="two-col wide text-md">
+        <div data-accent="red">
+          <h3 className="accent">Чому ламається</h3>
+          <ul>
+            <li>−62% junior-вакансій 2022→2026. Перший крок драбини зник.</li>
+            <li>Через 3–5 років — дефіцит mid-ів. Через 8 — дефіцит tech-lead-ів.</li>
+            <li>Внутрішнє менторство зникає разом із greenfield-задачами.</li>
+            <li>Інфляція на senior-ринку випереджає економію на ШІ.</li>
           </ul>
         </div>
         <div data-accent="green">
-          <h3 className="accent">Перекваліфікація</h3>
+          <h3 className="accent">Що робити сьогодні</h3>
           <ul className="checklist">
-            <li>Програма для ветеранів — defense-tech expertise</li>
-            <li>Mid-career переходи: інженер 5+р → AI-engineer / domain expert</li>
-            <li>Diia.Education має масштабуватися: цільові курси з ваучером</li>
-            <li>Англійська як infra: без неї немає глобального ринку</li>
+            <li>Apprenticeship-треки 6–12 міс під senior-а, з KPI на ментора.</li>
+            <li>Внутрішній greenfield для junior-ів — ШІ як інструмент.</li>
+            <li>Domain-bootcamp 18–24 міс: фундамент + домен + прод-цикл.</li>
+            <li>Партнерство з ВНЗ: дипломні з реальних задач, stage у проді.</li>
           </ul>
         </div>
       </div>
 
       <p className="callout callout-yellow">
-        Чесно: університети змінюються повільно, частково необґрунтовано. Швидке вирішення — приватні
-        партнерства, де компанії беруть на себе третину навчального плану в обмін на доступ до студентів.
-        Це працює в Естонії, Польщі, Ізраїлі.
+        Це не CSR — це хеджування проти власної інфляції талантів у 2030.
       </p>
     </>
   );
