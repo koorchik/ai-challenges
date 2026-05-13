@@ -1,48 +1,94 @@
-// 44 · Україна · Освіта
-export function Slide46() {
+// 44 · Бізнеси · Часті пастки
+import type { ReactNode } from 'react';
+import { FlipCard } from '../components/FlipCard';
+
+type Accent = 'yellow' | 'blue' | 'green' | 'red' | 'purple' | 'amber';
+
+type Pitfall = {
+  accent: Accent;
+  title: string;
+  symptom: ReactNode;
+  fix: ReactNode;
+};
+
+const pitfalls: Pitfall[] = [
+  {
+    accent: 'red',
+    title: 'POC-пастка',
+    symptom: <>Demo на двох прикладах вражає; прод провалюється.</>,
+    fix: <>Eval-set з 50+ кейсами до релізу. Без evals — не релізите.</>,
+  },
+  {
+    accent: 'amber',
+    title: 'Wrapper-пастка',
+    symptom: <>API ≠ продукт. Платформа додала вашу фічу — ви зникли.</>,
+    fix: <>Власні дані / інтеграція / domain — або продавайте як фічу, не стартап.</>,
+  },
+  {
+    accent: 'yellow',
+    title: 'Hallucination-сертифікат',
+    symptom: <>ШІ-бот пообіцяв знижку — і суд каже «платіть». <em>Moffatt v. Air Canada</em>, BCCRT 2024 (CA$812).</>,
+    fix: <>Structured outputs + людська верифікація на high-stakes відповідях. Жодних обіцянок без людини.</>,
+  },
+  {
+    accent: 'red',
+    title: 'Prompt-injection',
+    symptom: <>Агент із доступом до даних читає вхід без sanitization. CWE-77 з LLM-присмаком.</>,
+    fix: <>Sanitize inputs. Tool-use whitelist. Least-privilege для агентів. Аудит ланцюга викликів.</>,
+  },
+  {
+    accent: 'purple',
+    title: 'Скоротили команду рано',
+    symptom: <>Ще нема evals — а 7 людей з контекстом пішли. Бага рятуєте тиждень.</>,
+    fix: <>Eval-set + runbooks + wiki до офбордінгу. Контекст-фон → документ, а не голова.</>,
+  },
+  {
+    accent: 'blue',
+    title: 'AI-pivot заради AI',
+    symptom: <>Зміна продукту під моду; користувачі не просили.</>,
+    fix: <>Roadmap → користувачі → AI як засіб. ШІ — інструмент під задачу, не задача сам по собі.</>,
+  },
+  {
+    accent: 'green',
+    title: 'Інференс без бюджету',
+    symptom: <>$50k/міс, бо нема rate-limit. Виправляється за день, після першого рахунку.</>,
+    fix: <>Rate-limit + token-budget + per-user quota + observability на токени з дня один.</>,
+  },
+];
+
+export function Slide40() {
   return (
     <>
-      <h2>Освіта: що треба міняти просто зараз</h2>
+      <h2>Часті пастки 2024–2026</h2>
       <p className="lede">
-        Університети 2025-го готують випускників 2029-го до робіт 2026-го. Що конкретно мають змінити
-        три рівні системи.
+        Кожна — у кожного третього AI-проєкту, що зупинився. Натисніть на картку, щоб побачити, як її уникнути.
       </p>
 
-      <div className="three-col wide text-md" style={{ marginTop: '0.4em', gap: '1em' }}>
-        <div data-accent="yellow">
-          <h3 className="accent">Університети</h3>
-          <ul className="checklist">
-            <li>Робота з ШІ — обов'язковий курс на 2-му році, не факультатив</li>
-            <li>Evals, prompt-design, RAG — у складі CS-фундаменту</li>
-            <li>Diploma-projects з реальними користувачами, не «лабораторні»</li>
-            <li>Менше «теорія БД 14 тижнів», більше системного мислення</li>
-            <li>Партнерства з defense-tech: реальні задачі замість абстрактних</li>
-          </ul>
-        </div>
-        <div data-accent="blue">
-          <h3 className="accent">Бутки / Bootcamps</h3>
-          <ul className="checklist">
-            <li>Bootcamp «junior за 4 міс» — мертвий формат</li>
-            <li>Нова модель: domain-bootcamp (medical AI, defense AI, fintech AI)</li>
-            <li>Apprenticeship-моделі з реальною роботою</li>
-            <li>Сертифікація evals/safety — як CompTIA для AI</li>
-          </ul>
-        </div>
-        <div data-accent="green">
-          <h3 className="accent">Перекваліфікація</h3>
-          <ul className="checklist">
-            <li>Програма для ветеранів — defense-tech expertise</li>
-            <li>Mid-career переходи: інженер 5+р → AI-engineer / domain expert</li>
-            <li>Diia.Education має масштабуватися: цільові курси з ваучером</li>
-            <li>Англійська як infra: без неї немає глобального ринку</li>
-          </ul>
-        </div>
+      <div className="flip-grid">
+        {pitfalls.map((p) => (
+          <FlipCard
+            key={p.title}
+            accent={p.accent}
+            front={
+              <>
+                <h4>{p.title}</h4>
+                <p>{p.symptom}</p>
+                <span className="flip-card-hint">клік → як уникнути</span>
+              </>
+            }
+            back={
+              <>
+                <h4>Як уникнути</h4>
+                <p>{p.fix}</p>
+                <span className="flip-card-hint">клік → назад</span>
+              </>
+            }
+          />
+        ))}
       </div>
 
-      <p className="callout callout-yellow">
-        Чесно: університети змінюються повільно, частково необґрунтовано. Швидке вирішення — приватні
-        партнерства, де компанії беруть на себе третину навчального плану в обмін на доступ до студентів.
-        Це працює в Естонії, Польщі, Ізраїлі.
+      <p className="callout">
+        У 2026 рішення йде у прод тільки з evals, бюджетом, security-перевіркою і human-in-loop планом.
       </p>
     </>
   );

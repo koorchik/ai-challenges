@@ -8,7 +8,7 @@ Never add a `Co-Authored-By: Claude …` trailer (or any other co-author trailer
 
 ## What this is
 
-A 48-slide presentation for **DOU Day 2026**, topic **«Що робити в часи ШІ?»**.
+A 54-slide presentation for **DOU Day 2026**, topic **«Що робити в часи ШІ?»**.
 Built with [`@revealjs/react`](https://www.npmjs.com/package/@revealjs/react) (React wrapper around reveal.js 5), TypeScript, Vite. Deployed as a static site to GitHub Pages.
 
 Audience: developers (talk is in **Ukrainian** — slide copy stays in Ukrainian unless explicitly asked otherwise).
@@ -25,7 +25,7 @@ Config lives in `src/Presentation.tsx`.
 
 ## Slide files — flat numbering
 
-Slides are `src/slides/Slide-01.tsx` … `Slide-48.tsx` in a single flat folder. No subfolders. Each file:
+Slides are `src/slides/Slide-01.tsx` … `Slide-54.tsx` in a single flat folder. No subfolders. Each file:
 
 - Starts with a one-line comment: `// NN · Section · Topic` (this is the only "metadata" — keep it accurate when you change a slide's content).
 - Exports a single named component `SlideNN` returning a fragment (`<>…</>`).
@@ -47,7 +47,7 @@ When inserting/reordering, also update the `// NN · …` comment in the header 
 
 After any renumber:
 
-- **Audit cross-refs.** Slides reference each other in copy with `слайд N` / `слайду N` / `slide N` (e.g. `Slide-02.tsx` points at the bibliography, `Slide-47.tsx` at calibration/playbook/levers). Run `grep -nEi '(слайд|slide [0-9])' src/slides/*.tsx` and reconcile each hit.
+- **Audit cross-refs.** Never write `слайд N` / `слайду N` / `slide N` inside a slide — they rot on every renumber and clutter the prose. Keep slides self-contained: restate the idea briefly or drop the pointer entirely. The grep `grep -nEi '(слайд|slide [0-9])' src/slides/*.tsx` must return zero hits. Run `grep -nEi '(слайд|slide [0-9])' src/slides/*.tsx` and reconcile each hit.
 - **Audit header comments.** Verify every file's `// NN · …` first line matches its filename:
   ```sh
   for f in src/slides/Slide-*.tsx; do n=$(basename "$f" .tsx | sed 's/Slide-//'); h=$(head -1 "$f" | grep -oE '^// [0-9]+' | grep -oE '[0-9]+'); [ "$h" != "$n" ] && echo "$f header=$h expected=$n"; done
@@ -61,11 +61,11 @@ The deck spine: declare per-audience challenges (06–09), then answer them one-
 |---|---|
 | 01–05 | Intro |
 | 06–09 | Виклики (declarations per audience: Студенти / Розробники / Бізнеси / Україна) |
-| 10–16 | Студенти |
-| 17–27 | Розробники |
-| 28–39 | Бізнеси |
-| 40–46 | Україна |
-| 47–48 | Закриття |
+| 10–22 | Студенти |
+| 23–33 | Розробники |
+| 34–45 | Бізнеси |
+| 46–52 | Україна |
+| 53–54 | Закриття |
 
 ## Authoring conventions
 

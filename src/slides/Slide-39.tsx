@@ -1,46 +1,54 @@
-// 39 · Бізнеси · 90-day playbook
-export function Slide41() {
+// 39 · Бізнеси · Де живуть рови у 2026
+export function Slide11() {
   return (
     <>
-      <h2>90-денний план для бізнесу</h2>
+      <h2>Де <em>насправді</em> живуть рови у 2026</h2>
       <p className="lede">
-        Не «зробити AI-стратегію», а конкретний квартал, після якого ви знаєте, де ШІ дає вам гроші
-        — і де ні.
+        Доступ до моделі — більше не рів. Open-source (DeepSeek, Llama, Mistral) робить
+        <em> модель</em> товаром. Лишається п'ять категорій, що насправді захищають продукт від клонів за тиждень.
       </p>
 
-      <div className="three-col wide text-md" style={{ marginTop: '0.5em', gap: '1em' }}>
-        <div data-accent="yellow">
-          <h3 className="accent">Дні 1–30 · Аудит</h3>
-          <ul className="checklist">
-            <li>Перерахувати топ-20 процесів, у яких ваші люди витрачають час</li>
-            <li>Для кожного: чи це rule-based, judgment-based, чи domain-specific?</li>
-            <li>Вибрати <em>один</em> процес, де AI дає очевидний lift</li>
-            <li>Зрозуміти ваш єдиний справжній рів (slide 33) — або визнати його відсутність</li>
-          </ul>
-        </div>
-        <div data-accent="blue">
-          <h3 className="accent">Дні 31–60 · Пілот</h3>
-          <ul className="checklist">
-            <li>Запустити <em>один</em> end-to-end AI-процес у проді з real users</li>
-            <li>Збудувати eval і моніторинг до запуску, не після</li>
-            <li>Зафіксувати baseline: продуктивність, помилки, NPS — без ШІ</li>
-            <li>Виміряти різницю на 2–4 тижнях. Чесно. Без округлень догори</li>
-          </ul>
-        </div>
-        <div data-accent="green">
-          <h3 className="accent">Дні 61–90 · Масштаб або стоп</h3>
-          <ul className="checklist">
-            <li>Якщо ефект є — підготувати investment case на 4× scope</li>
-            <li>Якщо ні — закрийте, не «дайте ще місяць»</li>
-            <li>Документуйте знайдене для команди (eval-кейси, prompts, помилки)</li>
-            <li>Перенесіть найкращі практики на наступний кандидат-процес</li>
-          </ul>
-        </div>
-      </div>
+      <ul className="text-md wide" style={{ textAlign: 'left', lineHeight: 1.5 }}>
+        <li>
+          <strong className="accent" data-accent="yellow">
+            1. Дані з feedback-петлею
+          </strong>
+          . Не «лог у S3», а <em>розмічений потік</em>, що замикає цикл «використання → метрики → дотюнінг».
+          Кожен корисний клік — це data-asset. Приклади: Grammarly, GitHub, Tesla.
+        </li>
+        <li>
+          <strong className="accent" data-accent="blue">
+            2. Дистрибуція через існуючі workflow
+          </strong>
+          . Ваш продукт уже в IDE, у Slack, у Salesforce — куди користувач уже приходить. Конкурент
+          мусить пробитися крізь зміну звички. Приклади: Copilot у VSCode, Notion AI, Apple Intelligence.
+        </li>
+        <li>
+          <strong className="accent" data-accent="green">
+            3. Довіра / регуляція
+          </strong>
+          . SOC2 Type II + HIPAA + ISO 27001 + FedRAMP — типово 12–24 міс і шести- до семизначні суми.
+          Повільний рів, що накопичується роками. Defense-tech, fintech, healthtech, gov-tech.
+        </li>
+        <li>
+          <strong className="accent" data-accent="purple">
+            4. Network effects
+          </strong>
+          . Кожен новий користувач робить продукт ціннішим для попередніх — marketplace, OSS-екосистема,
+          shared knowledge base.
+        </li>
+        <li>
+          <strong className="accent" data-accent="red">
+            5. Bundling із не-AI продуктом
+          </strong>
+          . У вас уже є щось куплене — додаєте AI як фічу, не як продукт. Тут грають великі.
+          Маленьким лишається співпраця або смак: те, що <strong>не</strong> робимо, як виглядає інтерфейс, що каже бренд.
+        </li>
+      </ul>
 
-      <p className="callout callout-green">
-        <strong>Найважливіший слайд для бізнесу:</strong> рішення в AI-епосі не приймаються один раз. Вони
-        приймаються щоквартально, на основі evals. Це нова операційна модель, не одноразовий проєкт.
+      <p className="callout callout-yellow">
+        Тест: <em>«якщо завтра з'явиться 50 ідентичних AI-стартапів — що в нас залишається?»</em>
+        Якщо відповідь — «нічого», ви побудували функцію. Якщо хоч одна з п'яти причин — стартап.
       </p>
     </>
   );

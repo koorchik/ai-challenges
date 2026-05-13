@@ -1,130 +1,98 @@
-// 47 · Закриття · Завтра вранці — один крок
-import type { ReactNode } from 'react';
-import { useStorageBool } from '../components/hooks/useStorageBool';
+// 47 · Україна · Експорт IT-послуг
+import { scaleLinear } from 'd3-scale';
+import { ChartSvg, CHART_W } from '../components/charts/Svg';
+import { Line } from '../components/charts/Line';
+import { Annotation } from '../components/charts/Annotation';
 
-type AccentColor = 'yellow' | 'blue' | 'green' | 'purple';
+// NBU balance-of-payments, IT services exports (USD billion), annual.
+const exports = [
+  { year: 2017, value: 3.05 },
+  { year: 2018, value: 3.86 },
+  { year: 2019, value: 4.17 },
+  { year: 2020, value: 5.04 },
+  { year: 2021, value: 7.34 },
+  { year: 2022, value: 7.35 },
+  { year: 2023, value: 6.67 },
+  { year: 2024, value: 6.45 },
+];
 
-type Card = {
-  storageKey: string;
-  accent: AccentColor;
-  title: string;
-  body: ReactNode;
-  meta: string;
-};
+export function Slide43() {
+  const margin = { top: 60, right: 130, bottom: 60, left: 70 };
+  const innerW = CHART_W - margin.left - margin.right;
+  const innerH = 320;
 
-export function Slide49() {
-  const [doneStudent, setDoneStudent] = useStorageBool('tomorrow:student');
-  const [doneDev, setDoneDev] = useStorageBool('tomorrow:dev');
-  const [doneBiz, setDoneBiz] = useStorageBool('tomorrow:biz');
-  const [doneState, setDoneState] = useStorageBool('tomorrow:state');
+  const xs = scaleLinear().domain([2017, 2024]).range([margin.left, margin.left + innerW]);
+  const ys = scaleLinear().domain([0, 8]).range([margin.top + innerH, margin.top]);
+  const pts = exports.map((d) => ({ x: xs(d.year), y: ys(d.value) }));
 
-  const cards: Array<Card & { done: boolean; onToggle: (v: boolean) => void }> = [
-    {
-      storageKey: 'tomorrow:student',
-      accent: 'yellow',
-      title: 'Студент',
-      done: doneStudent,
-      onToggle: setDoneStudent,
-      body: (
-        <>
-          Випишіть 3 прогалини у фундаменті. Виберіть одну і завтра ж почніть її закривати —
-          підручник, не туторіал.
-        </>
-      ),
-      meta: 'міра: «через місяць я знаю X».',
-    },
-    {
-      storageKey: 'tomorrow:dev',
-      accent: 'blue',
-      title: 'Розробник',
-      done: doneDev,
-      onToggle: setDoneDev,
-      body: (
-        <>
-          Заплануйте 4-тижневу калібрацію (слайд 26). Заведіть spreadsheet з типами задач і часом.
-          Завтра — перша задача без ШІ.
-        </>
-      ),
-      meta: 'міра: «через місяць у мене власна крива».',
-    },
-    {
-      storageKey: 'tomorrow:biz',
-      accent: 'green',
-      title: 'Бізнес',
-      done: doneBiz,
-      onToggle: setDoneBiz,
-      body: (
-        <>
-          Виберіть один процес з-серед топ-20 (слайд 39). Знайдіть власника. Поставте baseline-eval
-          до пілоту. Запустіть пілот, не презентацію.
-        </>
-      ),
-      meta: 'міра: «через 30 днів у нас є дані».',
-    },
-    {
-      storageKey: 'tomorrow:state',
-      accent: 'purple',
-      title: 'Держава',
-      done: doneState,
-      onToggle: setDoneState,
-      body: (
-        <>
-          Якщо ви в кабміні / комітеті — оберіть один пункт зі слайду 46. Якщо ви виборець — напишіть
-          про нього своєму депутату. Один. Сьогодні.
-        </>
-      ),
-      meta: 'міра: «через 90 днів є офіційна відповідь».',
-    },
-  ];
-
-  const doneCount = cards.filter((c) => c.done).length;
+  const peak = exports.find((d) => d.year === 2021)!;
+  const latest = exports[exports.length - 1];
 
   return (
     <>
-      <h2>Завтра вранці — один крок</h2>
+      <h2>Експорт IT-послуг України: пік позаду</h2>
       <p className="lede">
-        По одній дії для кожної з чотирьох аудиторій. Якщо ви в двох — почніть з однієї.
+        Реальні цифри НБУ. Війна не зупинила галузь у 2022. Але вже 2 роки поспіль —{' '}
+        <strong>спад</strong>, попри глобальний AI-бум. Це не випадковість, це сигнал.
       </p>
 
-      <div className="four-col wide" style={{ marginTop: '0.3em' }}>
-        {cards.map((c) => (
-          <div
-            key={c.storageKey}
-            className={`quad-cell tomorrow-card ${c.done ? 'is-done' : ''}`}
-            data-accent={c.accent}
-            style={{ borderRadius: 8 }}
-          >
-            <label className="tomorrow-toggle">
-              <input
-                type="checkbox"
-                checked={c.done}
-                onChange={(e) => c.onToggle(e.target.checked)}
-                aria-label={`Позначити «${c.title}» виконаним`}
-              />
-              <span>зроблено</span>
-            </label>
-            <h3>{c.title}</h3>
-            <p>{c.body}</p>
-            <p className="muted">{c.meta}</p>
-          </div>
+      <ChartSvg height={400}>
+        <text x={CHART_W / 2 - 50} y={32} textAnchor="middle" className="chart-title">
+          Експорт IT-послуг, $ млрд (НБУ, баланс платежів)
+        </text>
+
+        {[0, 2, 4, 6, 8].map((v) => (
+          <g key={v}>
+            <line
+              x1={margin.left}
+              x2={margin.left + innerW}
+              y1={ys(v)}
+              y2={ys(v)}
+              stroke="rgba(255,255,255,0.06)"
+            />
+            <text x={margin.left - 8} y={ys(v) + 4} textAnchor="end" fill="rgba(255,255,255,0.6)" fontSize={11}>
+              ${v}b
+            </text>
+          </g>
         ))}
-      </div>
 
-      <div className="tomorrow-progress" aria-live="polite">
-        <span>
-          Виконано: <strong>{doneCount}</strong> / 4
-        </span>
-        <span className="tomorrow-bar" aria-hidden="true">
-          <span
-            className="tomorrow-bar-fill"
-            style={{ width: `${(doneCount / 4) * 100}%` }}
-          />
-        </span>
-      </div>
+        {exports.map((d) => (
+          <text
+            key={d.year}
+            x={xs(d.year)}
+            y={margin.top + innerH + 22}
+            textAnchor="middle"
+            fill="rgba(255,255,255,0.6)"
+            fontSize={11}
+          >
+            {d.year}
+          </text>
+        ))}
 
-      <p className="callout callout-green">
-        Якщо забрати все інше — пам'ятайте одну річ: <strong>розрив між відчутою і реальною продуктивністю</strong>{' '}
-        у вас, у вашій команді, у вашій галузі. Закривайте його даними, не вірою.
+        <Line points={pts} stroke="#facc15" strokeWidth={3} />
+        {pts.map((p, i) => (
+          <circle key={i} cx={p.x} cy={p.y} r={4} fill="#facc15" />
+        ))}
+
+        <Annotation x={xs(peak.year)} y={ys(peak.value)} dx={-12} dy={-32} align="end" color="#86efac">
+          пік $7.34b · 4% ВВП
+        </Annotation>
+        <Annotation x={xs(2022)} y={ys(7.35)} dx={-12} dy={-32} align="end" color="#facc15">
+          вторгнення, але +0%
+        </Annotation>
+        <Annotation x={xs(latest.year)} y={ys(latest.value)} dx={6} dy={26} align="start" color="#fda4ae">
+          −12% від піку
+        </Annotation>
+      </ChartSvg>
+
+      <p className="callout">
+        Причини спаду: (1) зниження глобального попиту на outsourcing, (2) міграція клієнтів через ризики
+        війни, (3) <strong>початкова автоматизація junior/mid-завдань</strong> на стороні замовника.
+        Перші два циклічні. Третій — структурний.
+      </p>
+
+      <p className="slide-footnote">
+        НБУ Балансова статистика 2017–2024; IT Ukraine Association reports 2022–2024; DOU developer census.
       </p>
     </>
   );

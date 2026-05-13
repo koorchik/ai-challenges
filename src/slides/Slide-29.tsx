@@ -1,80 +1,60 @@
-// 29 · Бізнеси · Спроможність ≠ Надійність
-type Quadrant = 'reliable' | 'inconsistent' | 'augment' | 'dont-trust';
-
-type Chip = {
-  id: string;
-  label: string;
-  quadrant: Quadrant;
-};
-
-const chips: Chip[] = [
-  { id: 'crud',          label: 'CRUD endpoint',                 quadrant: 'reliable' },
-  { id: 'json-ts',       label: 'JSON ↔ TS типи',                 quadrant: 'reliable' },
-  { id: 'unit-test',     label: 'Юніт-тест зі специфікації',     quadrant: 'reliable' },
-  { id: 'refactor',      label: 'Рефактор у 200k LoC',            quadrant: 'inconsistent' },
-  { id: 'agent-loop',    label: 'Agent-loop на 8 годин',          quadrant: 'inconsistent' },
-  { id: 'arch',          label: 'Архітектура у новому домені',   quadrant: 'augment' },
-  { id: 'investigation', label: 'Розслідування інциденту',        quadrant: 'augment' },
-  { id: 'prod-deploy',   label: 'Production deploy без людини',  quadrant: 'dont-trust' },
-  { id: 'med-code',      label: 'Код для медичного приладу',      quadrant: 'dont-trust' },
-];
-
-const QUADRANT_META: Record<Quadrant, {
-  accent: 'green' | 'yellow' | 'blue' | 'red';
-  badge: string;
-  reasoning: string;
-}> = {
-  reliable:     { accent: 'green',  badge: '✓ Reliable today', reasoning: 'Чітка специфікація, низька автономія, перевірка тестами — зона, де ШІ виграє стабільно.' },
-  inconsistent: { accent: 'yellow', badge: '~ Inconsistent',   reasoning: 'Спроможність висока, але багатогодинна автономія розпадається. Робіть короткими кроками з checkpoint-ами.' },
-  augment:      { accent: 'blue',   badge: '○ Augment-only',   reasoning: 'ШІ не має домен-контексту, людина має. Використовуйте ШІ як читач/чорновик, не як автора.' },
-  'dont-trust': { accent: 'red',    badge: '✗ Don\'t trust',   reasoning: 'Високі ставки + автономія = недопустимо без людини в колі. Закон, медицина, гроші, фронт.' },
-};
-
-export function Slide20() {
-  const chipsByQuadrant = (q: Quadrant) => chips.filter((c) => c.quadrant === q);
-
+// 29 · Розробники · Карʼєрні розгалуження
+export function Slide32() {
   return (
     <>
-      <h2>Висока спроможність ≠ висока надійність</h2>
+      <h2>Карʼєрні шляхи з 2026 — чотири розгалуження</h2>
       <p className="lede">
-        ШІ може пройти SWE-bench на 70–80% і провалитися на 8-годинній автономній задачі.
-        Питання — де її <em>можна довіряти</em>.
+        «Залишитися просто розробником» — теж шлях, але вузький. Чотири усталеніші напрямки,
+        кожен з власною компонентою «що ШІ не вміє».
       </p>
 
-      <div className="matrix-2x2">
-        <div></div>
-        <div className="matrix-header">низька автономія</div>
-        <div className="matrix-header">висока автономія</div>
-
-        <div className="matrix-row-label">висока спроможність</div>
-        <MatrixCell quadrant="reliable"     placed={chipsByQuadrant('reliable')} />
-        <MatrixCell quadrant="inconsistent" placed={chipsByQuadrant('inconsistent')} />
-
-        <div className="matrix-row-label">низька спроможність</div>
-        <MatrixCell quadrant="augment"      placed={chipsByQuadrant('augment')} />
-        <MatrixCell quadrant="dont-trust"   placed={chipsByQuadrant('dont-trust')} />
+      <div className="fork wide">
+        <div className="fork-node" data-accent="yellow">
+          <h3>Domain expert</h3>
+          <p className="muted">медицина · фінанси · оборонка · енергія · geo</p>
+          <ul style={{ paddingLeft: '1em', margin: '0.2em 0' }}>
+            <li>Глибина домену &gt; широта стеку</li>
+            <li>Регуляція, ліцензії, ризик</li>
+            <li>Працюєте з не-розробниками</li>
+          </ul>
+          <p className="muted">ШІ не має «років у домені»</p>
+        </div>
+        <div className="fork-node" data-accent="green">
+          <h3>Tech / staff lead</h3>
+          <p className="muted">архітектура · координація</p>
+          <ul style={{ paddingLeft: '1em', margin: '0.2em 0' }}>
+            <li>Дизайн систем, RFC</li>
+            <li>Mentoring &amp; найм</li>
+            <li>Cross-team координація</li>
+          </ul>
+          <p className="muted">ШІ не несе відповідальності</p>
+        </div>
+        <div className="fork-node" data-accent="blue">
+          <h3>Founder / solo product</h3>
+          <p className="muted">сам собі продукт</p>
+          <ul style={{ paddingLeft: '1em', margin: '0.2em 0' }}>
+            <li>1–3 людини, ШІ як «команда»</li>
+            <li>Дистрибуція &gt; код</li>
+            <li>Готовність до невизначеності</li>
+          </ul>
+          <p className="muted">найбільший upside, найбільший ризик</p>
+        </div>
+        <div className="fork-node" data-accent="purple">
+          <h3>AI infra / platform</h3>
+          <p className="muted">той, хто будує інструменти</p>
+          <ul style={{ paddingLeft: '1em', margin: '0.2em 0' }}>
+            <li>RAG, evals, observability, агенти</li>
+            <li>ML-ops, vector DB, serving</li>
+            <li>Security для LLM</li>
+          </ul>
+          <p className="muted">найвища премія, найшвидша гонитва</p>
+        </div>
       </div>
 
-      <p className="slide-footnote">
-        Орієнтири: METR task-horizon (2024–25); SWE-bench Verified leaderboard.
+      <p className="callout callout-yellow">
+        Жодне з цих розгалужень не <em>гарантоване</em>. Усі — це інвестиція в навичку, яку ШІ не закриває.
+        Виберіть одне і йдіть глибоко, замість трохи від усіх.
       </p>
     </>
-  );
-}
-
-function MatrixCell({ quadrant, placed }: { quadrant: Quadrant; placed: Chip[] }) {
-  const meta = QUADRANT_META[quadrant];
-  return (
-    <div className="matrix-cell task-cell" data-accent={meta.accent}>
-      <strong className="accent">{meta.badge}</strong>
-      <p className="muted task-cell-hint">{meta.reasoning}</p>
-      <div className="task-cell-chips">
-        {placed.map((c) => (
-          <span key={c.id} className="task-chip task-chip-placed">
-            {c.label}
-          </span>
-        ))}
-      </div>
-    </div>
   );
 }

@@ -1,42 +1,47 @@
-// 32 · Бізнеси · The Wrapper Trap
-export function Slide37() {
+// 32 · Розробники · Калібрація на собі
+export function Slide33() {
   return (
     <>
-      <h2>The Wrapper Trap</h2>
+      <h2>Як виміряти <em>власний</em> ШІ-приріст</h2>
       <p className="lede">
-        Що відрізняє обгортку, яка <em>тримається</em>, від обгортки, яку клонують за тиждень?
+        METR показав: розрив між відчутою і реальною продуктивністю ≈ 40 п.п. Якщо ви не міряєте —
+        приймаєте рішення на відчуттях. Ось простий протокол, який ви можете зробити за 4 тижні.
       </p>
 
-      <div className="matrix-2x2 wide">
-        <div></div>
-        <div className="matrix-header">тонка інтеграція</div>
-        <div className="matrix-header">глибока інтеграція</div>
+      <ol className="text-md wide" style={{ textAlign: 'left' }}>
+        <li>
+          <strong>Т1. Категоризуйте задачі</strong> на 3 типи: greenfield, legacy-інтеграції, дослідницькі.
+        </li>
+        <li>
+          <strong>Т2. «Без ШІ»:</strong> по 3 задачі кожного типу. Записуйте фактичний час, не оцінку.
+        </li>
+        <li>
+          <strong>Т3. «З ШІ»:</strong> 3 нові схожі задачі кожного типу. Окремо рахуйте rollback-и.
+        </li>
+        <li>
+          <strong>Т4. Підбийте.</strong> Очікуйте: +30–50% на greenfield, ~0 на legacy, можливо −Х на
+          дослідженнях.
+        </li>
+      </ol>
 
-        <div className="matrix-row-label">тонкий шар продукту</div>
-        <div className="matrix-cell" data-accent="red">
-          <strong className="accent">✗ Обгортка-смерть</strong>
-          <p className="muted text-sm">Chat + системний промпт. Конкурує з фічею OpenAI завтра.</p>
+      <div className="two-col wide text-md" style={{ marginTop: '0.4em' }}>
+        <div data-accent="green">
+          <h3 className="accent">що отримаєте</h3>
+          <ul className="checklist">
+            <li>Власну Cui-криву, не теоретичну</li>
+            <li>Розуміння, де ставити ШІ, а де — ні</li>
+            <li>Аргументи для переговорів про роль</li>
+          </ul>
         </div>
-        <div className="matrix-cell" data-accent="yellow">
-          <strong className="accent">~ Інтегратор</strong>
-          <p className="muted text-sm">Хороша інтеграція, але рів — у платформи, не у вас.</p>
-        </div>
-
-        <div className="matrix-row-label">опініонований продукт</div>
-        <div className="matrix-cell" data-accent="blue">
-          <strong className="accent">○ Нішевий лідер</strong>
-          <p className="muted text-sm">UX + ніша, але без даних — клонується повільніше.</p>
-        </div>
-        <div className="matrix-cell" data-accent="green">
-          <strong className="accent">✓ Стійкий продукт</strong>
-          <p className="muted text-sm">Дані + feedback + workflow + дистрибуція. Copilot, Linear, Cursor.</p>
+        <div data-accent="red">
+          <h3 className="accent">пастки в зборі даних</h3>
+          <ul className="checklist">
+            <li>«Я б все одно зробив за той самий час» (ні)</li>
+            <li>Не рахувати час на review AI-коду</li>
+            <li>Виключати «провалені» спроби з підрахунку</li>
+          </ul>
         </div>
       </div>
-
-      <p className="callout">
-        Якщо продукт — це 70% UI поверх API-ключа: будуйте, але як <em>функцію</em>, не стартап.
-        Або додавайте дані / інтеграцію / domain-context — єдиний шанс проти платформи.
-      </p>
     </>
   );
 }

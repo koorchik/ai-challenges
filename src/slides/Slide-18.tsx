@@ -1,101 +1,50 @@
-// 18 · Розробники · Куди зсувається час
-import { ChartSvg } from '../components/charts/Svg';
-
-type Segment = { label: string; value: number; color: string };
-
-const BEFORE: Segment[] = [
-  { label: 'писати код', value: 45, color: '#facc15' },
-  { label: 'дизайн / специфікація', value: 10, color: '#bfdbfe' },
-  { label: 'читання / ревʼю', value: 15, color: '#fde68a' },
-  { label: 'відлагодження', value: 15, color: '#fda4ae' },
-  { label: 'інтеграція / релізи', value: 10, color: '#86efac' },
-  { label: 'координація', value: 5, color: '#c4b5fd' },
-];
-
-const AFTER: Segment[] = [
-  { label: 'писати код', value: 15, color: '#facc15' },
-  { label: 'дизайн / специфікація', value: 20, color: '#bfdbfe' },
-  { label: 'читання / ревʼю', value: 25, color: '#fde68a' },
-  { label: 'відлагодження', value: 18, color: '#fda4ae' },
-  { label: 'інтеграція / релізи', value: 12, color: '#86efac' },
-  { label: 'координація', value: 10, color: '#c4b5fd' },
-];
-
-function StackedBar({
-  x,
-  y,
-  width,
-  height,
-  segments,
-}: {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  segments: Segment[];
-}) {
-  let offset = 0;
-  return (
-    <g transform={`translate(${x}, ${y})`}>
-      {segments.map((s) => {
-        const h = (s.value / 100) * height;
-        const rect = (
-          <g key={s.label} transform={`translate(0, ${offset})`}>
-            <rect width={width} height={h} fill={s.color} opacity={0.85} />
-            {s.value >= 8 && (
-              <text
-                x={width / 2}
-                y={h / 2 + 4}
-                textAnchor="middle"
-                fill="rgba(0,0,0,0.85)"
-                fontSize={12}
-                fontWeight={600}
-              >
-                {s.label} · {s.value}%
-              </text>
-            )}
-          </g>
-        );
-        offset += h;
-        return rect;
-      })}
-    </g>
-  );
-}
-
-export function Slide07() {
+// 18 · Студенти · Pet-проєкти у часи ШІ
+export function Slide25() {
   return (
     <>
-      <h2>Куди зсувається час</h2>
+      <h2>Pet-проєкти: 1 глибоко &gt; 5 поверхово</h2>
       <p className="lede">
-        ШІ стискає саме кодування. Усе, що не код, росте у відносній вазі.
+        Раніше portfolio був списком ваших навичок. Тепер це доказ того, що ви <em>довели до кінця</em>{' '}
+        річ, яку інші використовують. ШІ скоротив дорогу від ідеї до прототипу. Поріг того, що
+        вважається «достатньо», піднявся.
       </p>
 
-      <ChartSvg height={460}>
-        <text x={300} y={36} textAnchor="middle" className="chart-title">
-          до ШІ
-        </text>
-        <text x={700} y={36} textAnchor="middle" className="chart-title">
-          з ШІ
-        </text>
-        <StackedBar x={200} y={60} width={200} height={340} segments={BEFORE} />
-        <StackedBar x={600} y={60} width={200} height={340} segments={AFTER} />
+      <div className="two-col wide text-md">
+        <div data-accent="green">
+          <h3 className="accent">що показує смак та доведення до кінця</h3>
+          <ul className="checklist">
+            <li>
+              <strong>Реальні користувачі</strong> (10, 100, 1000 — не нуль)
+            </li>
+            <li>
+              <strong>Один сфокусований домен</strong>: ботанічний помічник, ETL для дрібного e-commerce
+            </li>
+            <li>
+              <strong>Метрики</strong>: latency p95, success rate, NPS — будь-що виміряне
+            </li>
+            <li>
+              <strong>Чесний post-mortem</strong>: що не спрацювало, чому ви зупинилися
+            </li>
+            <li>
+              <strong>Production-розгортання</strong>: hosting, моніторинг, payments
+            </li>
+          </ul>
+        </div>
+        <div data-accent="red">
+          <h3 className="accent">що більше не вражає</h3>
+          <ul className="checklist">
+            <li>Todo-list з GPT-API всередині</li>
+            <li>Ще одна обгортка для ChatGPT</li>
+            <li>«Я зробив це за вечір з Cursor» без користувачів</li>
+            <li>20 туторіальних репозиторіїв з README як код</li>
+            <li>Клон Twitter / Airbnb / Uber «для практики»</li>
+          </ul>
+        </div>
+      </div>
 
-        <text x={500} y={230} textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize={28}>
-          →
-        </text>
-
-      </ChartSvg>
-
-      <p className="callout">
-        Висновок: коли код дешевшає — <strong>дорожчає все, що не код</strong>. Дизайн, ревʼю, відлагодження
-        між системами, інтеграція, домен. І ще координація.
-      </p>
-
-      <p className="slide-footnote">
-        Ілюстративний розподіл — оцінка автора за даними команд 2025–2026. Напрямок підтверджують
-        DORA 2024 (75% розробників відчували приріст, throughput команди −1.5%) і GitClear / Stack
-        Overflow 2024–25; точні відсотки не є виміряними.
+      <p className="callout callout-green">
+        <strong>Тест трьох питань на ваш проєкт:</strong> (1) що він робить, що ніхто інший не робить?{' '}
+        (2) чим я можу довести, що це <em>працює</em>? (3) хто, конкретно, ним користується?
       </p>
     </>
   );
