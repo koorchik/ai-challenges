@@ -120,6 +120,7 @@ Slide 5 sets the rule for the whole deck: named research only, no "ChatGPT says"
 | `src/components/charts/` | SVG primitives (`ChartSvg`, `Bar`, `Line`, `Axis`, `Annotation`, `Slider`, `KPI`) |
 | `src/components/sims/` | Interactive sims: Jevons, Ricardo, OutsourcingErosion (exploratory sliders), MetrReveal (scroll-triggered). `MetrGuess` exists but is no longer mounted. |
 | `src/components/hooks/useInView.ts` | IntersectionObserver hook — gate animations |
+| `src/components/hooks/useOverflowGuard.ts` | Dev-only — flags any slide whose scrollHeight > 720 with a red badge |
 | `src/components/SectionHeader.tsx` | Shared header for 5 divider slides (10 Концепції, 17 Студенти, 30 Розробники, 41 Бізнеси, 53 Україна) |
 | `src/vite-env.d.ts` | Declares ambient modules for `reveal.js/plugin/*` (no types ship with reveal.js) |
 | `vite.config.ts` | `base: '/dou-day-2026/'` for GitHub Pages — change if repo name differs |
@@ -134,6 +135,8 @@ Slide 5 sets the rule for the whole deck: named research only, no "ChatGPT says"
 - **`vh` units inside slides reference the *browser* viewport**, not the scaled 1280×720 slide. Use `em` for height constraints (reveal.js scales slides via font-size). `ChartSvg` already uses `maxHeight: 11em`.
 - **All 61 slides mount simultaneously** in scroll-view. Any animation, count-up, or chart reveal must gate on `useInView` from `src/components/hooks/useInView.ts` — otherwise it fires off-screen before the user gets there.
 - **Content overflows the 1280×720 viewport silently** (no scrollbars, content just gets clipped). When adding content, mentally budget: h2 ~50px + lede ~60px + chart ≤395px + callout ~70px + footnote ~30px ≈ 605px of the ~640px usable height. Long multi-line `<ol>` items are the biggest offender — collapse to one tight line each.
+- **Dev-time overflow indicator.** `useOverflowGuard` (mounted by `Presentation.tsx`) toggles `.is-overflowing` + `data-overflow="<px>"` on any `<section>` whose `scrollHeight` > 720. CSS draws a red dashed outline and a "overflow +Npx" badge. Stripped from production via `import.meta.env.DEV`. If you see the badge in `npm run dev`, trim the slide until it disappears.
+- **Shared `.slide-body` wrapper.** Wrap stacked h2/lede/list/callout content in `<div className="slide-body wide">` (or `.narrow`). It's a flex-column with consistent `gap` and zero per-child margins — replaces ad-hoc `style={{ marginTop: '0.5em' }}` between siblings. Variants: `.slide-body--tight`, `.slide-body--loose`. Canonical examples: `Slide-12.tsx`, `Slide-13.tsx`, `Slide-16.tsx`.
 - **Strict TS:** `tsconfig.app.json` sets `noUnusedLocals` + `noUnusedParameters`. Build fails on stray imports.
 
 ## Dependencies — kept minimal on purpose

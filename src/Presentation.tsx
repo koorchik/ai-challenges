@@ -6,8 +6,10 @@ import 'reveal.js/plugin/highlight/monokai.css';
 import './styles/custom.css';
 
 import { orderedSlides } from './slides';
+import { useOverflowGuard } from './components/hooks/useOverflowGuard';
 
 export function Presentation() {
+  useOverflowGuard();
   return (
     <Deck
       plugins={[RevealHighlight]}

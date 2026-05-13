@@ -56,8 +56,7 @@ export function RicardoSim() {
     <>
       <h2>Порівняльна перевага — і чому її замало</h2>
       <p className="lede">
-        ШІ швидший за людину на обох задачах, але має <em>відносну</em> перевагу в коді. Рікардо: обидва
-        виграють від спеціалізації. Питання — <strong>що зі ставкою людини</strong>?
+        Рікардо: обидва виграють від спеціалізації. Питання — <strong>що зі ставкою людини</strong>?
       </p>
 
       <ChartSvg height={340}>
@@ -193,11 +192,8 @@ export function RicardoSim() {
           background: humanShare < 0.2 ? 'rgba(230,57,70,0.1)' : 'rgba(250,204,21,0.08)',
         }}
       >
-        Рікардо гарантує роботу — <strong>не</strong> зарплату. Acemoglu &amp; Restrepo (2022): порівняльна
-        перевага визначає обсяги торгівлі, не ставки.
-      </p>
-      <p className="slide-footnote">
-        Ricardo (1817); Acemoglu &amp; Restrepo, Econometrica (2022).
+        Рікардо гарантує роботу — <strong>не</strong> зарплату. Acemoglu &amp; Restrepo (Econometrica 2022):
+        порівняльна перевага визначає обсяги торгівлі, не ставки.
       </p>
     </>
   );

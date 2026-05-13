@@ -1,13 +1,12 @@
 // 13 · Концепції · Verifiability
 export function Slide13() {
   return (
-    <>
+    <div className="slide-body wide">
       <h2>Verifiability — і ШІ стає solver</h2>
-      <p className="lede">
-        Якщо є автоматична перевірка результату, агент ітерує скільки треба —
-        як solver в Excel шукає корінь рівняння. Дай йому verifiability — решту він зробить сам.
+      <p className="lede" style={{ margin: 0 }}>
+        Якщо є автоматична перевірка результату, агент ітерує скільки треба — як solver в Excel.
       </p>
-      <div className="two-col wide" style={{ marginTop: '0.4em' }}>
+      <div className="two-col text-md">
         <div data-accent="green">
           <h3 className="accent">Verifiable → автоматизується</h3>
           <ul className="checklist" style={{ textAlign: 'left' }}>
@@ -27,15 +26,13 @@ export function Slide13() {
           </ul>
         </div>
       </div>
-      <div className="callout" style={{ marginTop: '0.5em' }}>
+      <div className="callout">
         «Software 2.0 easily automates what you can verify.» — Karpathy
       </div>
       <p className="slide-footnote">
-        Працює не тільки для коду — для будь-якої агентної задачі. Спочатку придумай, як перевіряти автоматично.
-        <br />
         Andrej Karpathy, «Verifiability» (листопад 2025){' '}
         <a href="https://karpathy.bearblog.dev/verifiability/">karpathy.bearblog.dev/verifiability/</a>
       </p>
-    </>
+    </div>
   );
 }
