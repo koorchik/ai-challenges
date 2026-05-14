@@ -1,52 +1,68 @@
-// 28 · Студенти · Нові фундаменти
+// 28 · Студенти · Чого вчитися у 2026
 export function Slide24() {
   return (
     <>
       <h2>Чого вчитися у 2026</h2>
       <p className="lede">
-        Класичні фундаменти CS — не зникають. До них додаються нові фундаменти AI-епохи.
+        Ключова навичка — провести проєкт від брифу до робочого релізу. Стоїть на двох ногах:
+        класика тех-ліда + ШІ-пайплайни та інструментарій.
       </p>
 
       <div className="two-col wide text-md">
         <div data-accent="yellow">
-          <h3 className="accent">класичні фундаменти</h3>
+          <h3 className="accent">класика тех-ліда</h3>
           <ul className="checklist">
-            <li>Алгоритми та структури даних (не для співбесід — для мислення)</li>
-            <li>Операційні системи, конкуренція, потоки</li>
-            <li>Мережі та протоколи (TCP, HTTP, TLS — без чорних скриньок)</li>
-            <li>БД: транзакції, індекси, нормалізація, consistency models</li>
-            <li>Безпека: OWASP, threat-models, що таке секрет</li>
-            <li>Статистика та лінал — щоб читати папери</li>
+            <li>
+              <strong>Scoping</strong>: тиждень-у-проді / місяць-MVP / квартал-V1
+            </li>
+            <li>
+              <strong>Архітектура під задачу</strong>, не під моду: монолит / queue / просто SQL
+            </li>
+            <li>
+              <strong>Декомпозиція</strong> на вертикальні, самостійно-доставлювані шматки
+            </li>
+            <li>
+              <strong>Code review</strong> як основна форма виробництва — читати швидше, ніж писати
+            </li>
+            <li>
+              <strong>Onboarding як артефакт</strong>: CLAUDE.md, конвенції — для людей і агентів
+            </li>
+            <li>
+              <strong>Ship &amp; operate</strong>: моніторинг, rollback, post-mortem
+            </li>
           </ul>
         </div>
         <div data-accent="blue">
-          <h3 className="accent">нові фундаменти AI-епохи</h3>
+          <h3 className="accent">ШІ-пайплайни та інструментарій</h3>
           <ul className="checklist">
             <li>
-              <strong>Evals</strong>: як виміряти, що твоя система працює, без gut-feeling
+              <strong>Багатоагентна оркестрація</strong>: команда (аналітик / кодер / рев'юер /
+              тестувальник), не один універсал
             </li>
             <li>
-              <strong>Промптинг як проєктування інтерфейсу</strong> до ймовірнісної системи
+              <strong>Топологія пайплайну</strong>: послідовні етапи з gating, паралельний
+              fan-out → merge
             </li>
             <li>
-              <strong>RAG, embeddings, vector DBs</strong> — практично, не теоретично
+              <strong>RAG / vector DB / re-ranking</strong> — стандартний компонент пайплайну
             </li>
             <li>
-              <strong>Cost-aware engineering</strong>: токени, латентність, fallback-и
+              <strong>Evals як CI</strong>: model-graded, LLM-as-judge, регресії перед релізом
             </li>
             <li>
-              <strong>Human-in-the-loop</strong> дизайн — коли і як питати людину
+              <strong>Cost &amp; latency budgets</strong>: токени, кеш, fallback, паралелізм як
+              левередж
             </li>
             <li>
-              <strong>Безпека LLM</strong>: prompt injection, jailbreak, data exfiltration
+              <strong>Tooling fluency</strong>: Cursor / Claude Code / Codex / sub-agents
             </li>
           </ul>
         </div>
       </div>
 
-      <p className="callout callout-yellow">
-        <strong>Що пропускаємо:</strong> N+1-й фреймворк, побудова «AI-агентів» без бенчмарка, лекції
-        «promptengineering за 30 годин». Замість того — побудуйте одну річ і виміряйте її.
+      <p className="callout callout-green">
+        <strong>Тест «ти вмієш»:</strong> отримав бриф → за місяць-два привів продукт до перших
+        10 живих користувачів і метрик. Не «знаю React», не «вмію промпти». Довів проєкт до релізу.
       </p>
     </>
   );
