@@ -1,46 +1,53 @@
-// 24 · Студенти · Engineer's Playbook — де людина ще краща
-export function Slide15() {
+// 24 · Студенти · Google: ШІ-помічник на самій співбесіді
+export function Slide16() {
   return (
     <>
-      <h2>5 точок, де людина системно випереджає ШІ</h2>
+      <h2>Google: «AI fluency» — окрема оцінка на співбесіді SWE</h2>
       <p className="lede">
-        Якщо tech-lead — твоя нова стартова, ось 5 конкретних місць, де ШІ програє і де твоя цінність
-        вимірюється у проді.
+        Травень 2026, внутрішній документ Google (Business Insider). У другій половині року на
+        раунді <em>code comprehension</em> кандидатам дозволять користуватися Gemini — і{' '}
+        <strong>окремо оцінюватимуть prompt engineering та debugging із ШІ</strong>.
       </p>
 
-      <ol
-        className="text-md wide"
-        style={{ textAlign: 'left', maxWidth: 1040, margin: '0.4em auto', lineHeight: 1.45 }}
-      >
-        <li style={{ margin: '0.25em 0' }}>
-          <strong>Парадокс автоматизації.</strong> Фундаменти не зникли — вони стали підступними.{' '}
-          <em>Race condition у concurrent-DB: у тестах зелено, у проді падає.</em>
-        </li>
-        <li style={{ margin: '0.25em 0' }}>
-          <strong>Домен.</strong> ШІ за замовчуванням дає generic-патерн.{' '}
-          <em>HIPAA, offline-first для віддалених регіонів, регуляторика — твоє.</em>
-        </li>
-        <li style={{ margin: '0.25em 0' }}>
-          <strong>Identity рев'юера.</strong> ШІ-код = junior PR. Швидке читання коду важливіше за швидке
-          писання. <em>ШІ галюцинує — ти ловиш.</em>
-        </li>
-        <li style={{ margin: '0.25em 0' }}>
-          <strong>Ефективність.</strong> ШІ оптимізує ймовірність токена, не ресурси.{' '}
-          <em>Аудит O(n²)-патернів, compute-ціни, scalability — твоє.</em>
-        </li>
-        <li style={{ margin: '0.25em 0' }}>
-          <strong>Безпека + галюцинації.</strong> Фейкові npm/pip пакети, supply-chain ризики.{' '}
-          <em>Перевірка існування — твоя обов'язкова дисципліна.</em>
-        </li>
-      </ol>
+      <div className="three-col wide text-md" style={{ marginTop: '0.4em' }}>
+        <div data-accent="green">
+          <h3 className="accent">кого</h3>
+          <ul className="checklist">
+            <li>early- та mid-career SWE</li>
+            <li>обрані команди в США (пілот)</li>
+            <li>далі — розширення на інші регіони</li>
+          </ul>
+        </div>
+        <div data-accent="blue">
+          <h3 className="accent">на якому етапі</h3>
+          <ul className="checklist">
+            <li>раунд «code comprehension»</li>
+            <li>аналіз реального кодбейзу</li>
+            <li>пошук багів, performance, рефакторинг</li>
+          </ul>
+        </div>
+        <div data-accent="yellow">
+          <h3 className="accent">що оцінюють окремо</h3>
+          <ul className="checklist">
+            <li><strong>AI fluency</strong></li>
+            <li>prompt engineering</li>
+            <li>debugging із ШІ</li>
+            <li>розуміння й уточнення згенерованого</li>
+          </ul>
+        </div>
+      </div>
 
-      <p className="callout">
-        Це не «ШІ ніколи не зможе». Це «сьогодні системно не робить — і кожна з 5 точок коштує грошей
-        у проді».
+      <p className="callout callout-green">
+        Pet-проєкт — це команда під твоїм керівництвом. Тепер і співбесіда — твоя перша демонстрація
+        як tech-lead. «AI fluency» — наймана навичка, не побічна.
       </p>
 
       <p className="slide-footnote">
-        Turskyi (2026), «AI-Integrated Bloom's Taxonomy: From "Coder" to "Tech Lead"» — Engineer's Playbook.
+        Business Insider (травень 2026) — внутрішній документ Google, пілот допуску Gemini на раунді
+        code-comprehension. {' '}
+        <a href="https://www.businessinsider.com/google-job-interview-software-engineers-ai-assistant-coding-2026-5">
+          businessinsider.com/google-job-interview-software-engineers-ai-assistant-coding-2026-5
+        </a>
       </p>
     </>
   );

@@ -1,50 +1,46 @@
-// 25 · Студенти · Pet-проєкти у часи ШІ
-export function Slide25() {
+// 25 · Студенти · Engineer's Playbook — де людина ще краща
+export function Slide15() {
   return (
     <>
-      <h2>Pet-проєкти: 1 глибоко &gt; 5 поверхово</h2>
+      <h2>5 точок, де людина системно випереджає ШІ</h2>
       <p className="lede">
-        Раніше portfolio був списком ваших навичок. Тепер це доказ того, що ви <em>довели до кінця</em>{' '}
-        річ, яку інші використовують. ШІ скоротив дорогу від ідеї до прототипу. Поріг того, що
-        вважається «достатньо», піднявся.
+        Якщо tech-lead — твоя нова стартова, ось 5 конкретних місць, де ШІ програє і де твоя цінність
+        вимірюється у проді.
       </p>
 
-      <div className="two-col wide text-md">
-        <div data-accent="green">
-          <h3 className="accent">що показує смак та доведення до кінця</h3>
-          <ul className="checklist">
-            <li>
-              <strong>Реальні користувачі</strong> (10, 100, 1000 — не нуль)
-            </li>
-            <li>
-              <strong>Один сфокусований домен</strong>: ботанічний помічник, ETL для дрібного e-commerce
-            </li>
-            <li>
-              <strong>Метрики</strong>: latency p95, success rate, NPS — будь-що виміряне
-            </li>
-            <li>
-              <strong>Чесний post-mortem</strong>: що не спрацювало, чому ви зупинилися
-            </li>
-            <li>
-              <strong>Production-розгортання</strong>: hosting, моніторинг, payments
-            </li>
-          </ul>
-        </div>
-        <div data-accent="red">
-          <h3 className="accent">що більше не вражає</h3>
-          <ul className="checklist">
-            <li>Todo-list з GPT-API всередині</li>
-            <li>Ще одна обгортка для ChatGPT</li>
-            <li>«Я зробив це за вечір з Cursor» без користувачів</li>
-            <li>20 туторіальних репозиторіїв з README як код</li>
-            <li>Клон Twitter / Airbnb / Uber «для практики»</li>
-          </ul>
-        </div>
-      </div>
+      <ol
+        className="text-md wide"
+        style={{ textAlign: 'left', maxWidth: 1040, margin: '0.4em auto', lineHeight: 1.45 }}
+      >
+        <li style={{ margin: '0.25em 0' }}>
+          <strong>Парадокс автоматизації.</strong> Фундаменти не зникли — вони стали підступними.{' '}
+          <em>Race condition у concurrent-DB: у тестах зелено, у проді падає.</em>
+        </li>
+        <li style={{ margin: '0.25em 0' }}>
+          <strong>Домен.</strong> ШІ за замовчуванням дає generic-патерн.{' '}
+          <em>HIPAA, offline-first для віддалених регіонів, регуляторика — твоє.</em>
+        </li>
+        <li style={{ margin: '0.25em 0' }}>
+          <strong>Identity рев'юера.</strong> ШІ-код = junior PR. Швидке читання коду важливіше за швидке
+          писання. <em>ШІ галюцинує — ти ловиш.</em>
+        </li>
+        <li style={{ margin: '0.25em 0' }}>
+          <strong>Ефективність.</strong> ШІ оптимізує ймовірність токена, не ресурси.{' '}
+          <em>Аудит O(n²)-патернів, compute-ціни, scalability — твоє.</em>
+        </li>
+        <li style={{ margin: '0.25em 0' }}>
+          <strong>Безпека + галюцинації.</strong> Фейкові npm/pip пакети, supply-chain ризики.{' '}
+          <em>Перевірка існування — твоя обов'язкова дисципліна.</em>
+        </li>
+      </ol>
 
-      <p className="callout callout-green">
-        <strong>Тест трьох питань на ваш проєкт:</strong> (1) що він робить, що ніхто інший не робить?{' '}
-        (2) чим я можу довести, що це <em>працює</em>? (3) хто, конкретно, ним користується?
+      <p className="callout">
+        Це не «ШІ ніколи не зможе». Це «сьогодні системно не робить — і кожна з 5 точок коштує грошей
+        у проді».
+      </p>
+
+      <p className="slide-footnote">
+        Turskyi (2026), «AI-Integrated Bloom's Taxonomy: From "Coder" to "Tech Lead"» — Engineer's Playbook.
       </p>
     </>
   );

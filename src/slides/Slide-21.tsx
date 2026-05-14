@@ -1,16 +1,18 @@
-// 21 · Студенти · Bloom's Taxonomy перевертається
+// 21 · Студенти · Класична піраміда Блума
 import { ChartSvg, CHART_W } from '../components/charts/Svg';
 
-type Level = { name: string; role: string; pct: number; color: string };
+type Level = { name: string; sw: string };
 
 const levels: Level[] = [
-  { name: 'Creating',      role: 'Visionary — продукт + архітектура',  pct: 95, color: '#86efac' },
-  { name: 'Evaluating',    role: 'Decision-maker — trade-offs',         pct: 80, color: '#a7f3d0' },
-  { name: 'Analyzing',     role: "Guardian — стандарти якості, рев'ю",  pct: 60, color: '#fde68a' },
-  { name: 'Applying',      role: 'Orchestrator — інтеграція коду',      pct: 40, color: '#fcd34d' },
-  { name: 'Understanding', role: 'Auditor — верифікація пояснень',      pct: 30, color: '#fdba74' },
-  { name: 'Remembering',   role: 'Automated — recall, syntax',          pct: 5,  color: '#fda4ae' },
+  { name: 'Creating',      sw: 'дизайн нової системи, нової архітектури' },
+  { name: 'Evaluating',    sw: "code review, вибір трейд-офу" },
+  { name: 'Analyzing',     sw: 'debug між шарами, читання чужого коду' },
+  { name: 'Applying',      sw: 'CRUD за специфікацією, нові endpoint-и' },
+  { name: 'Understanding', sw: 'пояснити, що робить функція або паттерн' },
+  { name: 'Remembering',   sw: 'синтаксис, API, типи, команди' },
 ];
+
+const FILL = '#a5b4fc';
 
 export function Slide13() {
   const py = { left: 80, top: 50, width: 380, height: 320 };
@@ -20,10 +22,10 @@ export function Slide13() {
 
   return (
     <>
-      <h2>Та сама піраміда — після ШІ. Цінність зміщується вгору</h2>
+      <h2>Класична піраміда Блума: як учили до 2022</h2>
       <p className="lede">
-        ШІ забрав низ — recall, syntax, бойлерплейт. Те, що було
-        верхівкою кар'єри (бачення, рішення, рев'ю), стало стартовою позицією для студента.
+        Bloom (1956), доопрацьовано Anderson & Krathwohl (2001) — таксономія освітніх цілей. Університет
+        будували <em>знизу вгору</em>: спершу синтаксис, потім архітектура. Tech-lead-роль — після 5+ років.
       </p>
 
       <ChartSvg height={420}>
@@ -42,7 +44,7 @@ export function Slide13() {
             <g key={l.name}>
               <polygon
                 points={pts.map((p) => p.join(',')).join(' ')}
-                fill={l.color}
+                fill={FILL}
                 fillOpacity={0.88}
                 stroke="rgba(0,0,0,0.3)"
                 strokeWidth={1}
@@ -61,61 +63,65 @@ export function Slide13() {
           );
         })}
 
-        {/* Side annotations: where the human/AI ownership lives */}
-        <text x={py.left - 20} y={py.top - 12} fill="rgba(255,255,255,0.6)" fontSize={11}>
-          ↑ людина
-        </text>
-        <text x={py.left - 20} y={py.top + py.height + 22} fill="rgba(255,255,255,0.6)" fontSize={11}>
-          ↓ ШІ
-        </text>
+        {/* Upward progression arrow on the left */}
+        <g transform={`translate(${py.left - 38}, 0)`}>
+          <line
+            x1={0}
+            x2={0}
+            y1={py.top + py.height - 8}
+            y2={py.top + 8}
+            stroke="rgba(255,255,255,0.5)"
+            strokeWidth={1.5}
+          />
+          <polygon
+            points={`-5,${py.top + 12} 5,${py.top + 12} 0,${py.top - 2}`}
+            fill="rgba(255,255,255,0.5)"
+          />
+          <text
+            x={-8}
+            y={py.top + py.height / 2}
+            fill="rgba(255,255,255,0.55)"
+            fontSize={11}
+            textAnchor="middle"
+            transform={`rotate(-90, -8, ${py.top + py.height / 2})`}
+          >
+            роки навчання
+          </text>
+        </g>
 
-        {/* Right-side legend: % людини + role per level */}
+        {/* Right-side legend: software-engineering equivalent per level */}
+        <text x={py.left + py.width + 60} y={py.top - 18} fill="rgba(255,255,255,0.5)" fontSize={10}>
+          що це для розробника
+        </text>
         {levels.map((l, i) => {
           const rowY = py.top + i * step + step / 2 + 5;
           const legendX = py.left + py.width + 60;
           return (
             <g key={`legend-${l.name}`}>
-              <text x={legendX} y={rowY} fill={l.color} fontSize={18} fontWeight={800}>
-                {l.pct}%
-              </text>
-              <text
-                x={legendX + 70}
-                y={rowY - 2}
-                fill="rgba(255,255,255,0.85)"
-                fontSize={12}
-                fontWeight={600}
-              >
+              <text x={legendX} y={rowY - 2} fill={FILL} fontSize={12} fontWeight={700}>
                 {l.name}
               </text>
-              <text
-                x={legendX + 70}
-                y={rowY + 12}
-                fill="rgba(255,255,255,0.55)"
-                fontSize={10.5}
-              >
-                {l.role}
+              <text x={legendX} y={rowY + 12} fill="rgba(255,255,255,0.65)" fontSize={10.5}>
+                {l.sw}
               </text>
             </g>
           );
         })}
 
-        <text x={py.left + py.width + 60} y={py.top - 18} fill="rgba(255,255,255,0.5)" fontSize={10}>
-          % роботи, де людина все ще домінує
-        </text>
-
         <text x={CHART_W - 20} y={py.top + py.height + 22} textAnchor="end" fill="rgba(255,255,255,0.45)" fontSize={10}>
-          B. Bloom (1956) · реструктуризація Turskyi (2026)
+          B. Bloom (1956) · Anderson & Krathwohl (2001)
         </text>
       </ChartSvg>
 
       <p className="callout">
-        Раніше виш вчив <em>знизу вгору</em>: спочатку синтаксис, потім архітектура. Тепер цінність —
-        нагорі, а низ автоматизовано. Стартова позиція студента зсунулася на 4 рівні вгору.
+        1-й курс — Remember / Understand. Диплом — Apply. Магістерська й роки досвіду — Analyze / Evaluate.
+        До «Creating» (архітектура, продукт) доростали 5+ років. Логіка: <em>знати → розуміти → робити →
+        будувати</em>.
       </p>
 
       <p className="slide-footnote">
-        B. Bloom (1956), «Taxonomy of Educational Objectives»; реструктуризація — Turskyi (2026),
-        «AI-Integrated Bloom's Taxonomy: From "Coder" to "Tech Lead"».
+        B. Bloom et al. (1956), «Taxonomy of Educational Objectives»; revision — Anderson & Krathwohl (2001),
+        «A Taxonomy for Learning, Teaching, and Assessing». 6 рівнів, поступове сходження знизу вгору.
       </p>
     </>
   );

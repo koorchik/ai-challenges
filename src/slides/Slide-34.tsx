@@ -1,103 +1,63 @@
-// 34 · Ринок · ШІ — це skill-leveling, а не skill-bias
-import { ChartSvg } from '../components/charts/Svg';
-import { Bar } from '../components/charts/Bar';
-
-const supportData = [
-  { label: 'Q1 (новачки)', value: 35, color: '#86efac' },
-  { label: 'Q2', value: 20, color: '#fde68a' },
-  { label: 'Q3', value: 10, color: '#fcd34d' },
-  { label: 'Q4 (топ)', value: 0, color: '#fda4ae' },
-];
-
-const devData = [
-  { label: '<2р досвіду', value: 40, color: '#86efac' },
-  { label: '2–5р', value: 26, color: '#fde68a' },
-  { label: '5–10р', value: 15, color: '#fcd34d' },
-  { label: '10р+', value: 7, color: '#fda4ae' },
-];
-
-function BarPanel({
-  data,
-  x,
-  y,
-  width,
-  title,
-}: {
-  data: { label: string; value: number; color: string }[];
-  x: number;
-  y: number;
-  width: number;
-  title: string;
-}) {
-  const barCount = data.length;
-  const maxVal = 45;
-  const innerW = width - 20;
-  const barW = (innerW - (barCount - 1) * 16) / barCount;
-  const baselineY = y + 200;
-  const heightPerPct = 170 / maxVal;
-  return (
-    <g transform={`translate(${x}, 0)`}>
-      <text x={width / 2} y={y + 18} textAnchor="middle" className="chart-title" fontSize={13}>
-        {title}
-      </text>
-      <line x1={10} x2={width - 10} y1={baselineY} y2={baselineY} stroke="rgba(255,255,255,0.3)" />
-      {data.map((d, i) => {
-        const bx = 10 + i * (barW + 16);
-        const h = d.value * heightPerPct;
-        const by = baselineY - h;
-        return (
-          <Bar
-            key={d.label}
-            x={bx}
-            y={by}
-            width={barW}
-            height={h}
-            fill={d.color}
-            valueLabel={`+${d.value}%`}
-            label={d.label}
-          />
-        );
-      })}
-    </g>
-  );
-}
-
-export function Slide16() {
+// 34 · Розробники · Чому досвід усе ще виграє
+export function Slide08() {
   return (
     <>
-      <h2>ШІ — це <em>skill-leveling</em>, а не skill-bias</h2>
+      <h2>Чому досвід усе ще виграє</h2>
       <p className="lede">
-        Найбільше виграють <strong>новачки і середні</strong>. Верхній квартиль майже не змінюється.
+        Повертаймося до METR. Чому −19%? Що саме сповільнило досвідчених?
       </p>
 
-      <ChartSvg height={300}>
-        <BarPanel
-          data={supportData}
-          x={20}
-          y={20}
-          width={480}
-          title="Стилізовано за Brynjolfsson et al. 2023 · підтримка (n=5179)"
-        />
-        <BarPanel
-          data={devData}
-          x={520}
-          y={20}
-          width={480}
-          title="Стилізовано за Cui et al. 2024 · розробники MS/Accenture (n=4867)"
-        />
-      </ChartSvg>
+      <div className="two-col wide text-md">
+        <div>
+          <h3>де ШІ зашпортується</h3>
+          <ul className="checklist">
+            <li>
+              <strong>Довгий контекст реального кодбейсу.</strong> Контекстне вікно росте — увага падає
+            </li>
+            <li>
+              <strong>Прихована логіка</strong> (фічфлаги, конфіги, легасі-припущення)
+            </li>
+            <li>
+              <strong>Інтеграції з прихованим станом</strong> (IAM, мережа, кеші)
+            </li>
+            <li>
+              <strong>Помилки, що каскадують між шарами</strong> (тільки під навантаженням, тільки у вівторок)
+            </li>
+            <li>
+              <strong>«Не знаю, що не знаю»</strong> — впевнений неправильний код
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>де людський досвід дорожчає</h3>
+          <ul className="checklist">
+            <li>
+              <strong>Смак</strong> — що <em>не</em> будувати; коли спростити
+            </li>
+            <li>
+              <strong>Калібрація</strong> — оцінка надійності чужого коду
+            </li>
+            <li>
+              <strong>Локалізація проблеми</strong> в системі без специфікації
+            </li>
+            <li>
+              <strong>Дизайн обмежень</strong> — еволюція API, контрактів, схем
+            </li>
+            <li>
+              <strong>Перемовини зі стейкхолдерами</strong> — що бізнес <em>насправді</em> хоче
+            </li>
+          </ul>
+        </div>
+      </div>
 
-      <p className="callout callout-green">
-        Що це означає: <strong>премія за досвід стискається</strong> на простих завданнях, але{' '}
-        <strong>зростає на складних</strong>. Сеньйори перестають бути «10× швидші за код», стають
-        «10× кращі за вибір що робити».
+      <p className="callout callout-yellow">
+        Контраргумент чесно: швидкість моделей зростає. METR-число (−19%) поковзне. Але{' '}
+        <strong>розрив між відчутою і реальною продуктивністю</strong> — навряд.
       </p>
 
       <p className="slide-footnote">
-        Brynjolfsson, Li, Raymond «Generative AI at Work» (NBER w31161, 2023): +14% у середньому,
-        +34% у новачків, ~0 у топ-когорти. Cui, Demirer, Jaffe, Musolff, Peng, Salz «Effects of
-        Generative AI on High Skilled Work» (MS/MIT, 2024 → Management Science 2026): +26% у
-        середньому, ефект сильніший у менш досвідчених. Розподіл по бакетах ілюстративний.
+        METR 2025; також DORA «State of AI-Assisted Software Development» (2024) — самозвітна
+        продуктивність зросла, throughput команд — ні.
       </p>
     </>
   );

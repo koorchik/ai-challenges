@@ -1,53 +1,57 @@
-// 23 · Студенти · Google: ШІ-помічник на самій співбесіді
-export function Slide16() {
+// 23 · Студенти · Віртуальна команда як тренажер техліда
+export function Slide14() {
   return (
     <>
-      <h2>Google: «AI fluency» — окрема оцінка на співбесіді SWE</h2>
+      <h2>Раніше для tech-lead-навичок треба була команда. Тепер — ні.</h2>
       <p className="lede">
-        Травень 2026, внутрішній документ Google (Business Insider). У другій половині року на
-        раунді <em>code comprehension</em> кандидатам дозволять користуватися Gemini — і{' '}
-        <strong>окремо оцінюватимуть prompt engineering та debugging із ШІ</strong>.
+        Парадокс старої системи: щоб тренувати техлід-навички, потрібна команда. А команду давали лише
+        після кількох років як engineer. Замкнене коло для студента. ШІ-агенти його розривають.
       </p>
 
-      <div className="three-col wide text-md" style={{ marginTop: '0.4em' }}>
-        <div data-accent="green">
-          <h3 className="accent">кого</h3>
+      <div className="two-col wide text-md">
+        <div data-accent="red">
+          <h3 className="accent">раніше — без команди тренувати неможливо</h3>
           <ul className="checklist">
-            <li>early- та mid-career SWE</li>
-            <li>обрані команди в США (пілот)</li>
-            <li>далі — розширення на інші регіони</li>
-          </ul>
-        </div>
-        <div data-accent="blue">
-          <h3 className="accent">на якому етапі</h3>
-          <ul className="checklist">
-            <li>раунд «code comprehension»</li>
-            <li>аналіз реального кодбейзу</li>
-            <li>пошук багів, performance, рефакторинг</li>
+            <li>
+              <strong>Code review</strong> — потрібен код колег
+            </li>
+            <li>
+              <strong>Архітектурні рішення для інших</strong> — потрібна команда
+            </li>
+            <li>
+              <strong>Делегування</strong> — потрібні підлеглі
+            </li>
+            <li>
+              <strong>Тех-бачення</strong> — потрібен проєкт із командою
+            </li>
+            <li>Студент без команди = без тренувань</li>
           </ul>
         </div>
         <div data-accent="yellow">
-          <h3 className="accent">що оцінюють окремо</h3>
+          <h3 className="accent">зараз — твоя віртуальна команда</h3>
           <ul className="checklist">
-            <li><strong>AI fluency</strong></li>
-            <li>prompt engineering</li>
-            <li>debugging із ШІ</li>
-            <li>розуміння й уточнення згенерованого</li>
+            <li>
+              <strong>«Інженери»</strong>: Cursor / Claude Code / Codex / Cline
+            </li>
+            <li>Ти ставиш задачі, рев'юєш діфи, виправляєш архітектуру</li>
+            <li>
+              <strong>rules-файли</strong> (CLAUDE.md, .cursorrules) — твій team onboarding
+            </li>
+            <li>
+              <strong>Evals</strong> на твої правила — твій «1-на-1» з командою
+            </li>
+            <li>Pet-проєкт = твій перший проєкт як техлід</li>
           </ul>
         </div>
       </div>
 
       <p className="callout callout-green">
-        Pet-проєкт — це команда під твоїм керівництвом. Тепер і співбесіда — твоя перша демонстрація
-        як tech-lead. «AI fluency» — наймана навичка, не побічна.
+        Pet-проєкт у 2026 — не «що я написав». Це «що моя команда зробила під моїм керівництвом».
+        Інтерв'юер питатиме саме про друге.
       </p>
 
       <p className="slide-footnote">
-        Business Insider (травень 2026) — внутрішній документ Google, пілот допуску Gemini на раунді
-        code-comprehension. {' '}
-        <a href="https://www.businessinsider.com/google-job-interview-software-engineers-ai-assistant-coding-2026-5">
-          businessinsider.com/google-job-interview-software-engineers-ai-assistant-coding-2026-5
-        </a>
+        Peter Steinberger — практика менеджменту AI-агентів як аналог tech-lead-фанауту.
       </p>
     </>
   );

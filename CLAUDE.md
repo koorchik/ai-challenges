@@ -61,12 +61,12 @@ The deck spine: declare per-audience challenges (06–09), set transversal conce
 |---|---|
 | 01–05 | Intro |
 | 06–09 | Виклики (declarations per audience: Студенти / Розробники / Бізнеси / Україна) |
-| 10–16 | Концепції (vibe vs agentic engineering · verifiability · LLM-as-judge · human/AI Venn · X+AI inequality) |
-| 17–29 | Студенти |
-| 30–41 | Розробники |
-| 42–53 | Бізнеси |
-| 54–60 | Україна |
-| 61–62 | Закриття |
+| 10–17 | Концепції (vibe vs agentic engineering · verifiability · LLM-as-judge · human/AI Venn · X+AI inequality) |
+| 18–30 | Студенти |
+| 31–42 | Розробники |
+| 43–54 | Бізнеси |
+| 55–61 | Україна |
+| 62–63 | Закриття |
 
 ## Authoring conventions
 
@@ -121,7 +121,7 @@ Slide 5 sets the rule for the whole deck: named research only, no "ChatGPT says"
 | `src/components/sims/` | Interactive sims: Jevons, Ricardo, OutsourcingErosion (exploratory sliders), MetrReveal (scroll-triggered). `MetrGuess` exists but is no longer mounted. |
 | `src/components/hooks/useInView.ts` | IntersectionObserver hook — gate animations |
 | `src/components/hooks/useOverflowGuard.ts` | Dev-only — flags any slide whose scrollHeight > 720 with a red badge |
-| `src/components/SectionHeader.tsx` | Shared header for 5 divider slides (10 Концепції, 17 Студенти, 30 Розробники, 41 Бізнеси, 53 Україна) |
+| `src/components/SectionHeader.tsx` | Shared header for 5 divider slides (10 Концепції, 18 Студенти, 31 Розробники, 43 Бізнеси, 55 Україна) |
 | `src/vite-env.d.ts` | Declares ambient modules for `reveal.js/plugin/*` (no types ship with reveal.js) |
 | `vite.config.ts` | `base: '/dou-day-2026/'` for GitHub Pages — change if repo name differs |
 | `.github/workflows/deploy.yml` | Build + publish on push to `main` |

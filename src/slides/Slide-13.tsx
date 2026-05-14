@@ -1,38 +1,45 @@
-// 13 · Концепції · Verifiability
+// 13 · Концепції · Agentic engineering без quality bar
+import reddit from '../assets/reddit-vibe-engineer.jpeg';
+
 export function Slide13() {
   return (
-    <div className="slide-body wide">
-      <h2>Verifiability — і ШІ стає solver</h2>
-      <p className="lede" style={{ margin: 0 }}>
-        Якщо є автоматична перевірка результату, агент ітерує скільки треба — як solver в Excel.
-      </p>
-      <div className="two-col text-md">
-        <div data-accent="green">
-          <h3 className="accent">Verifiable → автоматизується</h3>
-          <ul className="checklist" style={{ textAlign: 'left' }}>
-            <li>Код: тести, type-check, lints</li>
-            <li>Математика: підстановка в рівняння</li>
-            <li>SQL: схема + очікуваний результат</li>
-            <li>Shell: exit code, snapshot output</li>
+    <>
+      <h2>Agentic engineering без quality bar</h2>
+      <div
+        className="two-col wide"
+        style={{
+          alignItems: 'center',
+          gridTemplateColumns: 'auto 1fr',
+          gap: '1.6em',
+        }}
+      >
+        <img
+          src={reddit}
+          alt="Reddit r/ClaudeCode: Inherited a 3-month old repo from a Vibe Engineer"
+          style={{ height: '13em', width: 'auto', borderRadius: '0.5em', display: 'block' }}
+        />
+        <div className="slide-body slide-body--tight">
+          <p className="lede" style={{ margin: 0 }}>
+            3 місяці «vibe engineering» — наступник переписав з нуля за тиждень з тим самим
+            функціоналом.
+          </p>
+          <ul className="checklist text-md" style={{ textAlign: 'left' }}>
+            <li><strong>+10K / −3.6M</strong> рядків в одному PR.</li>
+            <li><strong>309K LOC коду</strong> + <strong>240K LOC «документації»</strong> + md-логи на 1M+ рядків.</li>
+            <li><strong>220 handles</strong> — використовується ≈20; <strong>40+ secrets</strong> — потрібно 2.</li>
+            <li>Файли по 5K+ рядків; тести покривають «хтозна-що».</li>
           </ul>
+          <div className="callout">
+            Агенти прискорюють фічі. Без дисципліни — так само прискорюють bloat.
+          </div>
         </div>
-        <div data-accent="red">
-          <h3 className="accent">Не verifiable → агент застряг</h3>
-          <ul className="checklist" style={{ textAlign: 'left' }}>
-            <li>«Чи гарний дизайн?»</li>
-            <li>«Чи переконливий текст?»</li>
-            <li>Стратегія без метрик</li>
-            <li>UX без user-тестів</li>
-          </ul>
-        </div>
-      </div>
-      <div className="callout">
-        «Software 2.0 easily automates what you can verify.» — Karpathy
       </div>
       <p className="slide-footnote">
-        Andrej Karpathy, «Verifiability» (листопад 2025){' '}
-        <a href="https://karpathy.bearblog.dev/verifiability/">karpathy.bearblog.dev/verifiability/</a>
+        r/ClaudeCode, «Inherited a 3-month old repo from a Vibe Engineer»{' '}
+        <a href="https://www.reddit.com/r/ClaudeCode/comments/1tb7edc/inherited_a_3month_old_repo_from_a_vibe_engineer/">
+          reddit.com/r/ClaudeCode/…/vibe_engineer
+        </a>
       </p>
-    </div>
+    </>
   );
 }
