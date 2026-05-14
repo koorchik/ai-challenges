@@ -9,6 +9,7 @@ import WhatCompounds from './WhatCompounds';
 import CareerForks from './CareerForks';
 import RicardoAndAcemoglu from './RicardoAndAcemoglu';
 import NewWorkflow from './NewWorkflow';
+import AgentPromptInjection from './AgentPromptInjection';
 import SelfCalibration from './SelfCalibration';
 import Playbook90Day from './Playbook90Day';
 
@@ -24,6 +25,7 @@ export const slides = [
   CareerForks,
   RicardoAndAcemoglu,
   NewWorkflow,
+  AgentPromptInjection,
   SelfCalibration,
   Playbook90Day,
 ];
