@@ -22,28 +22,42 @@ npm run preview    # serve ./dist locally
 
 ## Slide structure
 
-Each slide is one tiny React component: `src/slides/Slide-01.tsx` … `Slide-48.tsx`. They live in a single flat folder and sort numerically. The first line of each file is a comment with the section and topic, so they remain discoverable when you scan `ls`.
+Slides live in numbered section folders under `src/slides/`. Each slide is a tiny React component named after its topic (e.g. `JuniorJobs.tsx`, `JevonsParadox.tsx`); the folder it sits in encodes the section. Each section folder has an `index.ts` that imports its slides and exports them as a `slides` array — the order in that array is the order in the deck. The top-level `src/slides/index.ts` concatenates these arrays in folder order.
 
-The deck order is **the file name order** — `src/slides/index.ts` auto-discovers every `Slide-*.tsx` via `import.meta.glob` and sorts them lexicographically.
+```
+src/slides/
+├── 01-intro/
+├── 02-challenges/
+├── 03-general-ideas/
+├── 04-students/
+├── 05-developers/
+├── 06-businesses/
+├── 07-ukraine/
+├── 08-closing/
+└── index.ts
+```
 
-Workflow:
+Workflow — no file renames are ever required to change order:
 
-- **Add a slide** — create the next `Slide-NN.tsx`.
-- **Reorder** — rename the files (e.g. `Slide-23.tsx` ↔ `Slide-24.tsx`). Linux: `mv Slide-23.tsx _tmp && mv Slide-24.tsx Slide-23.tsx && mv _tmp Slide-24.tsx`.
-- **Remove a slide** — delete the file.
-- **Skip a slide temporarily** — rename to something that doesn't match `Slide-*.tsx`, e.g. `_Slide-23.tsx`.
+- **Add a slide** — create `src/slides/<section>/<Name>.tsx` (default-export a function returning a fragment). Add `import <Name> from './<Name>'` plus a `<Name>,` entry in the section's `index.ts`.
+- **Reorder within a section** — move a line in that section's `slides = [ … ]` array.
+- **Move across sections** — move the file; update both sections' `index.ts`.
+- **Reorder sections** — rename folder prefixes (e.g. `04-students/` ↔ `05-developers/`) and update the import order in top-level `src/slides/index.ts`.
+- **Skip a slide temporarily** — comment out its entry in the section's `index.ts` (the file stays).
+- **Remove a slide** — delete the file and its entry in `index.ts`.
 
-Section grouping (48 slides):
+Section layout (63 slides total):
 
-| Range | Section |
+| Folder | Section |
 |---|---|
-| 01–05 | Intro |
-| 06–09 | Виклики (declarations per audience) |
-| 10–16 | Студенти |
-| 17–27 | Розробники |
-| 28–39 | Бізнеси |
-| 40–46 | Україна |
-| 47–48 | Закриття |
+| `01-intro/` | Intro |
+| `02-challenges/` | Виклики (declarations per audience) |
+| `03-general-ideas/` | Загальні ідеї |
+| `04-students/` | Студенти |
+| `05-developers/` | Розробники |
+| `06-businesses/` | Бізнеси |
+| `07-ukraine/` | Україна |
+| `08-closing/` | Закриття |
 
 ## Deploy (GitHub Pages)
 

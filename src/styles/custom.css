@@ -638,7 +638,7 @@
   animation: fade-up 0.6s ease forwards;
 }
 
-/* Slide 20 — click-to-place task chips. Click a chip in the tray and it
+/* 04-students/JuniorToTechLead — click-to-place task chips. Click a chip in the tray and it
    appears in the matrix cell that matches its capability/autonomy mix. */
 .reveal .task-tray {
   display: flex;
@@ -716,7 +716,7 @@
   margin-top: 0.25em;
 }
 
-/* Slide 36 — year toggle. Buttons sit above the chart and select which
+/* 05-developers/CuiCurve — year toggle. Buttons sit above the chart and select which
    year's bars are rendered; the existing .chart-bar transitions handle
    the morph. */
 .reveal .year-toggle {
@@ -726,7 +726,7 @@
   margin: 0.2em auto 0.3em;
 }
 
-/* Slide 39 — walk-the-tree decision diagram. Pre-set example buttons
+/* 05-developers/RicardoAndAcemoglu — walk-the-tree decision diagram. Pre-set example buttons
    walk the user through paths via lit edges + a pulsing destination. */
 .reveal .tree-examples {
   display: flex;
@@ -746,7 +746,7 @@
   animation: tree-pulse 1.4s ease-in-out infinite;
 }
 
-/* FlipCard — 3D flip on click. Used on Slide 40 (7 pitfalls).
+/* FlipCard — 3D flip on click. Used by 06-businesses/CommonPitfalls.
    Front shows the pitfall + symptom; back shows the mitigation. */
 .reveal .flip-card {
   position: relative;
@@ -842,7 +842,7 @@
   margin: 0.4em auto;
 }
 
-/* Slide 49 — persistent "tomorrow morning" checklist. Each audience card
+/* 08-closing/TomorrowMorning — persistent "tomorrow morning" checklist. Each audience card
    has a checkbox that survives reload via localStorage so an attendee can
    re-open the deck the day after the talk and see what they ticked off. */
 .reveal .tomorrow-card {
@@ -919,7 +919,7 @@
   border-radius: 999px;
 }
 
-/* Slide 31 workflow checkpoint markers — gently pulse so the eye picks
+/* 05-developers/NewWorkflow checkpoint markers — gently pulse so the eye picks
    them out as the traveling dot crosses the loop. */
 @keyframes wf-pulse {
   0%, 100% { opacity: 0.55; }

@@ -1,16 +1,26 @@
 import type { ComponentType } from 'react';
 
-// Auto-discover every Slide-NN.tsx file in this directory and sort by name.
-// Adding a slide = create Slide-51.tsx. Reordering = renaming a file.
-const modules = import.meta.glob('./Slide-*.tsx', { eager: true }) as Record<
-  string,
-  Record<string, ComponentType>
->;
+import { slides as intro } from './01-intro';
+import { slides as challenges } from './02-challenges';
+import { slides as generalIdeas } from './03-general-ideas';
+import { slides as students } from './04-students';
+import { slides as developers } from './05-developers';
+import { slides as businesses } from './06-businesses';
+import { slides as ukraine } from './07-ukraine';
+import { slides as closing } from './08-closing';
 
-export const orderedSlides = Object.entries(modules)
-  .sort(([a], [b]) => a.localeCompare(b))
-  .map(([path, mod]) => {
-    const key = path.match(/Slide-(\d+)/)?.[1] ?? path;
-    const Component = Object.values(mod)[0];
-    return { key, Component };
-  });
+const allSlides: ComponentType[] = [
+  ...intro,
+  ...challenges,
+  ...generalIdeas,
+  ...students,
+  ...developers,
+  ...businesses,
+  ...ukraine,
+  ...closing,
+];
+
+export const orderedSlides = allSlides.map((Component, i) => ({
+  key: `${String(i + 1).padStart(2, '0')}-${Component.displayName ?? Component.name ?? 'Slide'}`,
+  Component,
+}));

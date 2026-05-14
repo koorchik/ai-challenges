@@ -8,7 +8,7 @@ Never add a `Co-Authored-By: Claude …` trailer (or any other co-author trailer
 
 ## What this is
 
-A 62-slide presentation for **DOU Day 2026**, topic **«Що робити в часи ШІ?»**.
+A 63-slide presentation for **DOU Day 2026**, topic **«Що робити в часи ШІ?»**.
 Built with [`@revealjs/react`](https://www.npmjs.com/package/@revealjs/react) (React wrapper around reveal.js 5), TypeScript, Vite. Deployed as a static site to GitHub Pages.
 
 Audience: developers (talk is in **Ukrainian** — slide copy stays in Ukrainian unless explicitly asked otherwise).
@@ -23,50 +23,67 @@ The deck uses reveal.js **scroll view** (`view: 'scroll'`) — it renders as a s
 
 Config lives in `src/Presentation.tsx`.
 
-## Slide files — flat numbering
+## Slide files — section folders + explicit ordering
 
-Slides are `src/slides/Slide-01.tsx` … `Slide-61.tsx` in a single flat folder. No subfolders. Each file:
+Slides live in numbered section folders under `src/slides/`. Each folder has an `index.ts` that imports its slides and exports them in deck order as a `slides` array. The top-level `src/slides/index.ts` concatenates these arrays in folder order — that concatenated array IS the deck.
 
-- Starts with a one-line comment: `// NN · Section · Topic` (this is the only "metadata" — keep it accurate when you change a slide's content).
-- Exports a single named component `SlideNN` returning a fragment (`<>…</>`).
+```
+src/slides/
+├── 01-intro/         (Title, Speaker, MetrHook, MetrReveal, TalkPlan)
+├── 02-challenges/    (StudentsChallenge, DevelopersChallenge, BusinessesChallenge, UkraineChallenge)
+├── 03-general-ideas/ (Header, VibeVsAgentic, KarpathyOnVibe, AgenticNoQualityBar, Verifiability, LlmAsJudge, HumanValueZone, KnowAiRegardless)
+├── 04-students/      (Header, JuniorJobs, JuniorToTechLead, BloomsClassic, BloomsInverted, …, PracticalPlan)
+├── 05-developers/    (Header, TimeShift, AmdahlForAi, WhyExperienceWins, SkillLeveling, CuiCurve, …, Playbook90Day)
+├── 06-businesses/    (Header, CapabilityVsReliability, NewCostStructure, …, Playbook90Day)
+├── 07-ukraine/       (Header, ItExport, PriceArbitrageErosion, …, PolicyLevers)
+├── 08-closing/       (TomorrowMorning, ThankYou)
+└── index.ts          (concatenates section arrays)
+```
 
-The deck order is **the lexicographic file-name order**. `src/slides/index.ts` uses `import.meta.glob('./Slide-*.tsx')` to auto-discover and sort. No manual registry to update.
+Each slide file:
+- Filename is the topic (PascalCase). No section prefix in the filename — the folder gives the section.
+- Exports the slide as `export default function <Name>()` returning a fragment (`<>…</>`).
+- No header comment needed — folder + filename + function name encode location.
 
 ### Operations
 
 | Task | How |
 |---|---|
-| Add a slide at the end | Create `Slide-62.tsx` |
-| Insert a slide | Renumber subsequent files (e.g. `Slide-23` → `Slide-24`, then create new `Slide-23`) |
-| Reorder | Rename files (use a tmp name to swap pairs) |
-| Multi-file renumber | Two-stage `git mv` via `_tmp-Slide-NN.tsx` prefix — the glob doesn't match it, so the build stays consistent mid-rename |
-| Skip a slide temporarily | Rename to `_Slide-23.tsx` so the glob ignores it |
-| Remove | Delete the file |
+| Add a slide | Create `src/slides/<section>/<Name>.tsx` and add `import <Name> from './<Name>'` + the `<Name>,` entry in that section's `index.ts` |
+| Reorder within a section | Move one line in the section's `index.ts` `slides = [ … ]` array. No file renames. |
+| Move a slide across sections | Move the file; remove its entry from the old `index.ts`, add it to the new one |
+| Reorder sections | Rename folder prefixes (e.g. swap `04-students/` ↔ `05-developers/`) and update the imports in top-level `src/slides/index.ts` |
+| Skip a slide temporarily | Comment out its entry in the section's `index.ts` (the file stays, just won't render) |
+| Remove a slide | Delete the file and its import + array entry from the section's `index.ts` |
 
-When inserting/reordering, also update the `// NN · …` comment in the header of any file whose number changed. Don't rename the exported `SlideNN` function — it's not used by name, only the default export of the module is picked up. But if you do rename, keep it valid TS.
+The function name and filename should match. Imports from `src/components/*` etc. use `../../components/...` (two levels up — slides are at `src/slides/<section>/`).
 
-After any renumber:
+After changes:
 
-- **Audit cross-refs.** Never write `слайд N` / `слайду N` / `slide N` inside a slide — they rot on every renumber and clutter the prose. Keep slides self-contained: restate the idea briefly or drop the pointer entirely. The grep `grep -nEi '(слайд|slide [0-9])' src/slides/*.tsx` must return zero hits. Run `grep -nEi '(слайд|slide [0-9])' src/slides/*.tsx` and reconcile each hit.
-- **Audit header comments.** Verify every file's `// NN · …` first line matches its filename:
+- **Audit cross-refs.** Never write `слайд N` / `slide N` inside a slide — slide indices aren't a stable reference. Restate the idea briefly or drop the pointer. The grep `grep -nEi '(слайд|slide [0-9])' src/slides/**/*.tsx` must return zero numeric matches.
+- **Audit registry consistency.** Every `.tsx` under a section folder must appear in that folder's `index.ts`. Quick check per section:
   ```sh
-  for f in src/slides/Slide-*.tsx; do n=$(basename "$f" .tsx | sed 's/Slide-//'); h=$(head -1 "$f" | grep -oE '^// [0-9]+' | grep -oE '[0-9]+'); [ "$h" != "$n" ] && echo "$f header=$h expected=$n"; done
+  for d in src/slides/0*-*/; do
+    files=$(ls "$d"*.tsx 2>/dev/null | xargs -n1 basename | sed 's/\.tsx$//' | sort)
+    indexed=$(grep -oE "^import [A-Za-z0-9_]+" "$d/index.ts" | awk '{print $2}' | sort)
+    diff <(echo "$files") <(echo "$indexed") | grep -q . && echo "$d mismatch"
+  done
   ```
 
 ## Section layout
 
-The deck spine: declare per-audience challenges (06–09), set transversal concepts that everything else leans on (10–16), then answer the challenges one-by-one in audience order. Cross-cutting framings (Jevons, Ricardo, J-curve, skill-leveling, capability matrix) live inside the audience section where they best support a specific declared challenge — there is **no** separate "Перспективи" or "Ринок" section.
+The deck spine: declare per-audience challenges (02-challenges), set transversal concepts that everything else leans on (03-general-ideas), then answer the challenges one-by-one in audience order. Cross-cutting framings (Jevons, Ricardo, J-curve, skill-leveling, capability matrix) live inside the audience section where they best support a specific declared challenge — there is **no** separate "Перспективи" or "Ринок" section.
 
-| Range | Section |
+| Folder | Section |
 |---|---|
-| 01–05 | Intro |
-| 06–09 | Виклики (declarations per audience: Студенти / Розробники / Бізнеси / Україна) |
-| 10–17 | Загальні ідеї (vibe vs agentic engineering · verifiability · LLM-as-judge · human/AI Venn · X+AI inequality) |
-| 18–30 | Студенти |
-| 31–42 | Розробники |
-| 43–54 | Бізнеси |
-| 55–61 | Україна |
-| 62–63 | Закриття |
+| `01-intro/` | Intro |
+| `02-challenges/` | Виклики (declarations per audience: Студенти / Розробники / Бізнеси / Україна) |
+| `03-general-ideas/` | Загальні ідеї (vibe vs agentic engineering · verifiability · LLM-as-judge · human/AI Venn · X+AI inequality) |
+| `04-students/` | Студенти |
+| `05-developers/` | Розробники |
+| `06-businesses/` | Бізнеси |
+| `07-ukraine/` | Україна |
+| `08-closing/` | Закриття |
 
 ## Authoring conventions
 
@@ -107,21 +124,22 @@ Slide 5 sets the rule for the whole deck: named research only, no "ChatGPT says"
 - **Sourced claim** → `<p className="slide-footnote">` with author + year + what they actually measured **and an inline `<a href>` to the report/article on the same slide**. Always keep the link next to the claim — never push it to a closing bibliography slide. The reader should see the source without scrolling away.
 - **Stylized / extrapolated** → chart subtitle starts with "Стилізовано за …"; footnote names the paper *and* flags that the specific bin breakdown or curve fit is illustrative.
 - **Approximate value** → `≈` prefix in chart labels (e.g. `junior ≈ 38`) to signal rounding without changing the data.
-- **Forward projection on a chart** → split `<Line>` into solid (measured) + dashed (`<Line points={...} dasharray="6 5" />`) segments, with an inline "проєкція" text label near the projected endpoint. Canonical example: `src/slides/Slide-38.tsx`.
+- **Forward projection on a chart** → split `<Line>` into solid (measured) + dashed (`<Line points={...} dasharray="6 5" />`) segments, with an inline "проєкція" text label near the projected endpoint. Canonical example: `src/slides/05-developers/CareerForks.tsx`.
 
 ## Critical files
 
 | File | Purpose |
 |---|---|
 | `src/Presentation.tsx` | Renders `<Deck>` with config + iterates `orderedSlides` |
-| `src/slides/index.ts` | Auto-discovery via `import.meta.glob` |
-| `src/slides/Slide-*.tsx` | One file per slide |
+| `src/slides/index.ts` | Concatenates per-section `slides` arrays into `orderedSlides` |
+| `src/slides/0N-<section>/index.ts` | Per-section ordering: explicit imports + `slides` array |
+| `src/slides/0N-<section>/<Name>.tsx` | One file per slide; default-exports the component |
 | `src/styles/custom.css` | Shared style hooks (see above) |
 | `src/components/charts/` | SVG primitives (`ChartSvg`, `Bar`, `Line`, `Axis`, `Annotation`, `Slider`, `KPI`) |
 | `src/components/sims/` | Interactive sims: Jevons, Ricardo, OutsourcingErosion (exploratory sliders), MetrReveal (scroll-triggered). `MetrGuess` exists but is no longer mounted. |
 | `src/components/hooks/useInView.ts` | IntersectionObserver hook — gate animations |
 | `src/components/hooks/useOverflowGuard.ts` | Dev-only — flags any slide whose scrollHeight > 720 with a red badge |
-| `src/components/SectionHeader.tsx` | Shared header for 5 divider slides (10 Загальні ідеї, 18 Студенти, 31 Розробники, 43 Бізнеси, 55 Україна) |
+| `src/components/SectionHeader.tsx` | Shared header used by `Header.tsx` in 03-general-ideas, 04-students, 05-developers, 06-businesses, 07-ukraine |
 | `src/vite-env.d.ts` | Declares ambient modules for `reveal.js/plugin/*` (no types ship with reveal.js) |
 | `vite.config.ts` | `base: '/dou-day-2026/'` for GitHub Pages — change if repo name differs |
 | `.github/workflows/deploy.yml` | Build + publish on push to `main` |
@@ -133,10 +151,10 @@ Slide 5 sets the rule for the whole deck: named research only, no "ChatGPT says"
 - **The plugin import path is `reveal.js/plugin/highlight/highlight.esm.js`** (with the `.esm.js` suffix), not `reveal.js/plugin/highlight`.
 - **`base` in `vite.config.ts` must match the GH repo subpath** — otherwise asset URLs 404 on Pages. For an apex-domain deploy, set to `'/'`.
 - **`vh` units inside slides reference the *browser* viewport**, not the scaled 1280×720 slide. Use `em` for height constraints (reveal.js scales slides via font-size). `ChartSvg` already uses `maxHeight: 11em`.
-- **All 61 slides mount simultaneously** in scroll-view. Any animation, count-up, or chart reveal must gate on `useInView` from `src/components/hooks/useInView.ts` — otherwise it fires off-screen before the user gets there.
+- **All 63 slides mount simultaneously** in scroll-view. Any animation, count-up, or chart reveal must gate on `useInView` from `src/components/hooks/useInView.ts` — otherwise it fires off-screen before the user gets there.
 - **Content overflows the 1280×720 viewport silently** (no scrollbars, content just gets clipped). When adding content, mentally budget: h2 ~50px + lede ~60px + chart ≤395px + callout ~70px + footnote ~30px ≈ 605px of the ~640px usable height. Long multi-line `<ol>` items are the biggest offender — collapse to one tight line each.
 - **Dev-time overflow indicator.** `useOverflowGuard` (mounted by `Presentation.tsx`) toggles `.is-overflowing` + `data-overflow="<px>"` on any `<section>` whose `scrollHeight` > 720. CSS draws a red dashed outline and a "overflow +Npx" badge. Stripped from production via `import.meta.env.DEV`. If you see the badge in `npm run dev`, trim the slide until it disappears.
-- **Shared `.slide-body` wrapper.** Wrap stacked h2/lede/list/callout content in `<div className="slide-body wide">` (or `.narrow`). It's a flex-column with consistent `gap` and zero per-child margins — replaces ad-hoc `style={{ marginTop: '0.5em' }}` between siblings. Variants: `.slide-body--tight`, `.slide-body--loose`. Canonical examples: `Slide-12.tsx`, `Slide-13.tsx`, `Slide-16.tsx`.
+- **Shared `.slide-body` wrapper.** Wrap stacked h2/lede/list/callout content in `<div className="slide-body wide">` (or `.narrow`). It's a flex-column with consistent `gap` and zero per-child margins — replaces ad-hoc `style={{ marginTop: '0.5em' }}` between siblings. Variants: `.slide-body--tight`, `.slide-body--loose`. Canonical examples in `src/slides/03-general-ideas/`.
 - **Strict TS:** `tsconfig.app.json` sets `noUnusedLocals` + `noUnusedParameters`. Build fails on stray imports.
 
 ## Dependencies — kept minimal on purpose
