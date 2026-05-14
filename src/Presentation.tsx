@@ -11,25 +11,33 @@ import { useOverflowGuard } from './components/hooks/useOverflowGuard';
 export function Presentation() {
   useOverflowGuard();
   return (
-    <Deck
-      plugins={[RevealHighlight]}
-      config={{
-        view: 'scroll',
-        scrollActivationWidth: null,
-        scrollSnap: 'mandatory',
-        scrollProgress: 'auto',
-        hash: true,
-        controls: false,
-        progress: true,
-        width: 1280,
-        height: 720,
+    <div
+      style={{
+        height: '100%',
+        ['--slide-total' as string]: `'${orderedSlides.length}'`,
       }}
     >
-      {orderedSlides.map(({ key, Component }) => (
-        <Slide key={key}>
-          <Component />
-        </Slide>
-      ))}
-    </Deck>
+      <Deck
+        plugins={[RevealHighlight]}
+        config={{
+          view: 'scroll',
+          scrollActivationWidth: null,
+          scrollSnap: 'mandatory',
+          scrollProgress: 'auto',
+          hash: true,
+          controls: false,
+          progress: true,
+          slideNumber: 'c/t',
+          width: 1280,
+          height: 720,
+        }}
+      >
+        {orderedSlides.map(({ key, Component }) => (
+          <Slide key={key}>
+            <Component />
+          </Slide>
+        ))}
+      </Deck>
+    </div>
   );
 }

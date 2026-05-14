@@ -58,6 +58,27 @@
    shows as truncated content rather than visually leaking into its neighbors. */
 .reveal .scroll-page {
   overflow: hidden;
+  counter-increment: slidenum;
+}
+
+/* Slide number indicator. reveal.js's native `.slide-number` element is hidden in
+   scroll-view, so we render the count via a CSS counter on each `.scroll-page`.
+   `--slide-total` is set by `Presentation.tsx` from `orderedSlides.length`. */
+.reveal .slides {
+  counter-reset: slidenum;
+}
+
+.reveal .scroll-page-sticky::after {
+  content: counter(slidenum) ' / ' var(--slide-total, '');
+  position: absolute;
+  right: 18px;
+  bottom: 14px;
+  font-size: 12px;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  z-index: 5;
 }
 
 .reveal h1,
