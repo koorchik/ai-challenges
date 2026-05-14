@@ -2,6 +2,7 @@ import Header from './Header';
 import ServicesHeader from './ServicesHeader';
 import ServicesEconomics from './ServicesEconomics';
 import RegulatedVerticalsMoat from './RegulatedVerticalsMoat';
+import VerificationTrustGap from './VerificationTrustGap';
 import CapabilityVsReliability from './CapabilityVsReliability';
 import NextGenPipeline from './NextGenPipeline';
 import StartupsHeader from './StartupsHeader';
@@ -18,6 +19,7 @@ export const slides = [
   ServicesHeader,
   ServicesEconomics,
   RegulatedVerticalsMoat,
+  VerificationTrustGap,
   CapabilityVsReliability,
   NextGenPipeline,
   StartupsHeader,
