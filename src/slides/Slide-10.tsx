@@ -4,7 +4,7 @@ import { SectionHeader } from '../components/SectionHeader';
 export function Slide10() {
   return (
     <SectionHeader
-      title="Концепції"
+      title="Загальні ідеї"
     />
   );
 }
