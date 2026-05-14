@@ -55,10 +55,10 @@ const FORKS: Fork[] = [
 const AXES = ['досвід', 'домен', 'founder', 'infra', "комʼюн."];
 
 function Radar({ values }: { values: number[] }) {
-  const size = 220;
+  const size = 170;
   const cx = size / 2;
   const cy = size / 2;
-  const radius = 90;
+  const radius = 68;
   const angle = (i: number) => -Math.PI / 2 + (i * 2 * Math.PI) / 5;
   const point = (i: number, r: number) => [
     cx + r * Math.cos(angle(i)),
@@ -71,7 +71,7 @@ function Radar({ values }: { values: number[] }) {
   ).join(' ');
 
   return (
-    <svg viewBox={`0 0 ${size} ${size}`} style={{ width: '100%', maxWidth: 220, display: 'block' }}>
+    <svg viewBox={`0 0 ${size} ${size}`} style={{ width: '100%', maxWidth: 170, display: 'block' }}>
       {[0.25, 0.5, 0.75, 1].map((r) => (
         <polygon
           key={r}
@@ -147,15 +147,14 @@ export function CareerForkCompass() {
     <>
       <h2>Карʼєрні шляхи з 2026 — компас для вибору</h2>
       <p className="lede">
-        Перетягніть пʼять повзунків під свій профіль — побачите, де у вас найбільша перевага.
-        Жоден шлях не <em>гарантований</em>; кожен — це інвестиція в навичку, яку ШІ не закриває.
+        Пʼять повзунків під свій профіль — побачите, де у вас найбільша перевага. Жоден шлях не гарантований.
       </p>
 
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '220px 1fr',
-          gap: '0.8em',
+          gridTemplateColumns: '170px 1fr',
+          gap: '0.6em',
           alignItems: 'center',
           maxWidth: 1100,
           margin: '0 auto',
@@ -212,12 +211,10 @@ export function CareerForkCompass() {
       </div>
 
       <div
-        className="sim-controls"
+        className="sim-controls-quad"
         style={{
-          maxWidth: 1100,
           gridTemplateColumns: 'repeat(5, 1fr)',
-          gap: '0.5em',
-          marginTop: '0.4em',
+          marginTop: '0.2em',
         }}
       >
         <Slider label="досвід (років)" min={0} max={10} step={0.5} value={e} onChange={setE} format={(v) => `${v.toFixed(1)}`} />
@@ -228,9 +225,7 @@ export function CareerForkCompass() {
       </div>
 
       <p className="slide-footnote">
-        Стилізована рекомендація — ваги авторські (Domain: домен 0.5 / досвід 0.3 / комʼюн 0.2 ·
-        Lead: досвід 0.4 / комʼюн 0.3 / домен 0.3 · Founder: founder 0.5 / комʼюн 0.3 / досвід 0.2 ·
-        Infra: інфра 0.6 / досвід 0.3 / founder 0.1). Жоден з форків не гарантований.
+        Стилізована рекомендація — ваги авторські. Жоден з форків не гарантований.
       </p>
     </>
   );

@@ -110,21 +110,20 @@ export function TimeShiftSim() {
     <>
       <h2>Куди зсувається час — підкрутіть під свою команду</h2>
       <p className="lede">
-        ШІ стискає саме кодування. Усе, що не код, росте у відносній вазі. Перетягніть слайдер —
-        подивіться, як перерозподіляється тиждень.
+        ШІ стискає саме кодування; усе, що не код, росте у відносній вазі.
       </p>
 
-      <ChartSvg height={420}>
-        <text x={300} y={36} textAnchor="middle" className="chart-title">
+      <ChartSvg height={320} style={{ maxHeight: '6.5em' }}>
+        <text x={300} y={28} textAnchor="middle" className="chart-title">
           до ШІ
         </text>
-        <text x={700} y={36} textAnchor="middle" className="chart-title">
+        <text x={700} y={28} textAnchor="middle" className="chart-title">
           з ШІ
         </text>
-        <StackedBar x={200} y={60} width={200} height={340} values={before} />
-        <StackedBar x={600} y={60} width={200} height={340} values={after} />
+        <StackedBar x={200} y={48} width={200} height={250} values={before} />
+        <StackedBar x={600} y={48} width={200} height={250} values={after} />
 
-        <text x={500} y={230} textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize={28}>
+        <text x={500} y={180} textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize={28}>
           →
         </text>
       </ChartSvg>
@@ -154,8 +153,8 @@ export function TimeShiftSim() {
       </div>
 
       <div
-        className="kpi-row"
-        style={{ maxWidth: 900, margin: '0.3em auto 0', gap: '0.4em' }}
+        className="kpi-row sim-controls-single"
+        style={{ maxWidth: 900, margin: '0 auto', gap: '0.4em', display: 'flex' }}
       >
         <KPI value={`${codeShare}%`} label="час на код" color="#facc15" />
         <KPI value={`${reviewShare}%`} label="час на ревʼю" color="#fde68a" />
@@ -163,8 +162,7 @@ export function TimeShiftSim() {
       </div>
 
       <p className="slide-footnote">
-        Ілюстративний перерозподіл. Стартові ваги ролей — оцінка автора; редистрибуція 30/25/20/15/10
-        між review/design/debug/coord/integ. Напрямок підтверджують{' '}
+        Ілюстративний перерозподіл; ваги ролей — оцінка автора. Напрямок підтверджують{' '}
         <a href="https://dora.dev/publications/2024-accelerate-state-of-devops/" target="_blank" rel="noreferrer">
           DORA 2024
         </a>{' '}
@@ -175,8 +173,7 @@ export function TimeShiftSim() {
           rel="noreferrer"
         >
           GitClear (2024)
-        </a>
-        ; точні відсотки не виміряні.
+        </a>.
       </p>
     </>
   );

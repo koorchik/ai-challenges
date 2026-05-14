@@ -58,12 +58,11 @@ export function VerificationBottleneckSim() {
     <>
       <h2>Verification bottleneck: коли ШІ генерує швидше, ніж ви рев'юєте</h2>
       <p className="lede">
-        Те, що відчуває розробник, який «став колектором багів за ШІ». Швидкість генерації висока,
-        швидкість верифікації обмежена фундаментом — борг росте.
+        Швидкість генерації висока, швидкість верифікації обмежена фундаментом — борг росте.
       </p>
 
       <div className="sim-grid">
-        <ChartSvg height={400} style={{ maxHeight: '9.5em' }}>
+        <ChartSvg height={400} style={{ maxHeight: '8em' }}>
           <Axis
             scale={xScale}
             orientation="bottom"

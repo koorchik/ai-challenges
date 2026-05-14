@@ -3,11 +3,10 @@ export default function RepositioningPlaybook() {
     <>
       <h2>Клієнт хоче −50%. Грати ціною — програти. Перепакуйте оффер.</h2>
       <p className="lede">
-        Якщо торгуватися годинами — ви на ринку, де токен — нова підлога. Три ходи, які виводять
-        переговори з ціни в результат.
+        Три ходи, які виводять переговори з ціни в результат.
       </p>
 
-      <div className="three-col wide text-md" style={{ marginTop: '0.4em' }}>
+      <div className="three-col wide text-md" style={{ marginTop: '0.2em' }}>
         <div data-accent="yellow">
           <h3 className="accent">Години → результат</h3>
           <p className="muted" style={{ margin: '0.2em 0' }}>

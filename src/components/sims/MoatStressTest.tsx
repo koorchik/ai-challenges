@@ -56,10 +56,10 @@ export function MoatStressTest() {
     <>
       <h2>Stress-тест рову: що залишиться, якщо завтра з'явиться 50 клонів</h2>
       <p className="lede">
-        Натисніть рови, які реально є <em>у вашому</em> продукті. Тест — у нижній панелі.
+        Натисніть рови, які реально є <em>у вашому</em> продукті.
       </p>
 
-      <ChartSvg height={210} style={{ maxHeight: '5em' }}>
+      <ChartSvg height={210} style={{ maxHeight: '4em' }}>
         {/* Score bar */}
         <text x={barX} y={barY - 14} fill="rgba(255,255,255,0.7)" fontSize={12} fontWeight={600}>
           індекс захисту від клонування
@@ -124,7 +124,7 @@ export function MoatStressTest() {
 
       <div
         className="preset-row"
-        style={{ maxWidth: 1100, margin: '0.3em auto', justifyContent: 'center' }}
+        style={{ maxWidth: 1100, margin: '0.2em auto', justifyContent: 'center' }}
       >
         {MOATS.map((m) => (
           <button
@@ -140,8 +140,8 @@ export function MoatStressTest() {
       </div>
 
       <div
-        className="kpi-row"
-        style={{ maxWidth: 1000, margin: '0.4em auto 0', gap: '0.5em' }}
+        className="kpi-row sim-controls-single"
+        style={{ maxWidth: 1000, margin: '0.2em auto 0', gap: '0.5em', display: 'flex' }}
       >
         <KPI value={`${score}`} label="clone-resistance" color={scoreColor} />
         <KPI
@@ -158,7 +158,7 @@ export function MoatStressTest() {
           borderLeftColor: scoreColor,
           background: `${scoreColor}1a`,
           maxWidth: 1000,
-          margin: '0.3em auto',
+          margin: '0.2em auto',
         }}
       >
         <strong style={{ color: scoreColor }}>{verdict.title}</strong> {verdict.body}

@@ -95,12 +95,9 @@ export function PipelineDemographer() {
   return (
     <>
       <h2>Pipeline-демограф: де ваші senior-и через {horizon} років</h2>
-      <p className="lede">
-        Cohort-модель IT-ринку. Кожен невзятий junior — це відсутній senior через 5–7 років.
-      </p>
 
       <div className="sim-grid">
-        <ChartSvg height={400} style={{ maxHeight: '9.5em' }}>
+        <ChartSvg height={400} style={{ maxHeight: '8em' }}>
           <Axis
             scale={xScale}
             orientation="bottom"
@@ -231,7 +228,7 @@ export function PipelineDemographer() {
           format={(v) => `${v}`}
         />
         <Slider
-          label="промоція J→M, M→S"
+          label="промоція"
           min={0}
           max={30}
           step={0.5}
@@ -259,7 +256,7 @@ export function PipelineDemographer() {
         />
       </div>
 
-      <div style={{ marginTop: '0.4em' }}>
+      <div style={{ marginTop: '0.1em' }}>
         <Presets<Scenario>
           label="сценарій"
           value={
@@ -281,12 +278,11 @@ export function PipelineDemographer() {
       </div>
 
       <p className="slide-footnote">
-        Cohort-модель. Стартові ваги (J=30, M=60, S=100) і коефіцієнти — оцінка автора;
-        індекс відносно 2026. Baseline 50 наймів/рік — реконструкція рівня 2022 за{' '}
+        Cohort-модель; стартові ваги (J=30, M=60, S=100) — оцінка автора. Baseline 50 наймів/рік —{' '}
         <a href="https://djinni.co/salaries/analytics/" target="_blank" rel="noreferrer">
           Djinni / DOU analytics
         </a>{' '}
-        (−62% junior-вакансій 2022→2026). Проєкція стилізована, не прогноз для конкретного ринку.
+        (−62% junior-вакансій 2022→2026).
       </p>
     </>
   );
