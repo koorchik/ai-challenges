@@ -14,7 +14,7 @@ const levels: Level[] = [
 
 const FILL = '#a5b4fc';
 
-export function Slide13() {
+export function Slide21() {
   const py = { left: 80, top: 50, width: 380, height: 320 };
   const cx = py.left + py.width / 2;
   const step = py.height / levels.length;

@@ -16,7 +16,7 @@ const exports = [
   { year: 2024, value: 6.45 },
 ];
 
-export function Slide43() {
+export function Slide56() {
   const margin = { top: 60, right: 130, bottom: 60, left: 70 };
   const innerW = CHART_W - margin.left - margin.right;
   const innerH = 320;

@@ -56,7 +56,7 @@ const pitfalls: Pitfall[] = [
   },
 ];
 
-export function Slide40() {
+export function Slide53() {
   return (
     <>
       <h2>Часті пастки 2024–2026</h2>

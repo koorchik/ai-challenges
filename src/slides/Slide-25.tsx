@@ -1,5 +1,5 @@
 // 25 · Студенти · Engineer's Playbook — де людина ще краща
-export function Slide15() {
+export function Slide25() {
   return (
     <>
       <h2>5 точок, де людина системно випереджає ШІ</h2>

@@ -1,5 +1,5 @@
 // 30 · Студенти · Практичний план
-export function Slide27() {
+export function Slide30() {
   return (
     <>
       <h2>Практичний план для студента — 6 місяців</h2>

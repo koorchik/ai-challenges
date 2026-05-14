@@ -1,5 +1,5 @@
 // 54 · Бізнеси · 90-day playbook
-export function Slide41() {
+export function Slide54() {
   return (
     <>
       <h2>90-денний план для бізнесу</h2>

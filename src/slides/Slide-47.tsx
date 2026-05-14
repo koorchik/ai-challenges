@@ -1,5 +1,5 @@
 // 47 · Бізнеси · The Wrapper Trap
-export function Slide37() {
+export function Slide47() {
   return (
     <>
       <h2>The Wrapper Trap</h2>

@@ -1,5 +1,5 @@
 // 48 · Бізнеси · Де живуть рови у 2026
-export function Slide11() {
+export function Slide48() {
   return (
     <>
       <h2>Де <em>насправді</em> живуть рови у 2026</h2>

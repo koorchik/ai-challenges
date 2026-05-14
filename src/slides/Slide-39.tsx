@@ -1,6 +1,6 @@
 // 39 · Розробники · Порівняльна перевага + Acemoglu
 import { RicardoSim } from '../components/sims/RicardoSim';
 
-export function Slide14() {
+export function Slide39() {
   return <RicardoSim />;
 }

@@ -1,7 +1,7 @@
 // 31 · Розробники · Header
 import { SectionHeader } from '../components/SectionHeader';
 
-export function Slide28() {
+export function Slide31() {
   return (
     <SectionHeader
       title="Розробники"

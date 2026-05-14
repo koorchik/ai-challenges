@@ -1,5 +1,5 @@
 // 58 · Україна · Можливості
-export function Slide45() {
+export function Slide58() {
   return (
     <>
       <h2>Де Україна <em>дійсно</em> має перевагу у 2026</h2>

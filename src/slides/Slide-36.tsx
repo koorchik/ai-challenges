@@ -22,7 +22,7 @@ const personas = [
   { exp: 14, gain: 9, label: 'ти, якщо senior', color: '#fda4ae', desc: '~+10% або −19% на реальних кодбейсах (METR)' },
 ];
 
-export function Slide29() {
+export function Slide36() {
   const margin = { top: 60, right: 250, bottom: 60, left: 70 };
   const innerW = CHART_W - margin.left - margin.right;
   const innerH = 340;

@@ -1,5 +1,5 @@
 // 59 · Україна · Освіта
-export function Slide46() {
+export function Slide59() {
   return (
     <>
       <h2>Освіта: що треба міняти просто зараз</h2>

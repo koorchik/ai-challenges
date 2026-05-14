@@ -1,5 +1,5 @@
 // 17 · Загальні ідеї · AI варто знати. Користуєтесь чи ні
-export function Slide16() {
+export function Slide17() {
   return (
     <div className="slide-body wide">
       <h2>AI варто знати. Користуєтесь чи ні</h2>

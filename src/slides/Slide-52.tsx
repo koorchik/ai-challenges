@@ -1,5 +1,5 @@
 // 52 · Бізнеси · Pipeline наступного покоління
-export function Slide37() {
+export function Slide52() {
   return (
     <>
       <h2>Pipeline наступного покоління</h2>

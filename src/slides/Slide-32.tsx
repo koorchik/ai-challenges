@@ -63,7 +63,7 @@ function StackedBar({
   );
 }
 
-export function Slide07() {
+export function Slide32() {
   return (
     <>
       <h2>Куди зсувається час</h2>

@@ -30,7 +30,7 @@ const QUADRANT_META: Record<Quadrant, {
   'dont-trust': { accent: 'red',    badge: '✗ Don\'t trust',   reasoning: 'Високі ставки + автономія = недопустимо без людини в колі. Закон, медицина, гроші, фронт.' },
 };
 
-export function Slide20() {
+export function Slide44() {
   const chipsByQuadrant = (q: Quadrant) => chips.filter((c) => c.quadrant === q);
 
   return (

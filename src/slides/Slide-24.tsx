@@ -1,5 +1,5 @@
 // 24 · Студенти · Google: ШІ-помічник на самій співбесіді
-export function Slide16() {
+export function Slide24() {
   return (
     <>
       <h2>Google: «AI fluency» — окрема оцінка на співбесіді SWE</h2>

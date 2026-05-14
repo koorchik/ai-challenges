@@ -1,5 +1,5 @@
 // 42 · Розробники · 90-day playbook
-export function Slide34() {
+export function Slide42() {
   return (
     <>
       <h2>90-денний план для розробника</h2>

@@ -1,5 +1,5 @@
 // 27 · Студенти · Що компонується, а що знецінюється
-export function Slide23() {
+export function Slide27() {
   return (
     <>
       <h2>Що залишиться важливим — а що ні</h2>

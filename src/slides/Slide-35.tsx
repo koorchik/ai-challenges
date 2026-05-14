@@ -62,7 +62,7 @@ function BarPanel({
   );
 }
 
-export function Slide16() {
+export function Slide35() {
   return (
     <>
       <h2>ШІ — це <em>skill-leveling</em>, а не skill-bias</h2>

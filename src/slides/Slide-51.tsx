@@ -31,7 +31,7 @@ const ai: Curve[] = [
   { years: 4, productivity: -0.04 },
 ];
 
-export function Slide18() {
+export function Slide51() {
   const margin = { top: 60, right: 200, bottom: 60, left: 80 };
   const innerW = CHART_W - margin.left - margin.right;
   const innerH = 360;

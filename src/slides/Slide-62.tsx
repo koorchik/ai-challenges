@@ -12,7 +12,7 @@ type Card = {
   meta: string;
 };
 
-export function Slide49() {
+export function Slide62() {
   const [doneStudent, setDoneStudent] = useStorageBool('tomorrow:student');
   const [doneDev, setDoneDev] = useStorageBool('tomorrow:dev');
   const [doneBiz, setDoneBiz] = useStorageBool('tomorrow:biz');

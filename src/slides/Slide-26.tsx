@@ -1,5 +1,5 @@
 // 26 · Студенти · Pet-проєкти у часи ШІ
-export function Slide25() {
+export function Slide26() {
   return (
     <>
       <h2>Pet-проєкти: 1 глибоко &gt; 5 поверхово</h2>

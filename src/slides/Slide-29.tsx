@@ -1,5 +1,5 @@
 // 29 · Студенти · Антипатерни
-export function Slide26() {
+export function Slide29() {
   return (
     <>
       <h2>Що <em>не</em> робити у 2026</h2>

@@ -1,5 +1,5 @@
 // 14 · Загальні ідеї · Verifiability
-export function Slide13() {
+export function Slide14() {
   return (
     <div className="slide-body wide">
       <h2>Verifiability — і ШІ стає solver</h2>

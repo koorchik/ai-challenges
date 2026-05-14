@@ -1,5 +1,5 @@
 // 63 · Закриття · Дякую · Q&A · джерела
-export function Slide61() {
+export function Slide63() {
   return (
     <div className="slide-body wide">
       <h1 style={{ marginBottom: '0.1em' }}>Дякую</h1>

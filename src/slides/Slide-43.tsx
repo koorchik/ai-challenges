@@ -1,7 +1,7 @@
 // 43 · Бізнеси · Header
 import { SectionHeader } from '../components/SectionHeader';
 
-export function Slide35() {
+export function Slide43() {
   return (
     <SectionHeader
       title="Бізнеси"

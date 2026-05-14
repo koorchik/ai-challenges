@@ -1,7 +1,7 @@
 // 18 · Студенти · Header
 import { SectionHeader } from '../components/SectionHeader';
 
-export function Slide21() {
+export function Slide18() {
   return (
     <SectionHeader
       title="Студенти"

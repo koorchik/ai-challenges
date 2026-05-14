@@ -1,5 +1,5 @@
 // 20 · Студенти · Перейменування junior → tech-lead
-export function Slide12() {
+export function Slide20() {
   return (
     <>
       <h2>Junior не зник. Його перейменували на tech-lead</h2>

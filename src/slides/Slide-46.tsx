@@ -17,7 +17,7 @@ const data: Point[] = [
   { year: 2026, cost: 600, label: 'агенти "ship-a-feature"' },
 ];
 
-export function Slide10() {
+export function Slide46() {
   const margin = { top: 50, right: 200, bottom: 60, left: 90 };
   const innerW = CHART_W - margin.left - margin.right;
   const innerH = 380;

@@ -1,5 +1,5 @@
 // 28 · Студенти · Чого вчитися у 2026
-export function Slide24() {
+export function Slide28() {
   return (
     <>
       <h2>Чого вчитися у 2026</h2>

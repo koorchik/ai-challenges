@@ -1,5 +1,5 @@
 // 15 · Загальні ідеї · LLM-as-judge
-export function Slide14() {
+export function Slide15() {
   return (
     <div className="slide-body wide">
       <h2>А якщо verifiability важка? — постав інших як суддів</h2>

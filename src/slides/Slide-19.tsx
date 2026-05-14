@@ -27,7 +27,7 @@ const seniorIndex: { date: number; value: number }[] = [
   { date: 2026.25, value: 95 },
 ];
 
-export function Slide22() {
+export function Slide19() {
   const margin = { top: 50, right: 200, bottom: 50, left: 70 };
   const innerW = CHART_W - margin.left - margin.right;
   const innerH = 320;

@@ -1,5 +1,5 @@
 // 61 · Україна · Політичні важелі
-export function Slide48() {
+export function Slide61() {
   return (
     <>
       <h2>Що держава може <em>реально</em> змінити за 12 місяців</h2>

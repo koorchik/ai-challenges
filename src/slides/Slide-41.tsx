@@ -1,5 +1,5 @@
 // 41 · Розробники · Калібрація на собі
-export function Slide33() {
+export function Slide41() {
   return (
     <>
       <h2>Як виміряти <em>власний</em> ШІ-приріст</h2>

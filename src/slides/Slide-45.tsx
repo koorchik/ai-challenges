@@ -17,7 +17,7 @@ const costs: Cost[] = [
 
 type Year = 2023 | 2026;
 
-export function Slide36() {
+export function Slide45() {
   const [year, setYear] = useState<Year>(2023);
   const [auto, setAuto] = useState(false);
   const { ref, inView } = useInView<HTMLDivElement>(0.3);

@@ -1,5 +1,5 @@
 // 16 · Загальні ідеї · Де живе людська цінність?
-export function Slide15() {
+export function Slide16() {
   const humanFill = 'rgba(120, 180, 220, 0.22)';
   const humanStroke = '#7ab4dc';
   const humanLabel = '#9bd4ff';

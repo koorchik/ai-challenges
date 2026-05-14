@@ -1,5 +1,5 @@
 // 34 · Розробники · Чому досвід усе ще виграє
-export function Slide08() {
+export function Slide34() {
   return (
     <>
       <h2>Чому досвід усе ще виграє</h2>

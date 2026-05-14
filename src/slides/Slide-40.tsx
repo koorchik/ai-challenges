@@ -15,7 +15,7 @@ const steps = [
 const FLOW_PATH = 'M 80 220 L 280 220 L 480 220 L 680 220 L 880 220 Q 480 380 80 220';
 const LOOP_DUR = '9s';
 
-export function Slide31() {
+export function Slide40() {
   const { ref, inView } = useInView<HTMLDivElement>(0.25);
 
   return (

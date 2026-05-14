@@ -142,7 +142,7 @@ function EdgeLine({ edge, isActive }: { edge: Edge; isActive: boolean }) {
   );
 }
 
-export function Slide39() {
+export function Slide49() {
   const [active, setActive] = useState<Example | null>(null);
   const [step, setStep] = useState(0);
 

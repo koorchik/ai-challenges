@@ -1,7 +1,7 @@
 // 55 · Україна · Header
 import { SectionHeader } from '../components/SectionHeader';
 
-export function Slide42() {
+export function Slide55() {
   return (
     <SectionHeader
       title="Україна"
