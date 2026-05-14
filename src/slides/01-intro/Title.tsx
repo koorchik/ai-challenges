@@ -8,7 +8,7 @@ export default function Title() {
           <span style={{ color: '#facc15' }}>в часи ШІ?</span>
         </h1>
         <p style={{ fontSize: '0.7em', opacity: 0.7, maxWidth: 760, margin: '0.6em auto' }}>
-          Чесний погляд на дані, економіку та практичні кроки —
+          Практичні кроки —
           для студента, розробника, бізнесу й держави.
         </p>
       </div>

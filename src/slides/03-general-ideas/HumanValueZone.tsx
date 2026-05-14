@@ -7,14 +7,14 @@ export default function HumanValueZone() {
   const aiLabel = '#ffd770';
 
   const cellStyle = { textAlign: 'center' as const };
-  const captionStyle = { margin: '0.3em 0 0' };
+  const captionStyle = { margin: '0.3em 0 0', lineHeight: 1.3 };
   const svgStyle = { width: '100%', maxHeight: '8em', display: 'block' };
 
   return (
-    <>
-      <h2>Де живе людська цінність? Ми не знаємо</h2>
+    <div className="slide-body wide">
+      <h2>Де межа людської цінності? Ми не знаємо</h2>
 
-      <div className="four-col wide" style={{ marginTop: '0.5em', alignItems: 'start', gap: '0.9em' }}>
+      <div className="four-col wide" style={{ marginTop: '0.8em', alignItems: 'start', gap: '0.9em' }}>
         <div style={cellStyle}>
           <svg viewBox="0 0 200 130" style={svgStyle}>
             <circle cx="100" cy="68" r="55" fill={humanFill} stroke={humanStroke} strokeWidth="1.5" />
@@ -23,7 +23,7 @@ export default function HumanValueZone() {
             <text x="150" y="72" fontSize="10" fill={aiLabel} textAnchor="middle">AI</text>
           </svg>
           <p className="text-sm" style={captionStyle}>
-            <strong>Помічник.</strong> AI бере вузький зріз.
+            <strong>AI-помічник.</strong> ШІ забирає лише рутину.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ export default function HumanValueZone() {
             <text x="148" y="72" fontSize="10" fill={humanLabel} textAnchor="middle">Людина</text>
           </svg>
           <p className="text-sm" style={captionStyle}>
-            <strong>AI робить майже все.</strong> Тонкий шар людини згори.
+            <strong>Людина як фільтр.</strong> ШІ генерує, людина лише валідує.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export default function HumanValueZone() {
             <text x="152" y="22" fontSize="11" fill={aiLabel} textAnchor="middle">AI</text>
           </svg>
           <p className="text-sm" style={captionStyle}>
-            <strong>Аугментація.</strong> Великий спільний центр + свої краї.
+            <strong>Аугментація.</strong> Глибока інтеграція (Copilot).
           </p>
         </div>
 
@@ -58,20 +58,19 @@ export default function HumanValueZone() {
             <text x="100" y="82" fontSize="40" fill="#ffffff" textAnchor="middle" fontWeight="bold" opacity="0.75">?</text>
           </svg>
           <p className="text-sm" style={captionStyle}>
-            <strong>Jagged frontier.</strong> Невідомо. Рухається щомісяця.
+            <strong>Jagged frontier.</strong> Зубчаста межа. Рухається щомісяця.
           </p>
         </div>
       </div>
 
-      <div className="slide-footnote" style={{ marginTop: '0.6em' }}>
-        Dell'Acqua, Mollick et al. (Harvard/BCG 2023): 758 консультантів із GPT-4.
-        <ul style={{ paddingLeft: '1em', margin: '0.2em 0' }}>
-          <li>В зоні AI: <strong>+40%</strong> до якості.</li>
-          <li>Поза зоною: <strong>−19 п.п.</strong> правильних відповідей.</li>
+      <div className="slide-footnote callout callout-blue" style={{ marginTop: '1.2em', textAlign: 'left' }}>
+        Дослідження Harvard/BCG (758 консультантів із GPT-4):
+        <ul style={{ paddingLeft: '1.2em', margin: '0.3em 0' }}>
+          <li>В межах компетенції AI: <strong>+40%</strong> до якості роботи.</li>
+          <li>Поза межею (де AI галюцинує): <strong>−19 п.п.</strong> правильних рішень, бо люди сліпо довіряють.</li>
         </ul>
-        Заздалегідь межу вгадати неможливо.{' '}
-        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321">papers.ssrn.com/abstract=4573321</a>
+        <em>Заздалегідь межу вгадати неможливо.</em>
       </div>
-    </>
+    </div>
   );
 }

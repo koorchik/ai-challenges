@@ -1,7 +1,7 @@
 export default function Verifiability() {
   return (
     <div className="slide-body wide">
-      <h2>Verifiability — і ШІ стає solver</h2>
+      <h2>«Software 2.0 easily automates what you can verify» — Karpathy</h2>
       <p className="lede" style={{ margin: 0 }}>
         Якщо є автоматична перевірка результату, агент ітерує скільки треба — як solver в Excel.
       </p>
@@ -24,9 +24,6 @@ export default function Verifiability() {
             <li>UX без user-тестів</li>
           </ul>
         </div>
-      </div>
-      <div className="callout">
-        «Software 2.0 easily automates what you can verify.» — Karpathy
       </div>
       <p className="slide-footnote">
         Andrej Karpathy, «Verifiability» (листопад 2025){' '}

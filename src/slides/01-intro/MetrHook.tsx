@@ -1,7 +1,7 @@
 export default function MetrHook() {
   return (
     <>
-      <h2>Питання залу</h2>
+      <h2>Вплив AI на продуктивність</h2>
       <p className="lede narrow">
         У 2025 році в дослідженні METR 16 досвідчених maintainer-ів виконали{' '}
         <strong>246 реальних задач</strong> на своїх власних великих репозиторіях —
@@ -17,7 +17,7 @@ export default function MetrHook() {
       </p>
 
       <p className="slide-footnote">
-        Becker, Rush, Barnes, Rein. <a href="https://metr.github.io/">METR, 2025</a>. n=16 maintainer-ів, 246 задач, реальні репозиторії.
+        Becker, Rush, Barnes, Rein. <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">METR, 2025</a>. n=16 maintainer-ів, 246 задач, реальні репозиторії.
       </p>
     </>
   );

@@ -1,9 +1,9 @@
 import { SectionHeader } from '../../components/SectionHeader';
 
-export default function Header() {
+export default function AiBubbleHeader() {
   return (
     <SectionHeader
-      title="Загальні концепції"
+      title="AI це бульбашка?"
     />
   );
 }

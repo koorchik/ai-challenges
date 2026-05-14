@@ -3,7 +3,7 @@ import tonyStark from '../../assets/tony-stark.jpg';
 export default function VibeVsAgentic() {
   return (
     <>
-      <h2>Vibe coding?</h2>
+      <h2>The greatest vibe coder?</h2>
       <div
         className="two-col wide"
         style={{ alignItems: 'center', gridTemplateColumns: 'auto 1fr', gap: '1.6em' }}
