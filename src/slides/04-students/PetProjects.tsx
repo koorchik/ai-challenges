@@ -1,50 +1,54 @@
 export default function PetProjects() {
   return (
-    <>
-      <h2>Pet-проєкти: 1 глибоко &gt; 5 поверхово</h2>
-      <p className="lede">
-        Раніше portfolio був списком ваших навичок. Тепер це доказ того, що ви <em>довели до кінця</em>{' '}
-        річ, яку інші використовують. ШІ скоротив дорогу від ідеї до прототипу. Поріг того, що
-        вважається «достатньо», піднявся.
+    <div className="slide-body wide">
+      <h2>Pet-проєкт 2026: Один працюючий продукт &gt; 5 мертвих репозиторіїв</h2>
+      <p className="lede" style={{ margin: 0 }}>
+        ШІ повністю знецінив написання базового коду — згенерувати MVP можна за вечір. Тому ваше портфоліо 
+        більше не доводить, що ви знаєте синтаксис. Воно має доводити вашу здатність <em>вивести продукт у продакшен (delivery)</em> та підтримувати його.
       </p>
 
-      <div className="two-col wide text-md">
-        <div data-accent="green">
-          <h3 className="accent">що показує смак та доведення до кінця</h3>
-          <ul className="checklist">
+      <div className="two-col wide text-md" style={{ marginTop: '1.5em', gap: '2em' }}>
+        <div data-accent="red">
+          <h3 className="accent">Red Flags (Що більше не вражає)</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
             <li>
-              <strong>Реальні користувачі</strong> (10, 100, 1000 — не нуль)
+              <strong>«Я написав це за вечір у Cursor»</strong> — без реальних користувачів це просто демо можливостей ШІ, а не вашого скіла.
             </li>
             <li>
-              <strong>Один сфокусований домен</strong>: ботанічний помічник, ETL для дрібного e-commerce
+              <strong>Тонкі обгортки над ChatGPT</strong> — ToDo-лісти чи чат-боти з нульовою доданою вартістю.
             </li>
             <li>
-              <strong>Метрики</strong>: latency p95, success rate, NPS — будь-що виміряне
+              <strong>Клони Twitter / Netflix / Uber</strong> — стандартна "жуйка" з туторіалів, яку ніхто не буде рев'ювити.
             </li>
             <li>
-              <strong>Чесний post-mortem</strong>: що не спрацювало, чому ви зупинилися
-            </li>
-            <li>
-              <strong>Production-розгортання</strong>: hosting, моніторинг, payments
+              <strong>Цвинтар з 20 репозиторіїв</strong> — де перший і останній коміт зроблені в один день.
             </li>
           </ul>
         </div>
-        <div data-accent="red">
-          <h3 className="accent">що більше не вражає</h3>
-          <ul className="checklist">
-            <li>Todo-list з GPT-API всередині</li>
-            <li>Ще одна обгортка для ChatGPT</li>
-            <li>«Я зробив це за вечір з Cursor» без користувачів</li>
-            <li>20 туторіальних репозиторіїв з README як код</li>
-            <li>Клон Twitter / Airbnb / Uber «для практики»</li>
+        <div data-accent="green">
+          <h3 className="accent">Green Flags (Що наймає на роботу)</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
+            <li>
+              <strong>Реальні користувачі:</strong> 10, 100 чи 1000 людей — головне, що ця метрика більша за нуль.
+            </li>
+            <li>
+              <strong>Вузький фокус:</strong> Вирішення дуже специфічної проблеми.
+            </li>
+            <li>
+              <strong>Production-ready:</strong> Налаштований CI/CD, моніторинг, метрики (latency p95), логування помилок.
+            </li>
+            <li>
+              <strong>Чесний Post-mortem:</strong> Розділ у README про те, що зламалося, де ШІ загалюцинував і як ви особисто це фіксили.
+            </li>
           </ul>
         </div>
       </div>
 
-      <p className="callout callout-green">
-        <strong>Тест трьох питань на ваш проєкт:</strong> (1) що він робить, що ніхто інший не робить?{' '}
-        (2) чим я можу довести, що це <em>працює</em>? (3) хто, конкретно, ним користується?
-      </p>
-    </>
+      <div className="callout callout-green" style={{ marginTop: '1.5em' }}>
+        <strong>Рев'ю вашого проєкту тепер не починається з читання коду.</strong> <br/>
+        Воно починається з питань інтерв'юера: (1) Яку реальну проблему це вирішує? (2) Хто цим користується прямо зараз? 
+        і (3) <em>Як ви дізнаєтеся, якщо база даних впаде о 3-й ночі?</em>
+      </div>
+    </div>
   );
 }

@@ -1,53 +1,54 @@
 export default function AiInInterviews() {
   return (
-    <>
-      <h2>Google: «AI fluency» — окрема оцінка на співбесіді SWE</h2>
-      <p className="lede">
-        Травень 2026, внутрішній документ Google (Business Insider). У другій половині року на
-        раунді <em>code comprehension</em> кандидатам дозволять користуватися Gemini — і{' '}
-        <strong>окремо оцінюватимуть prompt engineering та debugging із ШІ</strong>.
+    <div className="slide-body wide">
+      <h2>Google: «AI Fluency» стає офіційним критерієм на співбесіді</h2>
+      <p className="lede" style={{ margin: 0 }}>
+        Травень 2026, витік внутрішнього документа Google (Business Insider). У другій половині року на
+        раунді <em>Code Comprehension</em> кандидатам офіційно дозволять користуватися Gemini — і{' '}
+        <strong>окремо оцінюватимуть навички Prompt Engineering та Debugging у парі з ШІ</strong>.
       </p>
 
-      <div className="three-col wide text-md" style={{ marginTop: '0.4em' }}>
+      <div className="three-col wide text-md" style={{ marginTop: '1.5em', gap: '1em' }}>
         <div data-accent="green">
-          <h3 className="accent">кого</h3>
-          <ul className="checklist">
-            <li>early- та mid-career SWE</li>
-            <li>обрані команди в США (пілот)</li>
-            <li>далі — розширення на інші регіони</li>
+          <h3 className="accent">Кого тестують</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
+            <li>Early- та Mid-career SWE</li>
+            <li>Обрані команди в США (пілот)</li>
+            <li>Далі — масштабування на всі регіони</li>
           </ul>
         </div>
         <div data-accent="blue">
-          <h3 className="accent">на якому етапі</h3>
-          <ul className="checklist">
-            <li>раунд «code comprehension»</li>
-            <li>аналіз реального кодбейзу</li>
-            <li>пошук багів, performance, рефакторинг</li>
+          <h3 className="accent">Формат раунду</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
+            <li>Етап «Code Comprehension»</li>
+            <li>Аналіз реального великого кодбейзу</li>
+            <li>Пошук багів, performance, рефакторинг</li>
           </ul>
         </div>
         <div data-accent="yellow">
-          <h3 className="accent">що оцінюють окремо</h3>
-          <ul className="checklist">
-            <li><strong>AI fluency</strong></li>
-            <li>prompt engineering</li>
-            <li>debugging із ШІ</li>
-            <li>розуміння й уточнення згенерованого</li>
+          <h3 className="accent">Критерії оцінки</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
+            <li><strong>AI Fluency (вільне володіння)</strong></li>
+            <li>Ефективність prompt engineering</li>
+            <li>Здатність дебажити галюцинації моделі</li>
+            <li>Критичне осмислення згенерованого</li>
           </ul>
         </div>
       </div>
 
-      <p className="callout callout-green">
-        Pet-проєкт — це команда під твоїм керівництвом. Тепер і співбесіда — твоя перша демонстрація
-        як tech-lead. «AI fluency» — наймана навичка, не побічна.
-      </p>
+      <div className="callout callout-green" style={{ marginTop: '1.5em' }}>
+        <strong>«AI Fluency» — це тепер hard skill, без якого не наймають.</strong> Якщо ваш Pet-проєкт 
+        показує, що ви можете керувати AI-командою вдома, то співбесіда стає лайв-демонстрацією ваших 
+        навичок Tech Lead-а в бойових умовах.
+      </div>
 
-      <p className="slide-footnote">
+      <p className="slide-footnote" style={{ marginTop: '1.5em', lineHeight: 1.4 }}>
         Business Insider (травень 2026) — внутрішній документ Google, пілот допуску Gemini на раунді
-        code-comprehension. {' '}
+        code comprehension. {' '}
         <a href="https://www.businessinsider.com/google-job-interview-software-engineers-ai-assistant-coding-2026-5">
           businessinsider.com/google-job-interview-software-engineers-ai-assistant-coding-2026-5
         </a>
       </p>
-    </>
+    </div>
   );
 }

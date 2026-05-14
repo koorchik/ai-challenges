@@ -1,57 +1,54 @@
 export default function VirtualTeamTrainer() {
   return (
-    <>
-      <h2>Раніше для tech-lead-навичок треба була команда. Тепер — ні.</h2>
-      <p className="lede">
-        Парадокс старої системи: щоб тренувати техлід-навички, потрібна команда. А команду давали лише
-        після кількох років як engineer. Замкнене коло для студента. ШІ-агенти його розривають.
+    <div className="slide-body wide">
+      <h2>Раніше для Tech Lead навичок потрібна була команда. Тепер — ні.</h2>
+      <p className="lede" style={{ margin: 0 }}>
+        Парадокс старої системи: щоб тренувати лідерські навички, потрібна команда. А команду давали лише 
+        після років роботи як інженера. Замкнене коло для студента. ШІ-агенти назавжди його розірвали.
       </p>
 
-      <div className="two-col wide text-md">
+      <div className="two-col wide text-md" style={{ marginTop: '1.5em' }}>
         <div data-accent="red">
-          <h3 className="accent">раніше — без команди тренувати неможливо</h3>
-          <ul className="checklist">
+          <h3 className="accent">Раніше (замкнене коло)</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
             <li>
-              <strong>Code review</strong> — потрібен код колег
+              <strong>Code review:</strong> потрібен код колег, щоб його перевіряти.
             </li>
             <li>
-              <strong>Архітектурні рішення для інших</strong> — потрібна команда
+              <strong>Архітектура:</strong> потрібен реальний проєкт і розробники-виконавці.
             </li>
             <li>
-              <strong>Делегування</strong> — потрібні підлеглі
+              <strong>Делегування:</strong> потрібні молодші інженери.
             </li>
             <li>
-              <strong>Тех-бачення</strong> — потрібен проєкт із командою
+              <strong>Висновок:</strong> Студент без команди = студент без управлінських тренувань.
             </li>
-            <li>Студент без команди = без тренувань</li>
           </ul>
         </div>
-        <div data-accent="yellow">
-          <h3 className="accent">зараз — твоя віртуальна команда</h3>
-          <ul className="checklist">
+        <div data-accent="green">
+          <h3 className="accent">Зараз (твоя віртуальна команда)</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
             <li>
-              <strong>«Інженери»</strong>: Cursor / Claude Code / Codex / Cline
-            </li>
-            <li>Ти ставиш задачі, рев'юєш діфи, виправляєш архітектуру</li>
-            <li>
-              <strong>rules-файли</strong> (CLAUDE.md, .cursorrules) — твій team onboarding
+              <strong>Твої «молодші інженери»:</strong> Cursor, Claude Code, Codex, Cline.
             </li>
             <li>
-              <strong>Evals</strong> на твої правила — твій «1-на-1» з командою
+              <strong>Процес:</strong> Ти ставиш задачі, рев'юєш PR (діфи), виправляєш архітектуру.
             </li>
-            <li>Pet-проєкт = твій перший проєкт як техлід</li>
+            <li>
+              <strong>Team onboarding:</strong> Написання <code>.cursorrules</code> або <code>CLAUDE.md</code> для команди.
+            </li>
+            <li>
+              <strong>1-на-1 з командою:</strong> Написання Evals на твої правила для перевірки якості.
+            </li>
           </ul>
         </div>
       </div>
 
-      <p className="callout callout-green">
-        Pet-проєкт у 2026 — не «що я написав». Це «що моя команда зробила під моїм керівництвом».
-        Інтерв'юер питатиме саме про друге.
-      </p>
-
-      <p className="slide-footnote">
-        Peter Steinberger — практика менеджменту AI-агентів як аналог tech-lead-фанауту.
-      </p>
-    </>
+      <div className="callout callout-green" style={{ marginTop: '1.5em' }}>
+        <strong>Pet-проєкт у 2026 — це не «подивіться, який код я написав».</strong> <br/>
+        Це «подивіться, яку систему зробила моя команда агентів під моїм архітектурним наглядом». 
+        Інтерв'юер питатиме саме про друге: як ви розв'язували конфлікти, ставили рамки і проводили рев'ю.
+      </div>
+    </div>
   );
 }

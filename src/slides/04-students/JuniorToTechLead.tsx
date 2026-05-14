@@ -1,45 +1,40 @@
 export default function JuniorToTechLead() {
   return (
-    <>
-      <h2>Junior не зник. Його перейменували на tech-lead</h2>
-      <p className="lede">
-        Падіння junior-вакансій має одне пояснення: те, що раніше робив junior — синтаксис, бойлерплейт,
-        implement-from-spec — закриває ШІ. Те, що раніше робив tech-lead, стало мінімумом для входу.
+    <div className="slide-body wide">
+      <h2>Junior не зник. Його перейменували на Tech Lead</h2>
+      <p className="lede" style={{ margin: 0 }}>
+        Те, що раніше було роботою джуна (синтаксис, бойлерплейт, код за ТЗ), тепер закриває ШІ. 
+        Те, що раніше робив Tech Lead, стало базовим мінімумом для входу в професію.
       </p>
 
-      <div className="two-col wide text-md">
+      <div className="two-col wide text-md" style={{ marginTop: '1.5em' }}>
         <div data-accent="red">
-          <h3 className="accent">старий шлях (зник)</h3>
-          <ul className="checklist">
+          <h3 className="accent">Старий шлях (зник)</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
             <li>
-              <strong>junior dev → middle dev → senior dev</strong>
+              <strong>Junior → Middle → Senior Dev</strong>
             </li>
-            <li>День 1: пиши код за специфікацією</li>
-            <li>Скіли: синтаксис, фреймворк, типові патерни</li>
-            <li>Команда — нагорода за 3+ роки писання коду</li>
+            <li><strong>Фокус:</strong> Написання коду за готовою специфікацією.</li>
+            <li><strong>Навички:</strong> Знання синтаксису, фреймворків, типових патернів.</li>
+            <li><strong>Управління:</strong> Отримуєш команду (або право приймати рішення) лише через 3-5 років.</li>
           </ul>
         </div>
         <div data-accent="green">
-          <h3 className="accent">новий шлях</h3>
-          <ul className="checklist">
+          <h3 className="accent">Новий шлях (реальність)</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
             <li>
-              <strong>junior tech-lead → mid tech-lead → senior tech-lead</strong>
+              <strong>Junior Tech Lead → Middle → Senior</strong>
             </li>
-            <li>День 1: рев'ю ШІ-коду, архітектура, trade-offs</li>
-            <li>Скіли: бачення, зв'язок продукт↔код, формування правил</li>
-            <li>«Команда» — твої ШІ-агенти від першого дня</li>
+            <li><strong>Фокус:</strong> Рев'ю ШІ-коду, архітектурні рішення, компроміси (trade-offs).</li>
+            <li><strong>Навички:</strong> Продуктове бачення, системний дизайн, дебагінг згенерованого хаосу.</li>
+            <li><strong>Управління:</strong> Ти керуєш "командою" ШІ-агентів починаючи з першого дня.</li>
           </ul>
         </div>
       </div>
 
-      <p className="callout callout-yellow">
-        Старі навички не зникли — вони стали precondition-ом, не диференціатором.
-      </p>
-
-      <p className="slide-footnote">
-        Peter Steinberger — менеджмент AI-агентів читається як tech-lead-фанаут; Turskyi (2026),
-        «AI-Integrated Bloom's Taxonomy».
-      </p>
-    </>
+      <div className="callout callout-yellow" style={{ marginTop: '1.5em' }}>
+        <strong>Вміння писати код нікуди не зникло.</strong> Але з унікальної переваги воно перетворилося на гігієнічний мінімум (precondition). Роботу отримує той, хто бачить систему цілком.
+      </div>
+    </div>
   );
 }
