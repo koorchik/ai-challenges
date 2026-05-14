@@ -63,14 +63,15 @@ export default function HumanValueZone() {
         </div>
       </div>
 
-      <p className="slide-footnote" style={{ marginTop: '0.6em' }}>
-        Dell'Acqua, Mollick et al., «Navigating the Jagged Technological Frontier» (Harvard/BCG 2023):
-        758 консультантів із GPT-4 vs без. У зоні AI якість зростала на +40%; поза зоною
-        правильних відповідей ставало на 19 п.п. менше. Заздалегідь по який бік межі задача — консультанти не вгадували.{' '}
+      <div className="slide-footnote" style={{ marginTop: '0.6em' }}>
+        Dell'Acqua, Mollick et al. (Harvard/BCG 2023): 758 консультантів із GPT-4.
+        <ul style={{ paddingLeft: '1em', margin: '0.2em 0' }}>
+          <li>В зоні AI: <strong>+40%</strong> до якості.</li>
+          <li>Поза зоною: <strong>−19 п.п.</strong> правильних відповідей.</li>
+        </ul>
+        Заздалегідь межу вгадати неможливо.{' '}
         <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321">papers.ssrn.com/abstract=4573321</a>
-        {' '}· E. Mollick, «Co-Intelligence» (2024){' '}
-        <a href="https://www.oneusefulthing.org/">oneusefulthing.org</a>
-      </p>
+      </div>
     </>
   );
 }

@@ -17,7 +17,7 @@ export default function MetrHook() {
       </p>
 
       <p className="slide-footnote">
-        Becker, Rush, Barnes, Rein. METR, 2025. n=16 maintainer-ів, 246 задач, реальні репозиторії.
+        Becker, Rush, Barnes, Rein. <a href="https://metr.github.io/">METR, 2025</a>. n=16 maintainer-ів, 246 задач, реальні репозиторії.
       </p>
     </>
   );

@@ -1,5 +1,6 @@
 import Header from './Header';
 import TimeShift from './TimeShift';
+import AmdahlClassic from './AmdahlClassic';
 import AmdahlForAi from './AmdahlForAi';
 import WhyExperienceWins from './WhyExperienceWins';
 import SkillLeveling from './SkillLeveling';
@@ -14,6 +15,7 @@ import Playbook90Day from './Playbook90Day';
 export const slides = [
   Header,
   TimeShift,
+  AmdahlClassic,
   AmdahlForAi,
   WhyExperienceWins,
   SkillLeveling,

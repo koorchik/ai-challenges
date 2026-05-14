@@ -93,9 +93,8 @@ export default function SkillLeveling() {
       </p>
 
       <p className="slide-footnote">
-        Brynjolfsson, Li, Raymond «Generative AI at Work» (NBER w31161, 2023): +14% у середньому,
-        +34% у новачків, ~0 у топ-когорти. Cui, Demirer, Jaffe, Musolff, Peng, Salz «Effects of
-        Generative AI on High Skilled Work» (MS/MIT, 2024 → Management Science 2026): +26% у
+        Brynjolfsson, Li, Raymond <a href="https://www.nber.org/papers/w31161">«Generative AI at Work» (NBER w31161, 2023)</a>: +14% у середньому,
+        +34% у новачків, ~0 у топ-когорти. Cui, Demirer, Jaffe, Musolff, Peng, Salz <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321">«Effects of Generative AI on High Skilled Work» (MS/MIT, 2024)</a>: +26% у
         середньому, ефект сильніший у менш досвідчених. Розподіл по бакетах ілюстративний.
       </p>
     </>

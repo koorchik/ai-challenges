@@ -28,7 +28,11 @@ export default function NextGenPipeline() {
       </div>
 
       <p className="callout callout-yellow">
-        Це не CSR — це хеджування проти власної інфляції талантів у 2030.
+        Це пряме хеджування проти власної інфляції талантів у 2030, а не просто CSR.
+      </p>
+
+      <p className="slide-footnote">
+        Дані про −62% junior-вакансій: <a href="https://djinni.co/salaries/analytics/">Djinni / DOU analytics 2024</a>.
       </p>
     </>
   );

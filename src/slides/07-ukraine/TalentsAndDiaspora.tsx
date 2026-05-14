@@ -14,7 +14,7 @@ export default function TalentsAndDiaspora() {
         </li>
         <li>
           <strong>Діаспора в AI-компаніях.</strong> Brain-trust програма: 2–3 щорічні зустрічі в Києві,
-          mentorship, доступ до даних. Не «повертайтеся», а «допомагайте на дистанції».
+          mentorship, доступ до даних. Допомога на дистанції замість закликів повертатися.
         </li>
         <li>
           <strong>Знання, не люди.</strong> Open-source, інвестиції в українські стартапи, дошки директорів.
@@ -34,7 +34,7 @@ export default function TalentsAndDiaspora() {
       </p>
 
       <p className="slide-footnote">
-        Дані: IT Ukraine Association 2023–2024; ITC.ua «48% IT-фахівців планують емігрувати» 2025;
+        Дані: IT Ukraine Association 2023–2024; <a href="https://itc.ua/ua/novini/48-ukrayinskyh-ajtivtsiv-rozglyadayut-emigratsiyu/">ITC.ua «48% IT-фахівців планують емігрувати» 2025</a>;
         DOU developer census.
       </p>
     </>

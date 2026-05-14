@@ -92,9 +92,9 @@ export default function TimeShift() {
       </p>
 
       <p className="slide-footnote">
-        Ілюстративний розподіл — оцінка автора за даними команд 2025–2026. Напрямок підтверджують
-        DORA 2024 (75% розробників відчували приріст, throughput команди −1.5%) і GitClear / Stack
-        Overflow 2024–25; точні відсотки не є виміряними.
+        Ілюстративний розподіл — оцінка автора за даними команд 2025–2026. Напрямок підтверджують{' '}
+        <a href="https://dora.dev/publications/2024-accelerate-state-of-devops/">DORA 2024</a> (75% розробників відчували приріст, throughput команди −1.5%) і{' '}
+        <a href="https://gitclear.com/coding_on_copilot_data_shows_ais_downward_pressure_on_code_quality">GitClear (2024)</a>; точні відсотки не є виміряними.
       </p>
     </>
   );

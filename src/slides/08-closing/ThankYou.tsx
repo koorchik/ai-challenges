@@ -24,7 +24,7 @@ export default function ThankYou() {
           <ul className="checklist" style={{ lineHeight: 1.3, fontSize: '0.8em' }}>
             <li>Bloom (1956); Anderson &amp; Krathwohl (2001) — таксономія</li>
             <li>Karpathy «Verifiability» (2025) — verifiability + agentic</li>
-            <li>Becker et al. «METR 2025» — −19% productivity</li>
+            <li><a href="https://metr.github.io/">Becker et al. «METR 2025»</a> — −19% productivity</li>
             <li>Cui, Demirer et al. (MS/MIT 2024) — skill-leveling</li>
             <li>Brynjolfsson, Li, Raymond (NBER 2023) — Generative AI at Work</li>
             <li>Brynjolfsson, Rock, Syverson (NBER 2018) — J-Curve</li>
