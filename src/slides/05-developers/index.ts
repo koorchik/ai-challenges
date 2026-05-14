@@ -3,6 +3,7 @@ import TimeShift from './TimeShift';
 import AmdahlClassic from './AmdahlClassic';
 import AmdahlForAi from './AmdahlForAi';
 import WhyExperienceWins from './WhyExperienceWins';
+import VerificationBottleneck from './VerificationBottleneck';
 import SkillLeveling from './SkillLeveling';
 import CuiCurve from './CuiCurve';
 import WhatCompounds from './WhatCompounds';
@@ -19,6 +20,7 @@ export const slides = [
   AmdahlClassic,
   AmdahlForAi,
   WhyExperienceWins,
+  VerificationBottleneck,
   SkillLeveling,
   CuiCurve,
   WhatCompounds,

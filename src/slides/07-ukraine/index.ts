@@ -5,6 +5,8 @@ import Opportunities from './Opportunities';
 import Education from './Education';
 import TalentsAndDiaspora from './TalentsAndDiaspora';
 import PolicyLevers from './PolicyLevers';
+import PolicyLeversSim from './PolicyLeversSim';
+import PersonalChoice from './PersonalChoice';
 
 export const slides = [
   Header,
@@ -14,4 +16,6 @@ export const slides = [
   Education,
   TalentsAndDiaspora,
   PolicyLevers,
+  PolicyLeversSim,
+  PersonalChoice,
 ];

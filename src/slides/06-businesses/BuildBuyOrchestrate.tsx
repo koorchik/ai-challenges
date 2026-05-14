@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ChartSvg } from '../../components/charts/Svg';
 
 type NodeId = 'q1' | 'q2' | 'build' | 'orchestrate' | 'buy' | 'build-narrow';
@@ -40,37 +40,51 @@ const edges: Edge[] = [
   { id: 'q2-build-narrow',  from: { x: 580, y: 230 }, to: { x: 690, y: 320 }, label: 'ні' },
 ];
 
-type Example = {
-  id: string;
-  label: string;
-  path: EdgeId[];
-  destination: NodeId;
-  rationale: string;
+type Q1 = 'yes' | 'combo' | 'no';
+type Q2 = 'yes' | 'no';
+
+type WalkerState = {
+  q1: Q1 | null;
+  q2: Q2 | null;
 };
 
-const examples: Example[] = [
-  {
-    id: 'support',
-    label: 'Чат-бот підтримки клієнтів',
-    path: ['q1-q2', 'q2-buy'],
-    destination: 'buy',
-    rationale: 'Для типового support-бота ринок зрілий: Intercom Fin, Zendesk AI, Ada. Купуйте — не будуйте, не орхеструйте.',
-  },
-  {
-    id: 'pricing',
-    label: 'Dynamic pricing для маркетплейсу',
-    path: ['q1-build'],
-    destination: 'build',
-    rationale: 'Pricing — це ваш моат: власні дані про конверсії + власна модель. Жоден SaaS не закриє те, що відрізняє вас від конкурента.',
-  },
-  {
-    id: 'assistant',
-    label: 'AI-помічник у вашому SaaS-кабінеті',
-    path: ['q1-orchestrate'],
-    destination: 'orchestrate',
-    rationale: 'Користувач платить за UX і знання про ВАШ продукт, а не за модель. Збирайте кілька моделей під власний workflow — без власного foundation model.',
-  },
-];
+type Outcome = {
+  destination: NodeId;
+  path: EdgeId[];
+  example: string;
+};
+
+function resolve(state: WalkerState): Outcome | null {
+  if (state.q1 === 'yes') {
+    return {
+      destination: 'build',
+      path: ['q1-build'],
+      example: 'Dynamic pricing для маркетплейсу — власні дані конверсій + власна модель.',
+    };
+  }
+  if (state.q1 === 'combo') {
+    return {
+      destination: 'orchestrate',
+      path: ['q1-orchestrate'],
+      example: 'AI-помічник у SaaS-кабінеті — кілька моделей під ваш UX, без foundation.',
+    };
+  }
+  if (state.q1 === 'no' && state.q2 === 'yes') {
+    return {
+      destination: 'buy',
+      path: ['q1-q2', 'q2-buy'],
+      example: 'Чат-бот підтримки — Intercom Fin / Zendesk AI / Ada вже зріли.',
+    };
+  }
+  if (state.q1 === 'no' && state.q2 === 'no') {
+    return {
+      destination: 'build-narrow',
+      path: ['q1-q2', 'q2-build-narrow'],
+      example: 'Спеціалізована аналітика для оборонки — ринку SaaS немає, будуйте під себе.',
+    };
+  }
+  return null;
+}
 
 function NodeBox({ n, isDestination }: { n: Node; isDestination: boolean }) {
   const lines = n.detail?.split('\n') ?? [];
@@ -142,44 +156,101 @@ function EdgeLine({ edge, isActive }: { edge: Edge; isActive: boolean }) {
 }
 
 export default function BuildBuyOrchestrate() {
-  const [active, setActive] = useState<Example | null>(null);
-  const [step, setStep] = useState(0);
+  const [state, setState] = useState<WalkerState>({ q1: null, q2: null });
+  const outcome = resolve(state);
+  const litEdges = new Set<EdgeId>(outcome?.path ?? []);
 
-  useEffect(() => {
-    if (!active) {
-      setStep(0);
-      return;
-    }
-    setStep(0);
-    const ids: number[] = [];
-    active.path.forEach((_, i) => {
-      ids.push(window.setTimeout(() => setStep(i + 1), (i + 1) * 550));
-    });
-    return () => ids.forEach((id) => window.clearTimeout(id));
-  }, [active]);
+  const reset = () => setState({ q1: null, q2: null });
+  const pickQ1 = (q1: Q1) =>
+    setState({ q1, q2: q1 === 'no' ? null : null });
+  const pickQ2 = (q2: Q2) => setState((s) => ({ ...s, q2 }));
 
-  const litEdges = new Set(active ? active.path.slice(0, step) : []);
-  const destinationLit = active != null && step >= active.path.length ? active.destination : null;
+  const showQ2 = state.q1 === 'no';
 
   return (
     <>
-      <h2>Build · Buy · Orchestrate — дерево рішень</h2>
+      <h2>Build · Buy · Orchestrate — пройдіть через дерево</h2>
       <p className="lede">
-        У 2026 «купи модель, побудуй обгортку» — це частий, але часто помилковий вибір. Натисніть один з
-        прикладів — і подивіться, куди він приведе.
+        Дайте дві відповіді — побачите рекомендацію + продукт-приклад, який пройшов цей самий шлях.
       </p>
 
-      <div className="tree-examples">
-        {examples.map((ex) => (
+      <div
+        className="tree-examples"
+        style={{ flexDirection: 'column', alignItems: 'center', gap: '0.25em' }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            gap: '0.4em',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+          }}
+        >
+          <span style={{ fontSize: '0.45em', opacity: 0.7, letterSpacing: '0.06em' }}>
+            Q1 · disambiguator?
+          </span>
           <button
-            key={ex.id}
             type="button"
-            className={`preset-btn ${active?.id === ex.id ? 'active' : ''}`}
-            onClick={() => setActive((cur) => (cur?.id === ex.id ? null : ex))}
+            className={`preset-btn ${state.q1 === 'yes' ? 'active' : ''}`}
+            onClick={() => pickQ1('yes')}
           >
-            {ex.label}
+            так — наш моат
           </button>
-        ))}
+          <button
+            type="button"
+            className={`preset-btn ${state.q1 === 'combo' ? 'active' : ''}`}
+            onClick={() => pickQ1('combo')}
+          >
+            у комбінаціях
+          </button>
+          <button
+            type="button"
+            className={`preset-btn ${state.q1 === 'no' ? 'active' : ''}`}
+            onClick={() => pickQ1('no')}
+          >
+            ні — стандартна задача
+          </button>
+        </div>
+        {showQ2 && (
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.4em',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+            }}
+          >
+            <span style={{ fontSize: '0.45em', opacity: 0.7, letterSpacing: '0.06em' }}>
+              Q2 · зріле SaaS-рішення?
+            </span>
+            <button
+              type="button"
+              className={`preset-btn ${state.q2 === 'yes' ? 'active' : ''}`}
+              onClick={() => pickQ2('yes')}
+            >
+              так — є SaaS
+            </button>
+            <button
+              type="button"
+              className={`preset-btn ${state.q2 === 'no' ? 'active' : ''}`}
+              onClick={() => pickQ2('no')}
+            >
+              ні — нішевий кейс
+            </button>
+          </div>
+        )}
+        {outcome && (
+          <button
+            type="button"
+            className="preset-btn"
+            onClick={reset}
+            style={{ marginTop: '0.2em' }}
+          >
+            ↺ скинути
+          </button>
+        )}
       </div>
 
       <ChartSvg height={420}>
@@ -187,14 +258,14 @@ export default function BuildBuyOrchestrate() {
           <EdgeLine key={e.id} edge={e} isActive={litEdges.has(e.id)} />
         ))}
         {nodes.map((n) => (
-          <NodeBox key={n.id} n={n} isDestination={destinationLit === n.id} />
+          <NodeBox key={n.id} n={n} isDestination={outcome?.destination === n.id} />
         ))}
       </ChartSvg>
 
-      <p className={`callout ${active ? 'callout-yellow' : ''}`}>
-        {active && step >= active.path.length ? (
+      <p className={`callout ${outcome ? 'callout-yellow' : ''}`}>
+        {outcome ? (
           <>
-            <strong>{active.label}:</strong> {active.rationale}
+            <strong>Приклад:</strong> {outcome.example}
           </>
         ) : (
           <>
