@@ -3,45 +3,43 @@ export default function DeveloperInertia() {
     <div className="slide-body wide">
       <h2>Розробники використовують AI як автодоповнення. Не як інженера.</h2>
       <p className="lede" style={{ margin: 0 }}>
-        84% уже користуються AI-інструментами. Те, як ми ними користуємось, відстає від того, на
-        що вони здатні.
+        <strong>84%</strong> уже користуються AI-інструментами. Але наші робочі звички катастрофічно відстають від реальних можливостей цих моделей.
       </p>
 
-      <div className="three-col wide text-md" style={{ marginTop: '0.4em', gap: '1em' }}>
+      <div className="three-col wide text-md" style={{ marginTop: '0.8em', gap: '1em' }}>
         <div data-accent="red">
-          <h3 className="accent">Користуються AI-tools</h3>
+          <h3 className="accent">Використовують AI-інструменти</h3>
           <p style={{ fontSize: '2em', fontWeight: 700, margin: '0.15em 0', lineHeight: 1 }}>84%</p>
           <p style={{ margin: 0 }}>
             Stack Overflow 2025. Але лише <strong>16.9%</strong> делегують їм написання коду —
-            більшість б'ють у search/research.
+            більшість обмежується звичайним пошуком (search / research).
           </p>
         </div>
         <div data-accent="red">
-          <h3 className="accent">Користуються AI-агентами щодня</h3>
+          <h3 className="accent">Користуються агентами щодня</h3>
           <p style={{ fontSize: '2em', fontWeight: 700, margin: '0.15em 0', lineHeight: 1 }}>
             14.1%
           </p>
           <p style={{ margin: 0 }}>
-            <strong>37.9%</strong> не планують зовсім. JetBrains: 1 з 8 Java-розробників
-            користується агентами в коді.
+            <strong>37.9%</strong> не планують зовсім. JetBrains: лише 1 з 8 Java-розробників
+            пускає AI-агентів безпосередньо у свій код.
           </p>
         </div>
         <div data-accent="red">
           <h3 className="accent">Повністю довіряють результату</h3>
           <p style={{ fontSize: '2em', fontWeight: 700, margin: '0.15em 0', lineHeight: 1 }}>3.1%</p>
           <p style={{ margin: 0 }}>
-            Довіра до точності AI впала з <strong>40% → 29%</strong> за рік.{' '}
-            <strong>45.7%</strong> активно не довіряють.
+            Довіра до точності AI впала з <strong>40% до 29%</strong> за рік.{' '}
+            <strong>45.7%</strong> активно не довіряють згенерованим рішенням.
           </p>
         </div>
       </div>
 
-      <div className="callout callout-yellow">
-        <strong>Використання росте. Довіра падає.</strong> Стеля — у нашій звичці, поки модель
-        біжить вперед.
+      <div className="callout callout-yellow" style={{ marginTop: '1.2em' }}>
+        <strong>Використання росте. Довіра падає.</strong> Ми вперлися в стелю власних звичок і страхів, у той час як моделі продовжують бігти вперед.
       </div>
 
-      <p className="slide-footnote">
+      <p className="slide-footnote" style={{ marginTop: '1.5em' }}>
         Stack Overflow Developer Survey 2025 — AI section ·{' '}
         <a href="https://survey.stackoverflow.co/2025/ai">survey.stackoverflow.co/2025/ai</a>
         {' · '}

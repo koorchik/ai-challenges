@@ -2,7 +2,6 @@ import Header from './Header';
 import JuniorJobs from './JuniorJobs';
 import JuniorToTechLead from './JuniorToTechLead';
 import BloomsClassic from './BloomsClassic';
-import BloomInversion from './BloomInversion';
 import BloomsInverted from './BloomsInverted';
 import ReasoningMuscle from './ReasoningMuscle';
 import VirtualTeamTrainer from './VirtualTeamTrainer';
@@ -21,7 +20,6 @@ export const slides = [
   JuniorJobs,
   JuniorToTechLead,
   BloomsClassic,
-  BloomInversion,
   BloomsInverted,
   ReasoningMuscle,
   VirtualTeamTrainer,
