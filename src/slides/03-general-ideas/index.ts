@@ -16,6 +16,7 @@ import AiBubbleHeader from './AiBubbleHeader';
 import AiBubble from './AiBubble';
 import JaggedFrontierExplained from './JaggedFrontierExplained';
 import HumanValueZoneHeader from './HumanValueZoneHeader';
+import InertiaLawHeader from './InertiaLawHeader';
 
 export const slides = [
   Header,
@@ -33,6 +34,7 @@ export const slides = [
   HumanValueZone,
   JaggedFrontierExplained,
   KnowAiRegardless,
+  InertiaLawHeader,
   InertiaLaw,
   CustomerInertia,
   DeveloperInertia,
