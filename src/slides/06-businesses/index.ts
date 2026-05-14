@@ -1,4 +1,5 @@
 import Header from './Header';
+import NaiveAIMandate from './NaiveAIMandate';
 import ServicesHeader from './ServicesHeader';
 import ServicesEconomics from './ServicesEconomics';
 import RegulatedVerticalsMoat from './RegulatedVerticalsMoat';
@@ -18,6 +19,7 @@ import Playbook90Day from './Playbook90Day';
 
 export const slides = [
   Header,
+  NaiveAIMandate,
   ServicesHeader,
   ServicesEconomics,
   RegulatedVerticalsMoat,
