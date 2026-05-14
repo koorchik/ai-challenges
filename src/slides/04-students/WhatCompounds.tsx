@@ -1,67 +1,52 @@
 export default function WhatCompounds() {
   return (
-    <>
-      <h2>Що залишиться важливим — а що ні</h2>
-      <p className="lede">
-        Запитайте себе: цей навик ШІ <em>підсилить</em> чи <em>замінить</em>?
+    <div className="slide-body wide">
+      <h2>Період напіврозпаду навичок: що дійсно капіталізується</h2>
+      <p className="lede" style={{ margin: 0 }}>
+        Головне правило: запитайте себе, ця навичка дозволяє <em>керувати</em> ШІ, чи вона просто <em>конкурує</em> з ним?
       </p>
 
-      <div className="two-col wide text-md">
+      <div className="two-col wide text-md" style={{ marginTop: '1.5em', gap: '2em' }}>
         <div data-accent="green">
-          <h3 className="accent">компонується (інвестуй)</h3>
-          <ul className="checklist">
+          <h3 className="accent">Капіталізується (Інвестуйте)</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
             <li>
-              <strong>Фундаменти</strong>: алгоритми, системи, мережі, БД, конкуренція
+              <strong>Доменна експертиза:</strong> глибоке розуміння бізнесу (фінанси, медицина, логістика). ШІ не знає ваших клієнтів.
             </li>
             <li>
-              <strong>Читання чужого коду</strong> й чужих специфікацій
+              <strong>Інженерний смак:</strong> здатність відрізнити справді елегантне та безпечне рішення від «зручного для LLM».
             </li>
             <li>
-              <strong>Дебагінг між шарами</strong> — мережа ↔ застосунок ↔ БД
+              <strong>Фундаментальні абстракції:</strong> системний дизайн, мережі, бази даних, багатопоточність (concurrency).
             </li>
             <li>
-              <strong>Смак</strong>: відрізнити елегантне рішення від «згенерованого»
-            </li>
-            <li>
-              <strong>Домен</strong>: фінанси, медицина, оборонка, енергія
-            </li>
-            <li>
-              <strong>Evals і виміри</strong> — як знати, що ця версія краща за попередню
-            </li>
-            <li>
-              <strong>Комунікація</strong>, листи, наративи — обʼєм важить
+              <strong>Дебагінг між шарами:</strong> пошук складних аномалій на стику інфраструктури, бекенду та клієнта.
             </li>
           </ul>
         </div>
         <div data-accent="red">
-          <h3 className="accent">знецінюється (не інвестуй понад потребу)</h3>
-          <ul className="checklist">
+          <h3 className="accent">Знецінюється (Не марнуйте час)</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
             <li>
-              <strong>Запамʼятовування синтаксису</strong> та API напамʼять
+              <strong>Фотографічна пам'ять:</strong> зазубрювання синтаксису, параметрів API чи bash-команд.
             </li>
             <li>
-              <strong>Boilerplate</strong>: CRUD, форми, регекси
+              <strong>Boilerplate-рутина:</strong> механічне написання CRUD-операцій, базових форм чи регулярних виразів.
             </li>
             <li>
-              <strong>«Швидкий google»</strong> без перевірки
+              <strong>Знання фреймворків без бази:</strong> сліпе слідування моді без розуміння патернів, які ці фреймворки реалізують.
             </li>
             <li>
-              <strong>Туторіали ради туторіалів</strong> — 50 «hello world» різними мовами
-            </li>
-            <li>
-              <strong>Сліпе слідування модним фреймворкам</strong> без розуміння, що вони вирішують
-            </li>
-            <li>
-              <strong>Швидкість друку</strong> — справді не вузьке місце
+              <strong>Tutorial Hell:</strong> написання 50-го «Hello World» у різних технологіях.
             </li>
           </ul>
         </div>
       </div>
 
-      <p className="slide-footnote">
-        Орієнтир: half-life навичок розширюється для тих, що пов'язані з <em>судженням</em>, і скорочується
-        для тих, що пов'язані з <em>виконанням</em>.
-      </p>
-    </>
+      <div className="callout callout-yellow" style={{ marginTop: '1.5em' }}>
+        <strong>Судження (Judgment) vs Виконання (Execution).</strong> <br/>
+        Усе, що стосується механічного <em>виконання</em>, застаріває за місяці. Усе, що стосується <em>судження, смаку та системного бачення</em>, залишається з вами на десятиліття.
+      </div>
+    </div>
   );
 }

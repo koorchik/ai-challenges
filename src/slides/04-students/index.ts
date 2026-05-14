@@ -8,9 +8,6 @@ import AiInInterviews from './AiInInterviews';
 import PetProjects from './PetProjects';
 import WhatCompounds from './WhatCompounds';
 import WhatToLearn2026 from './WhatToLearn2026';
-import Antipatterns from './Antipatterns';
-import CognitiveOffloading from './CognitiveOffloading';
-import PracticalPlan from './PracticalPlan';
 
 export const slides = [
   Header,
@@ -22,8 +19,5 @@ export const slides = [
   PetProjects,
   WhatCompounds,
   WhatToLearn2026,
-  Antipatterns,
-  CognitiveOffloading,
-  PracticalPlan,
   CurriculumVelocity,
 ];

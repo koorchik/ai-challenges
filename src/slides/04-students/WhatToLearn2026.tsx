@@ -1,68 +1,59 @@
 export default function WhatToLearn2026() {
   return (
-    <>
-      <h2>Чого вчитися у 2026</h2>
-      <p className="lede">
-        Ключова навичка — провести проєкт від брифу до робочого релізу. Стоїть на двох ногах:
-        класика тех-ліда + ШІ-пайплайни та інструментарій.
+    <div className="slide-body wide">
+      <h2>Hard Skills 2026: Дві ноги сучасного інженера</h2>
+      <p className="lede" style={{ margin: 0 }}>
+        Щоб перетворити бриф на робочий продукт, сьогодні потрібна комбінація: класичні навички 
+        Tech Lead-а для управління хаосом + новітні патерни ШІ-інженерії (Agentic Workflows).
       </p>
 
-      <div className="two-col wide text-md">
+      <div className="two-col wide text-md" style={{ marginTop: '1.5em', gap: '2em' }}>
         <div data-accent="yellow">
-          <h3 className="accent">класика тех-ліда</h3>
-          <ul className="checklist">
+          <h3 className="accent">Класика Tech Lead-а</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
             <li>
-              <strong>Scoping</strong>: тиждень-у-проді / місяць-MVP / квартал-V1
+              <strong>Жорсткий Scoping:</strong> здатність урізати скоуп до «тиждень-у-проді» / «місяць-MVP».
             </li>
             <li>
-              <strong>Архітектура під задачу</strong>, не під моду: монолит / queue / просто SQL
+              <strong>Прагматична архітектура:</strong> вибір інструментів під задачу, а не під хайп (іноді достатньо просто SQL та моноліту).
             </li>
             <li>
-              <strong>Декомпозиція</strong> на вертикальні, самостійно-доставлювані шматки
+              <strong>Агресивна декомпозиція:</strong> розбиття системи на вертикальні шматки, які можна доставити незалежно.
             </li>
             <li>
-              <strong>Code review</strong> як основна форма виробництва — читати швидше, ніж писати
+              <strong>Onboarding як артефакт:</strong> створення <code>.cursorrules</code> та <code>CLAUDE.md</code> — інструкцій, які читають і люди, і агенти.
             </li>
             <li>
-              <strong>Onboarding як артефакт</strong>: CLAUDE.md, конвенції — для людей і агентів
-            </li>
-            <li>
-              <strong>Ship &amp; operate</strong>: моніторинг, rollback, post-mortem
+              <strong>Ship & Operate:</strong> моніторинг, rollback-стратегії, написання post-mortems.
             </li>
           </ul>
         </div>
         <div data-accent="blue">
-          <h3 className="accent">ШІ-пайплайни та інструментарій</h3>
-          <ul className="checklist">
+          <h3 className="accent">ШІ-Пайплайни (Agentic Engineering)</h3>
+          <ul className="checklist" style={{ textAlign: 'left' }}>
             <li>
-              <strong>Багатоагентна оркестрація</strong>: команда (аналітик / кодер / рев'юер /
-              тестувальник), не один універсал
+              <strong>Багатоагентна оркестрація:</strong> розробка не одним універсалом, а командою промптів (аналітик → кодер → рев'юер).
             </li>
             <li>
-              <strong>Топологія пайплайну</strong>: послідовні етапи з gating, паралельний
-              fan-out → merge
+              <strong>Топологія пайплайнів:</strong> послідовні ланцюжки з gating (валідацією), паралельний fan-out → merge.
             </li>
             <li>
-              <strong>RAG / vector DB / re-ranking</strong> — стандартний компонент пайплайну
+              <strong>Evals як CI (Continuous Integration):</strong> model-graded оцінки, LLM-as-a-judge, автоматичні регресії перед релізом.
             </li>
             <li>
-              <strong>Evals як CI</strong>: model-graded, LLM-as-judge, регресії перед релізом
+              <strong>Робота з контекстом:</strong> RAG, Vector DB, re-ranking як стандартні компоненти будь-якого застосунку.
             </li>
             <li>
-              <strong>Cost &amp; latency budgets</strong>: токени, кеш, fallback, паралелізм як
-              левередж
-            </li>
-            <li>
-              <strong>Tooling fluency</strong>: Cursor / Claude Code / Codex / sub-agents
+              <strong>Управління бюджетом та Latency:</strong> контроль витрат токенів, оптимізація кешу, стратегії fallback.
             </li>
           </ul>
         </div>
       </div>
 
-      <p className="callout callout-green">
-        <strong>Тест «ти вмієш»:</strong> отримав бриф → за місяць-два привів продукт до перших
-        10 живих користувачів і зібрав метрики. Вирішальний фактор — довести проєкт до релізу.
-      </p>
-    </>
+      <div className="callout callout-green" style={{ marginTop: '1.5em' }}>
+        <strong>Головний іспит на профпридатність:</strong> Отримав бізнес-бриф → за місяць привів продукт до 
+        перших живих користувачів → зібрав метрики → система не впала. Усе інше (швидкість друку, знання синтаксису) — вторинне.
+      </div>
+    </div>
   );
 }
