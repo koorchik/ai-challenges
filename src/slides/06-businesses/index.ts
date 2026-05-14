@@ -5,6 +5,7 @@ import RegulatedVerticalsMoat from './RegulatedVerticalsMoat';
 import VerificationTrustGap from './VerificationTrustGap';
 import CapabilityVsReliability from './CapabilityVsReliability';
 import NextGenPipeline from './NextGenPipeline';
+import TokensLikeLoc from './TokensLikeLoc';
 import StartupsHeader from './StartupsHeader';
 import CapabilityVsAdoptionGap from './CapabilityVsAdoptionGap';
 import FormulaOneRain from './FormulaOneRain';
@@ -23,6 +24,7 @@ export const slides = [
   VerificationTrustGap,
   CapabilityVsReliability,
   NextGenPipeline,
+  TokensLikeLoc,
   StartupsHeader,
   CapabilityVsAdoptionGap,
   FormulaOneRain,
