@@ -5,6 +5,9 @@ import AgenticNoQualityBar from './AgenticNoQualityBar';
 import Verifiability from './Verifiability';
 import LlmAsJudge from './LlmAsJudge';
 import HumanValueZone from './HumanValueZone';
+import InertiaLaw from './InertiaLaw';
+import CustomerInertia from './CustomerInertia';
+import DeveloperInertia from './DeveloperInertia';
 import KnowAiRegardless from './KnowAiRegardless';
 
 export const slides = [
@@ -15,5 +18,8 @@ export const slides = [
   Verifiability,
   LlmAsJudge,
   HumanValueZone,
+  InertiaLaw,
+  CustomerInertia,
+  DeveloperInertia,
   KnowAiRegardless,
 ];
