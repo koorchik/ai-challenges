@@ -1,4 +1,4 @@
-// 15 · Концепції · LLM-as-judge
+// 15 · Загальні ідеї · LLM-as-judge
 export function Slide14() {
   return (
     <div className="slide-body wide">

@@ -1,4 +1,4 @@
-// 11 · Концепції · Vibe coding чи Agentic engineering?
+// 11 · Загальні ідеї · Vibe coding чи Agentic engineering?
 import tonyStark from '../assets/tony-stark.jpg';
 
 export function Slide11() {

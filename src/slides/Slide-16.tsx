@@ -1,4 +1,4 @@
-// 16 · Концепції · Де живе людська цінність?
+// 16 · Загальні ідеї · Де живе людська цінність?
 export function Slide15() {
   const humanFill = 'rgba(120, 180, 220, 0.22)';
   const humanStroke = '#7ab4dc';

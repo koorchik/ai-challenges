@@ -1,4 +1,4 @@
-// 13 · Концепції · Agentic engineering без quality bar
+// 13 · Загальні ідеї · Agentic engineering без quality bar
 import reddit from '../assets/reddit-vibe-engineer.jpeg';
 
 export function Slide13() {

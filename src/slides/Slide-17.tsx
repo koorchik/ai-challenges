@@ -1,4 +1,4 @@
-// 17 · Концепції · AI варто знати. Користуєтесь чи ні
+// 17 · Загальні ідеї · AI варто знати. Користуєтесь чи ні
 export function Slide16() {
   return (
     <div className="slide-body wide">

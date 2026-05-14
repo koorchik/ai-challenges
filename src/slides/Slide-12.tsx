@@ -1,4 +1,4 @@
-// 12 · Концепції · Karpathy on vibe coding vs agentic engineering
+// 12 · Загальні ідеї · Karpathy on vibe coding vs agentic engineering
 export function Slide12() {
   return (
     <div className="slide-body wide">

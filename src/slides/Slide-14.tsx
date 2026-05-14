@@ -1,4 +1,4 @@
-// 14 · Концепції · Verifiability
+// 14 · Загальні ідеї · Verifiability
 export function Slide13() {
   return (
     <div className="slide-body wide">
