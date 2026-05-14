@@ -1,10 +1,10 @@
 import { SectionHeader } from '../../components/SectionHeader';
 
-export default function Header() {
+export default function DevelopersSectionHeader() {
   return (
     <SectionHeader
       title="Розробники"
-      subtitle="Технічні спеціалісти зі стажем 2–15+ років. Та сама компанія, той самий код — і зовсім інший набір ставок."
+      subtitle="Студенти борються за вхід у професію. Ви боретеся за те, щоб ваш технічний досвід не перетворився на легасі в епоху AI."
     />
   );
 }
