@@ -4,6 +4,7 @@ import JuniorToTechLead from './JuniorToTechLead';
 import BloomsClassic from './BloomsClassic';
 import BloomsInverted from './BloomsInverted';
 import VirtualTeamTrainer from './VirtualTeamTrainer';
+import CurriculumVelocity from './CurriculumVelocity';
 import AiInInterviews from './AiInInterviews';
 import EngineersPlaybook from './EngineersPlaybook';
 import PetProjects from './PetProjects';
@@ -19,6 +20,7 @@ export const slides = [
   BloomsClassic,
   BloomsInverted,
   VirtualTeamTrainer,
+  CurriculumVelocity,
   AiInInterviews,
   EngineersPlaybook,
   PetProjects,
