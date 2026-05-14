@@ -127,8 +127,8 @@ export default function CapabilityVsAdoptionGap() {
             — нова модель, новий tool-stack. Інкумбент платить re-adoption tax; стартап — ні.
           </div>
           <div className="callout callout-green">
-            <strong>Formula 1 у дощ.</strong> Жодне лідерство не безпечне. Той, хто реагує
-            швидше за умов хаосу, виграє стейдж — навіть якщо програв сухий круг.
+            <strong>Шторм перебудовує сітку.</strong> У стабільні часи виграє той, хто більший. У
+            хаосі — той, хто перебудовує стратегію між колами.
           </div>
         </div>
       </div>

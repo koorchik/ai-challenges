@@ -7,6 +7,7 @@ import CapabilityVsReliability from './CapabilityVsReliability';
 import NextGenPipeline from './NextGenPipeline';
 import StartupsHeader from './StartupsHeader';
 import CapabilityVsAdoptionGap from './CapabilityVsAdoptionGap';
+import FormulaOneRain from './FormulaOneRain';
 import MvpCostCurve from './MvpCostCurve';
 import WrapperTrap from './WrapperTrap';
 import MoatsIn2026 from './MoatsIn2026';
@@ -24,6 +25,7 @@ export const slides = [
   NextGenPipeline,
   StartupsHeader,
   CapabilityVsAdoptionGap,
+  FormulaOneRain,
   MvpCostCurve,
   WrapperTrap,
   MoatsIn2026,
