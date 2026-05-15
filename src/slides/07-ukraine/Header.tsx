@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <SectionHeader
       title="Україна"
-      subtitle="Сім слайдів — про IT-експорт, оборонку, кадри та реалістичні політичні важелі."
+      subtitle="Держава будує середовище й активно сприяє."
     />
   );
 }

@@ -1,21 +1,13 @@
 import Header from './Header';
-import ItExport from './ItExport';
-import PriceArbitrageErosion from './PriceArbitrageErosion';
-import Opportunities from './Opportunities';
-import Education from './Education';
-import TalentsAndDiaspora from './TalentsAndDiaspora';
-import PolicyLevers from './PolicyLevers';
-import PolicyLeversSim from './PolicyLeversSim';
-import PersonalChoice from './PersonalChoice';
+import TechSidelined from './TechSidelined';
+import OutsourcingEnd from './OutsourcingEnd';
+import DefenseTech from './DefenseTech';
+import TalentDrain from './TalentDrain';
 
 export const slides = [
   Header,
-  ItExport,
-  PriceArbitrageErosion,
-  Opportunities,
-  Education,
-  TalentsAndDiaspora,
-  PolicyLevers,
-  PolicyLeversSim,
-  PersonalChoice,
+  TechSidelined,
+  OutsourcingEnd,
+  DefenseTech,
+  TalentDrain,
 ];
