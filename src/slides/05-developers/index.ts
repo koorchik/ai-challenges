@@ -4,30 +4,18 @@ import AmdahlClassic from './AmdahlClassic';
 import AmdahlForAi from './AmdahlForAi';
 import WhyExperienceWins from './WhyExperienceWins';
 import VerificationBottleneck from './VerificationBottleneck';
-import SkillLeveling from './SkillLeveling';
-import CuiCurve from './CuiCurve';
-import WhatCompounds from './WhatCompounds';
-import CareerForks from './CareerForks';
-import RicardoAndAcemoglu from './RicardoAndAcemoglu';
-import NewWorkflow from './NewWorkflow';
 import AgentPromptInjection from './AgentPromptInjection';
-import SelfCalibration from './SelfCalibration';
-import Playbook90Day from './Playbook90Day';
+import AmdahlHeader from './AmdahlHeader';
+import UseAiHeader from './UseAiHeader';
 
 export const slides = [
   Header,
+  AmdahlHeader,
   TimeShift,
   AmdahlClassic,
   AmdahlForAi,
   WhyExperienceWins,
   VerificationBottleneck,
-  SkillLeveling,
-  CuiCurve,
-  WhatCompounds,
-  CareerForks,
-  RicardoAndAcemoglu,
-  NewWorkflow,
+  UseAiHeader,
   AgentPromptInjection,
-  SelfCalibration,
-  Playbook90Day,
 ];
