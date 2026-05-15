@@ -472,6 +472,13 @@
 
 .reveal .sim-controls-quad .slider-label {
   font-size: 0.45em;
+  /* reserve room for a 2-line label so single-line labels don't pull their slider up */
+  min-height: 2.6em;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  width: 100%;
+  justify-content: center;
 }
 
 .reveal .sim-controls-quad .slider-readout {

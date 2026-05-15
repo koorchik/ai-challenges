@@ -50,211 +50,136 @@ function StackedBar({
 }
 
 export function ServicesEconomicsSim() {
-  const [alpha, setAlpha] = useState(0.5);
-  const [tau, setTau] = useState(0.5);
-  const [pi, setPi] = useState(1.0);
-  const [demand, setDemand] = useState(0.5);
+  const [tau, setTau] = useState(0.7);
+  const [discount, setDiscount] = useState(0.5);
 
-  // Per-unit-of-baseline cost model:
-  //   delivered_cost = α · τ        (tokens, for AI-handled share)
-  //                  + (1 − α) / π  (residual human labor, sped up by π)
-  // Baseline (no AI) = 1.0. At defaults (α=0.5, τ=0.5, π=1, d=0.5):
-  // delivered_cost = 0.25 + 0.5 = 0.75 → 25% delivered reduction vs 50% demand → 25-pp margin gap.
-  const tokenCost = alpha * tau;
-  const humanCost = (1 - alpha) / Math.max(pi, 0.01);
-  const deliveredCost = tokenCost + humanCost;
-  const delivered = Math.max(1 - deliveredCost, -0.5);
-  const gap = demand - delivered;
+  // Project-cost model (baseline = expensive engineer + tokens = 1.0):
+  //   expensive_cost = (1 − τ) + τ                     = 1.0
+  //   cheap_cost     = (1 − τ)(1 − d) + τ
+  //   savings        = (1 − τ) · d
+  // At τ=0, d=50% → 50% off. At τ=70%, d=50% → only 15% off.
+  const tokens = tau;
+  const expEngineer = 1 - tau;
+  const cheapEngineer = (1 - tau) * (1 - discount);
+  const expensiveCost = expEngineer + tokens;
+  const cheapCost = cheapEngineer + tokens;
+  const savings = Math.max((1 - tau) * discount, 0);
 
   const barW = 200;
-  const beforeX = 230;
-  const afterX = 560;
-  const barTotalH = 380;
-  const baselineY = 470;
-  const beforeTopY = baselineY - barTotalH;
-  const afterBarH = Math.min(deliveredCost, 1.4) * barTotalH;
-  const afterTopY = baselineY - afterBarH;
-  const expectedTopY = baselineY - (1 - demand) * barTotalH;
+  const expensiveX = 280;
+  const cheapX = 580;
+  const barTotalH = 340;
+  const baselineY = 410;
+  const expensiveTopY = baselineY - expensiveCost * barTotalH;
+  const cheapTopY = baselineY - cheapCost * barTotalH;
 
-  const beforeSegs: Segment[] = [
-    { label: 'людська праця', value: 1.0, color: '#fdba74' },
+  const expensiveSegs: Segment[] = [
+    { label: 'токени', value: tokens, color: '#facc15' },
+    { label: 'інженер', value: expEngineer, color: '#fdba74' },
   ];
 
-  const afterSegs: Segment[] = [
-    { label: 'токени', value: tokenCost, color: '#facc15' },
-    { label: 'людська праця', value: humanCost, color: '#fdba74' },
+  const cheapSegs: Segment[] = [
+    { label: 'токени', value: tokens, color: '#facc15' },
+    { label: 'інженер', value: cheapEngineer, color: '#fdba74' },
   ];
 
-  const gapPp = Math.round(gap * 100);
-  const deliveredPct = Math.round(delivered * 100);
-  const demandPct = Math.round(demand * 100);
-
-  const deliveredColor = gap <= 0 ? '#86efac' : gap >= 0.15 ? '#fda4ae' : '#fde68a';
-  const gapColor = gap > 0 ? '#fda4ae' : '#86efac';
+  const savingsPct = Math.round(savings * 100);
+  const savingsLabel = savingsPct > 0 ? `−${savingsPct}%` : '0%';
+  const savingsColor = savings >= 0.3 ? '#86efac' : savings >= 0.1 ? '#fde68a' : '#fda4ae';
 
   return (
     <>
-      <h2>Економіка послуг: чому 2× продуктивності не дають 50%</h2>
+      <h2>Токени стирають перевагу дешевшого інженера</h2>
       <p className="lede">
-        Токен — нова підлога ціни. Якщо він коштує половину людини, швидкість не закриває −50% від клієнта.
+        Ціна токенів однакова всюди. Ціна інженера — ні.
       </p>
 
       <div className="sim-grid">
-        <ChartSvg height={550} style={{ maxHeight: '9.2em' }}>
+        <ChartSvg height={480} style={{ maxHeight: '8em' }}>
           {/* 100% reference line */}
           <line
-            x1={beforeX - 24}
-            x2={afterX + barW + 60}
-            y1={beforeTopY}
-            y2={beforeTopY}
+            x1={expensiveX - 24}
+            x2={cheapX + barW + 24}
+            y1={baselineY - barTotalH}
+            y2={baselineY - barTotalH}
             stroke="rgba(255,255,255,0.2)"
             strokeDasharray="4 4"
           />
           <text
-            x={afterX + barW + 12}
-            y={beforeTopY + 4}
+            x={cheapX + barW + 30}
+            y={baselineY - barTotalH + 4}
             fill="rgba(255,255,255,0.45)"
             fontSize={12}
           >
             100%
           </text>
 
-          {/* Client expectation reference line — dashed magenta across both bars */}
-          <line
-            x1={beforeX - 24}
-            x2={afterX + barW + 60}
-            y1={expectedTopY}
-            y2={expectedTopY}
-            stroke="#ff79c6"
-            strokeOpacity={0.7}
-            strokeDasharray="6 5"
-          />
-          <text
-            x={afterX + barW + 12}
-            y={expectedTopY + 4}
-            fill="#ff79c6"
-            fontSize={12}
-            fontWeight={600}
-          >
-            клієнт хоче · {Math.round((1 - demand) * 100)}%
-          </text>
-
           {/* Baseline */}
           <line
-            x1={beforeX - 24}
-            x2={afterX + barW + 60}
+            x1={expensiveX - 24}
+            x2={cheapX + barW + 24}
             y1={baselineY}
             y2={baselineY}
             stroke="rgba(255,255,255,0.3)"
           />
 
           <StackedBar
-            x={beforeX}
-            y={beforeTopY}
+            x={expensiveX}
+            y={expensiveTopY}
             width={barW}
-            segments={beforeSegs}
+            segments={expensiveSegs}
             unitHeight={barTotalH}
           />
           <StackedBar
-            x={afterX}
-            y={afterTopY}
+            x={cheapX}
+            y={cheapTopY}
             width={barW}
-            segments={afterSegs}
+            segments={cheapSegs}
             unitHeight={barTotalH}
           />
 
-          {/* Gap bracket: when AFTER bar overshoots client expectation, mark the margin you eat */}
-          {gap > 0.005 && (
-            <>
-              <rect
-                x={afterX - 6}
-                y={expectedTopY}
-                width={barW + 12}
-                height={afterTopY < expectedTopY ? expectedTopY - afterTopY : 0}
-                fill="rgba(248,113,113,0.16)"
-                stroke="rgba(248,113,113,0.7)"
-                strokeDasharray="5 3"
-              />
-              <text
-                x={afterX + barW / 2}
-                y={(expectedTopY + Math.max(afterTopY, expectedTopY - 40)) / 2 + 4}
-                textAnchor="middle"
-                fill="#fda4ae"
-                fontSize={13}
-                fontWeight={700}
-              >
-                розрив {gapPp} в.п.
-              </text>
-            </>
-          )}
-
-          {/* Saved/delivered zone — between BEFORE top and AFTER top */}
-          {deliveredCost < 0.99 && (
+          {/* Saved zone — between expensive top and cheap top */}
+          {savingsPct > 0 && (
             <text
-              x={afterX + barW / 2}
-              y={(beforeTopY + afterTopY) / 2 + 4}
+              x={cheapX + barW / 2}
+              y={(expensiveTopY + cheapTopY) / 2 + 4}
               textAnchor="middle"
               fill="#86efac"
-              fontSize={13}
-              fontWeight={600}
+              fontSize={14}
+              fontWeight={700}
             >
-              −{Math.round((1 - deliveredCost) * 100)}% доставлено
+              −{savingsPct}%
             </text>
           )}
 
           <text
-            x={(beforeX + afterX + barW) / 2 - 80}
-            y={(beforeTopY + baselineY) / 2 + 10}
-            textAnchor="middle"
-            fill="rgba(255,255,255,0.55)"
-            fontSize={32}
-          >
-            →
-          </text>
-
-          <text
-            x={beforeX + barW / 2}
+            x={expensiveX + barW / 2}
             y={baselineY + 26}
             textAnchor="middle"
             className="chart-title"
           >
-            до ШІ · 100%
+            дорогий інженер · 100%
           </text>
           <text
-            x={afterX + barW / 2}
+            x={cheapX + barW / 2}
             y={baselineY + 26}
             textAnchor="middle"
             className="chart-title"
           >
-            з ШІ · {Math.round(deliveredCost * 100)}%
+            дешевший інженер (−{Math.round(discount * 100)}%) · {Math.round(cheapCost * 100)}%
           </text>
         </ChartSvg>
 
         <div className="sim-side">
           <div className="kpi-stack">
-            <KPI value={`−${deliveredPct}%`} label="доставлена економія" color={deliveredColor} />
-            <KPI value={`−${demandPct}%`} label="клієнт очікує" color="#ff79c6" />
-            <KPI
-              value={`${gap > 0 ? '+' : ''}${gapPp} в.п.`}
-              label={gap > 0 ? 'маржа, яку зʼїдаєте' : 'запас маржі'}
-              color={gapColor}
-            />
+            <KPI value={savingsLabel} label="реальна знижка проєкту" color={savingsColor} />
           </div>
         </div>
       </div>
 
-      <div className="sim-controls-quad">
+      <div className="sim-controls-quad" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
         <Slider
-          label="частка ШІ-роботи"
-          min={0}
-          max={1}
-          step={0.01}
-          value={alpha}
-          onChange={setAlpha}
-          format={(v) => `${Math.round(v * 100)}%`}
-        />
-        <Slider
-          label="токени від ставки людини"
+          label="частка токенів у вартості"
           min={0}
           max={1}
           step={0.01}
@@ -263,27 +188,18 @@ export function ServicesEconomicsSim() {
           format={(v) => `${Math.round(v * 100)}%`}
         />
         <Slider
-          label="прискорення людської частини"
-          min={1}
-          max={3}
-          step={0.05}
-          value={pi}
-          onChange={setPi}
-          format={(v) => `${v.toFixed(2)}×`}
-        />
-        <Slider
-          label="клієнт хоче −"
+          label="знижка на інженера"
           min={0}
-          max={0.7}
+          max={0.8}
           step={0.01}
-          value={demand}
-          onChange={setDemand}
+          value={discount}
+          onChange={setDiscount}
           format={(v) => `${Math.round(v * 100)}%`}
         />
       </div>
 
       <p className="slide-footnote">
-        Модель ілюстративна. Дефолт (α=50%, τ=50%, π=1×, попит −50%) дає 25% економії і 25 в.п. розриву — арифметика, з якої починається переговори по ставці.
+        Без ШІ: −50% інженер = −50% проєкту. При 70% токенів — лише ~15%.
       </p>
     </>
   );

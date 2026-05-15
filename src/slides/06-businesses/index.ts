@@ -5,10 +5,8 @@ import ServicesEconomics from './ServicesEconomics';
 import RepositioningPlaybook from './RepositioningPlaybook';
 import RegulatedVerticalsMoat from './RegulatedVerticalsMoat';
 import VerificationTrustGap from './VerificationTrustGap';
-import CapabilityVsReliability from './CapabilityVsReliability';
-import NextGenPipeline from './NextGenPipeline';
-import PipelineForecast from './PipelineForecast';
 import TokensLikeLoc from './TokensLikeLoc';
+import TokenmaxxingInPractice from './TokenmaxxingInPractice';
 import StartupsHeader from './StartupsHeader';
 import Disintermediation from './Disintermediation';
 import CapabilityVsAdoptionGap from './CapabilityVsAdoptionGap';
@@ -20,19 +18,19 @@ import MoatStress from './MoatStress';
 import BuildBuyOrchestrate from './BuildBuyOrchestrate';
 import JevonsParadox from './JevonsParadox';
 import Playbook90Day from './Playbook90Day';
+import VerificationTrustGapHeader from './VerificationTrustGapHeader';
 
 export const slides = [
   Header,
   NaiveAIMandate,
+  TokensLikeLoc,
+  TokenmaxxingInPractice,
   ServicesHeader,
   ServicesEconomics,
   RepositioningPlaybook,
   RegulatedVerticalsMoat,
+  VerificationTrustGapHeader,
   VerificationTrustGap,
-  CapabilityVsReliability,
-  NextGenPipeline,
-  PipelineForecast,
-  TokensLikeLoc,
   StartupsHeader,
   Disintermediation,
   CapabilityVsAdoptionGap,

@@ -1,53 +1,55 @@
 export default function NaiveAIMandate() {
   return (
     <div className="slide-body wide">
-      <h2>«Користуйтеся AI, давайте у 2× швидше»</h2>
+      <h2>Наївна вказівка: «Купіть їм ШІ, нехай кодять удвічі швидше»</h2>
       <p className="lede" style={{ margin: 0 }}>
-        Менеджмент починає тут. Дані закінчують інакше.
+        Це найпоширеніша ілюзія топ-менеджменту. Дані з полів доводять: просте додавання 
+        AI-інструментів поверх старих процесів руйнує метрики, а не покращує їх.
       </p>
 
-      <div className="three-col wide text-md" style={{ marginTop: '0.4em', gap: '1em' }}>
-        <div data-accent="red">
-          <h3 className="accent">Сприйняття ≠ реальність</h3>
-          <p style={{ fontSize: '2em', fontWeight: 700, margin: '0.15em 0', lineHeight: 1 }}>−19%</p>
-          <p style={{ margin: 0 }}>
-            METR 2025: досвідчені розробники очікували +24%, відчували +20%. На ділі — на 19% повільніше з AI.
+      <div className="three-col wide text-md" style={{ marginTop: '2em', gap: '1.5em' }}>
+        {/* Колонка 1 */}
+        <div className="tile" data-accent="red" style={{ display: 'flex', flexDirection: 'column' }}>
+          <h3 className="accent">Ілюзія швидкості</h3>
+          <p style={{ fontSize: '3.5em', fontWeight: 800, color: '#f43f5e', margin: '0.2em 0', lineHeight: 1 }}>
+            −19%
+          </p>
+          <p style={{ flexGrow: 1, margin: 0, marginTop: '1em' }}>
+            <strong>METR (2025):</strong> Досвідчені розробники <em>відчували</em>, що працюють на 20% швидше. 
+            Фактичний замір: вони здали роботу на 19% повільніше через виснажливий дебагінг згенерованого коду.
           </p>
         </div>
-        <div data-accent="red">
-          <h3 className="accent">Швидкість ≠ доставка</h3>
-          <p style={{ fontSize: '2em', fontWeight: 700, margin: '0.15em 0', lineHeight: 1 }}>−7.2%</p>
-          <p style={{ margin: 0 }}>
-            DORA 2024: throughput −1.5%, stability −7.2%. Batch size росте, тестування слабне — ламається прод.
+
+        {/* Колонка 2 */}
+        <div className="tile" data-accent="red" style={{ display: 'flex', flexDirection: 'column' }}>
+          <h3 className="accent">Деградація якості</h3>
+          <p style={{ fontSize: '3.5em', fontWeight: 800, color: '#f43f5e', margin: '0.2em 0', lineHeight: 1 }}>
+            −7.2%
+          </p>
+          <p style={{ flexGrow: 1, margin: 0, marginTop: '1em' }}>
+            <strong>DORA (2024):</strong> Падіння стабільності продакшену. ШІ генерує величезні пулл-реквести 
+            (batch size росте), рев'ю не встигає за генерацією, тестування слабне — система ламається частіше.
           </p>
         </div>
-        <div data-accent="red">
-          <h3 className="accent">Впровадження ≠ ROI</h3>
-          <p style={{ fontSize: '2em', fontWeight: 700, margin: '0.15em 0', lineHeight: 1 }}>60% / 5%</p>
-          <p style={{ margin: 0 }}>
-            BCG 2025: 60% компаній — нуль матеріальної вартості, лише 5% масштабують. McKinsey: 88% впровадили, EBIT бачать 39%.
+
+        {/* Колонка 3 */}
+        <div className="tile" data-accent="red" style={{ display: 'flex', flexDirection: 'column' }}>
+          <h3 className="accent">Парадокс ROI</h3>
+          <p style={{ fontSize: '3.5em', fontWeight: 800, color: '#f43f5e', margin: '0.2em 0', lineHeight: 1 }}>
+            60%
+          </p>
+          <p style={{ flexGrow: 1, margin: 0, marginTop: '1em' }}>
+            <strong>BCG (2025):</strong> 60% компаній отримали нульовий фінансовий результат від впровадження ШІ. 
+            Усі купили інструменти, але лише 5% змогли їх ефективно масштабувати.
           </p>
         </div>
       </div>
 
-      <div className="callout callout-yellow">
-        <strong>AI — підсилювач, а не множник.</strong> Сильна команда стає сильнішою, слабка — слабшою (DORA 2025).
-        McKinsey: redesign workflow корелює з EBIT у <strong>3×</strong> сильніше, ніж прикручування інструмента.
+      <div className="callout callout-yellow" style={{ marginTop: '2em' }}>
+        Сильна інженерна культура стає сильнішою, слабка — колапсує (DORA). 
+        McKinsey зазначає: фундаментальна перебудова процесів корелює зі зростанням прибутку (EBIT) у <strong>3 рази сильніше</strong>, 
+        ніж проста закупівля ліцензій на Copilot.
       </div>
-
-      <p className="slide-footnote">
-        METR (Becker et al., 2025), RCT на 16 досвідчених open-source devs ·{' '}
-        <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">metr.org/blog</a>
-        {' · '}
-        DORA «Accelerate State of DevOps 2024» ·{' '}
-        <a href="https://dora.dev/research/2024/dora-report/">dora.dev/2024</a>
-        {' · '}
-        DORA «State of AI-assisted Software Development 2025» ·{' '}
-        <a href="https://dora.dev/dora-report-2025/">dora.dev/2025</a>
-        {' · '}
-        BCG «The Widening AI Value Gap» (Sept 2025) ·{' '}
-        <a href="https://media-publications.bcg.com/The-Widening-AI-Value-Gap-October-2025.pdf">bcg.com/value-gap</a>
-      </p>
     </div>
   );
 }

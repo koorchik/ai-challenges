@@ -20,12 +20,13 @@ export default function Speaker() {
           }}
         />
         <ul className="checklist text-lg" style={{ textAlign: 'left', margin: 0 }}>
-          <li>20 років в IT</li>
-          <li>14 років у software-бізнесі</li>
-          <li>Понад 80 проєктів різного масштабу</li>
-          <li>15 проєктів для 5 компаній зі списку Fortune 500</li>
-          <li>4 роки в Google</li>
-          <li><a href='https://youtube.com/@AboutProgramming'>youtube.com/@AboutProgramming</a></li>
+          <li>20 років в IT · понад 80 проєктів</li>
+          <li>15 проєктів для 5 компаній з Fortune 500</li>
+          <li>4 роки в Google Cloud</li>
+          <li>CEO / CTO · виростив команду з 0 до 150 людей</li>
+          <li>Інтерес в AI з 2011: від Stanford «Intro to AI» до PhD дослідження: LLM + knowledge graphs</li>
+          <li>Visiting Lecturer · American University Kyiv (AI-driven development)</li>
+          <li>YouTube <a href="https://youtube.com/@AboutProgramming">@AboutProgramming</a></li>
         </ul>
       </div>
     </>
