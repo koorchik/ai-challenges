@@ -22,7 +22,7 @@ export default function KarpathyOnVibe() {
         <li><strong>Найкращі практики.</strong> Тести, evals, спостережуваність, fallback — як у критичній системі.</li>
       </ul>
       <p className="slide-footnote">
-        Andrej Karpathy on agentic engineering (YouTube, 2025){' '}
+        Andrej Karpathy on agentic engineering (YouTube, 2026){' '}
         <a href="https://www.youtube.com/watch?v=96jN2OCOfLs">youtube.com/watch?v=96jN2OCOfLs</a>
       </p>
     </div>

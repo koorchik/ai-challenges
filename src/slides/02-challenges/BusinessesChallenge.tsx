@@ -25,7 +25,7 @@ export default function BusinessesChallenge() {
           <h3 className="accent">Стартапи / продуктові компанії</h3>
           <ul className="checklist" style={{ textAlign: 'left' }}>
             <li>
-              <strong>Клієнт сам формулює ШІ-вимоги.</strong> IT-партнера замінюють на in-house продукт.
+              <strong>ШІ робить продукт клієнту.</strong> IT-партнера замінюють на in-house продукт.
             </li>
             <li>
               <strong>Клон за тиждень.</strong> Якщо немає цінності в даних, мережевого ефекту —

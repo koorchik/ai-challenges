@@ -47,7 +47,7 @@ export default function HumanValueZone() {
             <text x="152" y="22" fontSize="11" fill={aiLabel} textAnchor="middle">AI</text>
           </svg>
           <p className="text-sm" style={captionStyle}>
-            <strong>Аугментація.</strong> Глибока інтеграція (Copilot).
+            <strong>Аугментація.</strong> Глибока інтеграція.
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export default function HumanValueZone() {
         Дослідження Harvard/BCG (758 консультантів із GPT-4):
         <ul style={{ paddingLeft: '1.2em', margin: '0.3em 0' }}>
           <li>В межах компетенції AI: <strong>+40%</strong> до якості роботи.</li>
-          <li>Поза межею (де AI галюцинує): <strong>−19 п.п.</strong> правильних рішень, бо люди сліпо довіряють.</li>
+          <li>Поза межею (де AI галюцинує): <strong>−19%</strong> правильних рішень, бо люди сліпо довіряють.</li>
         </ul>
         <em>Заздалегідь межу вгадати неможливо.</em>
       </div>
