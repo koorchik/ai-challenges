@@ -14,7 +14,7 @@ const levels: Level[] = [
 const FILL = '#a5b4fc';
 
 export default function BloomsClassic() {
-  const py = { left: 80, top: 50, width: 380, height: 320 };
+  const py = { left: 80, top: 30, width: 380, height: 260 };
   const cx = py.left + py.width / 2;
   const step = py.height / levels.length;
   const widthAt = (frac: number) => py.width * (0.2 + 0.8 * frac);
@@ -28,8 +28,8 @@ export default function BloomsClassic() {
         Tech Lead роль давали лише після 5+ років.
       </p>
 
-      <div style={{ marginTop: '1.5em' }}>
-        <ChartSvg height={420}>
+      <div style={{ marginTop: '0.5em' }}>
+        <ChartSvg height={340}>
           {levels.map((l, i) => {
             const topY = py.top + i * step;
             const bottomY = topY + step;
@@ -116,13 +116,11 @@ export default function BloomsClassic() {
       </div>
 
       <p className="callout callout-blue">
-        1-й курс — Remember / Understand. Диплом — Apply. Магістерська й перші роки роботи — Analyze / Evaluate. 
-        До «Creating» (архітектура, створення продукту) доростали лише після років досвіду. Логіка: <em>знати → розуміти → робити → будувати</em>.
+        1-й курс — Remember/Understand · Диплом — Apply · Магістерська й перші роки — Analyze/Evaluate · до «Creating» доростали після років досвіду.
       </p>
 
       <p className="slide-footnote">
-        B. Bloom et al. (1956), «Taxonomy of Educational Objectives»; revision — Anderson & Krathwohl (2001). 
-        6 рівнів, класичне поступове сходження знизу вгору.
+        B. Bloom et al. (1956), «Taxonomy of Educational Objectives»; revision — Anderson & Krathwohl (2001).
       </p>
     </div>
   );

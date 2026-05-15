@@ -457,6 +457,11 @@
   margin: 0.3em auto 0;
 }
 
+.reveal .sim-controls-compact .slider-wrap {
+  margin: 0;
+  gap: 0.2em;
+}
+
 .reveal .sim-controls-quad {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

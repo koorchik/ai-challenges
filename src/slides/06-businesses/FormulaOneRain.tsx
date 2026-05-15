@@ -16,7 +16,6 @@ export default function FormulaOneRain() {
             style={{
               width: '100%',
               height: '100%',
-              minHeight: '320px',
               objectFit: 'cover',
               borderRadius: '12px',
               display: 'block',
@@ -26,18 +25,18 @@ export default function FormulaOneRain() {
         </div>
 
         <div className="tile" data-accent="blue" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '1.5em' }}>
-          <p className="lede" style={{ margin: 0, marginBottom: '1.5em', color: '#fff' }}>
-            У суху погоду перемагає бюджет і потужність. У зливу — той, хто швидше читає трасу і ризикує змінити стратегію прямо під час гонки.
+          <p className="lede" style={{ margin: 0, marginBottom: '1em', color: '#fff' }}>
+            У суху перемагає бюджет; у зливу — той, хто швидше читає трасу і міняє стратегію по ходу.
           </p>
           <ul className="checklist" style={{ textAlign: 'left', margin: 0, padding: 0 }}>
-            <li style={{ marginBottom: '1em' }}>
-              <strong>Стартова сітка обнуляється.</strong> Колишнє лідерство, мільярдні бюджети та 10 років домінації більше не гарантують безпеки.
+            <li style={{ marginBottom: '0.6em' }}>
+              <strong>Стартова сітка обнуляється.</strong> Бренд і бюджети безпеки не гарантують.
             </li>
-            <li style={{ marginBottom: '1em' }}>
-              <strong>Швидкість ітерацій — ваш болід.</strong> Здатність стартапу повністю переписати свій AI-стек за місяць — це вирішальна перевага.
+            <li style={{ marginBottom: '0.6em' }}>
+              <strong>Швидкість ітерацій — ваш болід.</strong> Стартап переписує AI-стек за місяць.
             </li>
             <li>
-              <strong>Пастка корпорацій.</strong> Гіганти мають бренд і дистрибуцію. Але вони фізично не здатні «перевзутися» за 3 секунди на піт-стопі.
+              <strong>Пастка корпорацій.</strong> Бренд є, але «перевзутися за 3 секунди» — ні.
             </li>
           </ul>
         </div>

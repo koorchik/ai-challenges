@@ -25,8 +25,8 @@ export function JevonsSim() {
 
   // Demand curve: P vs. Q
   const curveW = 500;
-  const curveH = 250;
-  const margin = { top: 20, right: 40, bottom: 45, left: 60 };
+  const curveH = 200;
+  const margin = { top: 15, right: 40, bottom: 35, left: 60 };
   
   const qScale = scaleLinear()
     .domain([0, 1000])
@@ -56,13 +56,13 @@ export function JevonsSim() {
 
   return (
     <div className="slide-body wide">
-      <h2>Парадокс Джевонса: чому ШІ не знищить робочі місця</h2>
+      <h2>Парадокс Джевонса</h2>
       <p className="lede" style={{ margin: 0 }}>
-        Закон 1865 року: коли ціна на ресурс падає, чи компенсує попит це падіння? Залежить від еластичності ринку.
+        Закон 1865 року: коли ціна на ресурс падає, чи компенсує попит це падіння? Залежить від еластичності — для софту та ШІ вона висока.
       </p>
 
-      <div className="sim-grid" style={{ marginTop: '0.8em', display: 'flex', gap: '2em' }}>
-        <ChartSvg height={320} style={{ flexGrow: 1 }}>
+      <div className="sim-grid" style={{ marginTop: '0.4em', display: 'flex', gap: '2em' }}>
+        <ChartSvg height={200} style={{ flexGrow: 1 }}>
           <Axis
             scale={qScale}
             orientation="bottom"
@@ -112,8 +112,8 @@ export function JevonsSim() {
           </text>
         </ChartSvg>
 
-        <div className="sim-side" style={{ width: '320px', display: 'flex', flexDirection: 'column', gap: '0.8em' }}>
-          <div className="kpi-stack" style={{ display: 'flex', flexDirection: 'column', gap: '0.4em' }}>
+        <div className="sim-side" style={{ width: '320px', display: 'flex', flexDirection: 'column', gap: '0.4em' }}>
+          <div className="kpi-stack" style={{ display: 'flex', flexDirection: 'column', gap: '0.25em' }}>
             <KPI value={`${priceIdx.toFixed(0)}%`} label="Собівартість одиниці" color="#f43f5e" />
             <KPI value={`${featuresIdx}%`} label="Обсяг попиту" color="#60a5fa" />
             <KPI
@@ -133,10 +133,10 @@ export function JevonsSim() {
         </div>
       </div>
 
-      <div className="sim-controls" style={{ maxWidth: 800, margin: '1em auto 0', display: 'flex', gap: '2em' }}>
+      <div className="sim-controls sim-controls-compact" style={{ maxWidth: 800, margin: '0.4em auto 0', display: 'flex', gap: '2em' }}>
         <div style={{ flex: 1 }}>
           <Slider
-            label="Прискорення виробництва завдяки ШІ"
+            label="Прискорення ШІ"
             min={1}
             max={10}
             step={0.1}
@@ -147,7 +147,7 @@ export function JevonsSim() {
         </div>
         <div style={{ flex: 1 }}>
           <Presets<ElasticityKey>
-            label="Тип ринку (еластичність попиту)"
+            label="Тип ринку"
             value={elasticityKey}
             onChange={setElasticityKey}
             options={[
@@ -156,15 +156,8 @@ export function JevonsSim() {
               { label: 'IT / Софт', value: 'elastic' },
             ]}
           />
-          <p className="muted" style={{ marginTop: '0.3em', fontSize: '0.8em', textAlign: 'center' }}>
-            {ELASTICITY[elasticityKey].label}
-          </p>
         </div>
       </div>
-
-      <p className="slide-footnote" style={{ marginTop: '0.8em', lineHeight: 1.35 }}>
-        William Jevons, «The Coal Question» (1865). У 1980-х банкомати здешевили операції — але кількість касирів зросла, бо банки відкрили у рази більше відділень.
-      </p>
     </div>
   );
 }

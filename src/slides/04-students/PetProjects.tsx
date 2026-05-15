@@ -3,51 +3,32 @@ export default function PetProjects() {
     <div className="slide-body wide">
       <h2>Pet-проєкт 2026: Один працюючий продукт &gt; 5 мертвих репозиторіїв</h2>
       <p className="lede" style={{ margin: 0 }}>
-        ШІ повністю знецінив написання базового коду — згенерувати MVP можна за вечір. Тому ваше портфоліо 
-        більше не доводить, що ви знаєте синтаксис. Воно має доводити вашу здатність <em>вивести продукт у продакшен (delivery)</em> та підтримувати його.
+        ШІ знецінив написання базового коду — MVP пишеться за вечір. Портфоліо тепер має доводити вашу здатність <em>вивести продукт у продакшен</em> і підтримувати його.
       </p>
 
-      <div className="two-col wide text-md" style={{ marginTop: '1.5em', gap: '2em' }}>
+      <div className="two-col wide text-md" style={{ marginTop: '1em', gap: '2em' }}>
         <div data-accent="red">
-          <h3 className="accent">Red Flags (Що більше не вражає)</h3>
+          <h3 className="accent">Red Flags</h3>
           <ul className="checklist" style={{ textAlign: 'left' }}>
-            <li>
-              <strong>«Я написав це за вечір у Cursor»</strong> — без реальних користувачів це просто демо можливостей ШІ, а не вашого скіла.
-            </li>
-            <li>
-              <strong>Тонкі обгортки над ChatGPT</strong> — ToDo-лісти чи чат-боти з нульовою доданою вартістю.
-            </li>
-            <li>
-              <strong>Клони Twitter / Netflix / Uber</strong> — стандартна "жуйка" з туторіалів, яку ніхто не буде рев'ювити.
-            </li>
-            <li>
-              <strong>Цвинтар з 20 репозиторіїв</strong> — де перший і останній коміт зроблені в один день.
-            </li>
+            <li><strong>«Написав за вечір у Cursor»</strong> — без користувачів це демо ШІ, не ваш скіл.</li>
+            <li><strong>Тонкі обгортки над ChatGPT</strong> — ToDo-лісти з нульовою доданою вартістю.</li>
+            <li><strong>Клони Twitter / Netflix / Uber</strong> — туторіальна «жуйка».</li>
+            <li><strong>Цвинтар з 20 репозиторіїв</strong> — перший і останній коміт в один день.</li>
           </ul>
         </div>
         <div data-accent="green">
-          <h3 className="accent">Green Flags (Що наймає на роботу)</h3>
+          <h3 className="accent">Green Flags</h3>
           <ul className="checklist" style={{ textAlign: 'left' }}>
-            <li>
-              <strong>Реальні користувачі:</strong> 10, 100 чи 1000 людей — головне, що ця метрика більша за нуль.
-            </li>
-            <li>
-              <strong>Вузький фокус:</strong> Вирішення дуже специфічної проблеми.
-            </li>
-            <li>
-              <strong>Production-ready:</strong> Налаштований CI/CD, моніторинг, метрики (latency p95), логування помилок.
-            </li>
-            <li>
-              <strong>Чесний Post-mortem:</strong> Розділ у README про те, що зламалося, де ШІ загалюцинував і як ви особисто це фіксили.
-            </li>
+            <li><strong>Реальні користувачі:</strong> 10, 100, 1000 — головне, що &gt; 0.</li>
+            <li><strong>Вузький фокус:</strong> одна специфічна проблема.</li>
+            <li><strong>Production-ready:</strong> CI/CD, моніторинг, latency p95, логи помилок.</li>
+            <li><strong>Чесний post-mortem у README:</strong> що зламалось, де ШІ галюцинував, як фіксили.</li>
           </ul>
         </div>
       </div>
 
-      <div className="callout callout-green" style={{ marginTop: '1.5em' }}>
-        <strong>Рев'ю вашого проєкту тепер не починається з читання коду.</strong> <br/>
-        Воно починається з питань інтерв'юера: (1) Яку реальну проблему це вирішує? (2) Хто цим користується прямо зараз? 
-        і (3) <em>Як ви дізнаєтеся, якщо база даних впаде о 3-й ночі?</em>
+      <div className="callout callout-green" style={{ marginTop: '1em' }}>
+        Рев'ю починається з трьох питань: (1) яку проблему вирішує? (2) хто користується зараз? (3) <em>як дізнаєтеся, якщо БД впаде о 3-й ночі?</em>
       </div>
     </div>
   );

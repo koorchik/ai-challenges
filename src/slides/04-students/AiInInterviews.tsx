@@ -36,15 +36,12 @@ export default function AiInInterviews() {
         </div>
       </div>
 
-      <div className="callout callout-green" style={{ marginTop: '1.5em' }}>
-        <strong>«AI Fluency» — це тепер hard skill, без якого не наймають.</strong> Якщо ваш Pet-проєкт 
-        показує, що ви можете керувати AI-командою вдома, то співбесіда стає лайв-демонстрацією ваших 
-        навичок Tech Lead-а в бойових умовах.
+      <div className="callout callout-green">
+        <strong>«AI Fluency» — це тепер hard skill, без якого не наймають.</strong>
       </div>
 
-      <p className="slide-footnote" style={{ marginTop: '1.5em', lineHeight: 1.4 }}>
-        Business Insider (травень 2026) — внутрішній документ Google, пілот допуску Gemini на раунді
-        code comprehension. {' '}
+      <p className="slide-footnote">
+        Business Insider (травень 2026) — внутрішній документ Google.{' '}
         <a href="https://www.businessinsider.com/google-job-interview-software-engineers-ai-assistant-coding-2026-5">
           businessinsider.com/google-job-interview-software-engineers-ai-assistant-coding-2026-5
         </a>
