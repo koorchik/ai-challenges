@@ -7,9 +7,9 @@ import { Axis } from '../../components/charts/Axis';
 
 type ElasticityKey = 'inelastic' | 'unit' | 'elastic';
 const ELASTICITY: Record<ElasticityKey, { value: number; label: string }> = {
-  inelastic: { value: 0.3, label: 'Низька (ε=0.3) — Базові потреби' },
-  unit: { value: 1.0, label: 'Лінійна (ε=1.0) — Пропорційна' },
-  elastic: { value: 2.5, label: 'Висока (ε=2.5) — Софт та Інновації' },
+  inelastic: { value: 0.3, label: 'Низька (ε=0.3) — фіксована потреба' },
+  unit: { value: 1.0, label: 'Лінійна (ε=1.0) — пропорційна' },
+  elastic: { value: 2.5, label: 'Висока (ε=2.5) — софт та інновації' },
 };
 
 export function JevonsSim() {
@@ -25,8 +25,8 @@ export function JevonsSim() {
 
   // Demand curve: P vs. Q
   const curveW = 500;
-  const curveH = 310;
-  const margin = { top: 30, right: 40, bottom: 50, left: 60 };
+  const curveH = 250;
+  const margin = { top: 20, right: 40, bottom: 45, left: 60 };
   
   const qScale = scaleLinear()
     .domain([0, 1000])
@@ -46,19 +46,23 @@ export function JevonsSim() {
   const currentX = qScale(Math.min(currentQ, 1000));
   const currentY = pScale(priceIdx);
 
-  const scenario = epsilon > 1 ? 'Ефект Банкомата (Зростання)' : epsilon < 1 ? 'Ефект Фабрики (Скорочення)' : 'Нейтральний ринок';
+  const scenario = epsilon > 1 ? 'Праця зростає' : epsilon < 1 ? 'Праця скорочується' : 'Праця стабільна';
   const scenarioColor = epsilon > 1 ? '#10b981' : epsilon < 1 ? '#f43f5e' : '#f59e0b'; // Emerald, Rose, Amber
+  const scenarioText = epsilon > 1
+    ? 'Здешевлення → попит росте швидше за ціну → загальна праця ЗРОСТАЄ. Канонічний приклад — софт.'
+    : epsilon < 1
+    ? 'Попит майже не реагує на ціну. Дешевше виробництво → потреба у праці СКОРОЧУЄТЬСЯ.'
+    : 'Здешевлення компенсує зростання попиту 1:1 — потреба у праці стала.';
 
   return (
     <div className="slide-body wide">
       <h2>Парадокс Джевонса: чому ШІ не знищить робочі місця</h2>
       <p className="lede" style={{ margin: 0 }}>
-        Історичний закон 1865 року: коли технологія здешевлює ресурс, попит на нього зростає настільки, 
-        що загальне споживання <em>збільшується</em>. Еластичність попиту на софт — колосальна.
+        Закон 1865 року: коли ціна на ресурс падає, чи компенсує попит це падіння? Залежить від еластичності ринку.
       </p>
 
-      <div className="sim-grid" style={{ marginTop: '1.5em', display: 'flex', gap: '2em' }}>
-        <ChartSvg height={400} style={{ flexGrow: 1 }}>
+      <div className="sim-grid" style={{ marginTop: '0.8em', display: 'flex', gap: '2em' }}>
+        <ChartSvg height={320} style={{ flexGrow: 1 }}>
           <Axis
             scale={qScale}
             orientation="bottom"
@@ -66,7 +70,7 @@ export function JevonsSim() {
             y={margin.top + curveH}
             length={curveW}
             ticks={[0, 200, 400, 600, 800, 1000]}
-            label="Обсяг замовленого софту (Кількість фіч)"
+            label="Обсяг попиту (одиниць)"
           />
           <Axis
             scale={pScale}
@@ -75,16 +79,16 @@ export function JevonsSim() {
             y={margin.top}
             length={curveH}
             ticks={[0, 20, 40, 60, 80, 100]}
-            label="Собівартість розробки 1 фічі (%)"
+            label="Собівартість 1 одиниці (%)"
           />
           <path d={pathD} stroke="#facc15" strokeWidth={3.5} fill="none" strokeLinecap="round" />
           
           {/* baseline marker */}
           <circle cx={qScale(100)} cy={pScale(100)} r={5} fill="rgba(255,255,255,0.5)" />
           <text x={qScale(100) + 12} y={pScale(100) - 8} fill="rgba(255,255,255,0.7)" fontSize={12} fontWeight={600}>
-            Ринок до ШІ
+            Початково
           </text>
-          
+
           {/* current marker */}
           <line
             x1={currentX}
@@ -104,37 +108,35 @@ export function JevonsSim() {
           />
           <circle cx={currentX} cy={currentY} r={7} fill="#facc15" />
           <text x={currentX + 12} y={currentY - 8} fill="#facc15" fontSize={14} fontWeight={700}>
-            Нова реальність
+            Після здешевлення
           </text>
         </ChartSvg>
 
-        <div className="sim-side" style={{ width: '320px', display: 'flex', flexDirection: 'column', gap: '1em' }}>
-          <div className="kpi-stack" style={{ display: 'flex', flexDirection: 'column', gap: '0.5em' }}>
-            <KPI value={`${priceIdx.toFixed(0)}%`} label="Собівартість фічі" color="#f43f5e" />
-            <KPI value={`${featuresIdx}%`} label="Попит на новий софт" color="#60a5fa" />
+        <div className="sim-side" style={{ width: '320px', display: 'flex', flexDirection: 'column', gap: '0.8em' }}>
+          <div className="kpi-stack" style={{ display: 'flex', flexDirection: 'column', gap: '0.4em' }}>
+            <KPI value={`${priceIdx.toFixed(0)}%`} label="Собівартість одиниці" color="#f43f5e" />
+            <KPI value={`${featuresIdx}%`} label="Обсяг попиту" color="#60a5fa" />
             <KPI
               value={`${hoursIdx}%`}
-              label="Потреба в інженерах"
+              label="Загальна праця"
               color={hoursIdx >= 100 ? '#10b981' : '#f43f5e'}
             />
           </div>
-          
+
           <div
             className="callout"
             style={{ borderLeftColor: scenarioColor, background: `${scenarioColor}1a`, marginTop: 'auto' }}
           >
-            <strong style={{ color: scenarioColor, display: 'block', marginBottom: '0.5em' }}>{scenario}</strong>
-            {hoursIdx >= 100
-              ? 'Софт став дешевшим → бізнес замовляє у рази більше проєктів → загальна кількість робочих місць для інженерів ЗРОСТАЄ.'
-              : 'Попит обмежений. Здешевлення виробництва призводить до СКОРОЧЕННЯ робочих місць.'}
+            <strong style={{ color: scenarioColor, display: 'block', marginBottom: '0.3em' }}>{scenario}</strong>
+            {scenarioText}
           </div>
         </div>
       </div>
 
-      <div className="sim-controls" style={{ maxWidth: 800, margin: '2em auto 0', display: 'flex', gap: '2em' }}>
+      <div className="sim-controls" style={{ maxWidth: 800, margin: '1em auto 0', display: 'flex', gap: '2em' }}>
         <div style={{ flex: 1 }}>
           <Slider
-            label="Прискорення розробки завдяки ШІ"
+            label="Прискорення виробництва завдяки ШІ"
             min={1}
             max={10}
             step={0.1}
@@ -145,7 +147,7 @@ export function JevonsSim() {
         </div>
         <div style={{ flex: 1 }}>
           <Presets<ElasticityKey>
-            label="Тип ринку (Еластичність попиту)"
+            label="Тип ринку (еластичність попиту)"
             value={elasticityKey}
             onChange={setElasticityKey}
             options={[
@@ -154,15 +156,14 @@ export function JevonsSim() {
               { label: 'IT / Софт', value: 'elastic' },
             ]}
           />
-          <p className="muted" style={{ marginTop: '0.5em', fontSize: '0.85em', textAlign: 'center' }}>
+          <p className="muted" style={{ marginTop: '0.3em', fontSize: '0.8em', textAlign: 'center' }}>
             {ELASTICITY[elasticityKey].label}
           </p>
         </div>
       </div>
 
-      <p className="slide-footnote" style={{ marginTop: '1.5em', lineHeight: 1.4 }}>
-        William Jevons, «The Coal Question» (1865). Попит на програмне забезпечення історично має наделастичну природу. 
-        У 1980-х автоматизація банкоматів (ATM) здешевила відкриття філій, що призвело до збільшення загальної кількості банківських касирів.
+      <p className="slide-footnote" style={{ marginTop: '0.8em', lineHeight: 1.35 }}>
+        William Jevons, «The Coal Question» (1865). У 1980-х банкомати здешевили операції — але кількість касирів зросла, бо банки відкрили у рази більше відділень.
       </p>
     </div>
   );

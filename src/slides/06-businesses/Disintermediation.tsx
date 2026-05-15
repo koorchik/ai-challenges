@@ -1,56 +1,67 @@
 export default function Disintermediation() {
   return (
-    <>
-      <h2>Клієнт обходить вас і йде прямо до моделі</h2>
-      <p className="lede">
-        Найтихіший виклик 2026 — disintermediation. Покупець, що раніше платив вам за інтеграцію,
-        тепер бере API напряму. Три патерни, які вже видно у даних.
+    <div className="slide-body wide">
+      <h2>Дезінтермедіація: коли клієнт іде напряму до OpenAI</h2>
+      <p className="lede" style={{ margin: 0 }}>
+        Найтихіший виклик 2026 року — виключення ІТ-посередника. Покупець, який раніше платив вам за 
+        системну інтеграцію, тепер просто робить виклик до API. Три патерни втрати ринку.
       </p>
 
-      <div className="three-col wide text-md" style={{ marginTop: '0.4em' }}>
-        <div data-accent="red">
-          <h3 className="accent">Enterprise → API напряму</h3>
-          <p style={{ margin: '0.2em 0' }}>
-            Klarna зекономила на support-ОПЕХ, замінивши частину tier-1 на GPT-агента. Shopify і
-            Atlassian роздають LLM-доступ розробникам без посередників.
-          </p>
-          <p className="muted" style={{ margin: '0.2em 0' }}>
-            <strong>Контрхід:</strong> власні дані з feedback-петлею. Те, що OpenAI не бачить.
-          </p>
+      <div className="three-col wide text-md" style={{ marginTop: '2em', gap: '1.5em' }}>
+        {/* Enterprise */}
+        <div className="tile" data-accent="red" style={{ display: 'flex', flexDirection: 'column' }}>
+          <h3 className="accent" style={{ fontSize: '1.2em', marginBottom: '0.8em' }}>Корпорації (In-house)</h3>
+          <div style={{ flexGrow: 1 }}>
+            <p style={{ margin: 0, lineHeight: 1.4, color: 'var(--text-dim)' }}>
+              <strong>Тенденція:</strong> Klarna замінила першу лінію підтримки (роботу 700 людей) власним AI-агентом. Корпорації більше не наймають аутсорс для створення внутрішніх тулів — їхні розробники використовують LLM напряму.
+            </p>
+          </div>
+          <div style={{ marginTop: '1.5em', paddingTop: '1em', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            <p style={{ margin: 0, fontSize: '0.9em' }}>
+              <strong style={{ color: '#f43f5e' }}>Контрхід:</strong> Унікальні дата-сети та feedback-loops (цикли навчання). Продавайте те, чого OpenAI не бачить у публічному доступі.
+            </p>
+          </div>
         </div>
-        <div data-accent="amber">
-          <h3 className="accent">ISV-покупець → прямо до моделі</h3>
-          <p style={{ margin: '0.2em 0' }}>
-            Команда, що раніше підписувалася на ваш AI-CRM, тепер пише власну обгортку над Claude /
-            GPT за вечір. Особливо якщо ваша цінність була у «промтуванні від експертів».
-          </p>
-          <p className="muted" style={{ margin: '0.2em 0' }}>
-            <strong>Контрхід:</strong> інтеграція у workflow клієнта — там, куди користувач уже приходить.
-          </p>
+
+        {/* B2B / SaaS */}
+        <div className="tile" data-accent="amber" style={{ display: 'flex', flexDirection: 'column' }}>
+          <h3 className="accent" style={{ fontSize: '1.2em', marginBottom: '0.8em' }}>SaaS-клієнти (DIY)</h3>
+          <div style={{ flexGrow: 1 }}>
+            <p style={{ margin: 0, lineHeight: 1.4, color: 'var(--text-dim)' }}>
+              <strong>Тенденція:</strong> Компанія, що планувала підписатися на вашу "AI-CRM", тепер пише власну інтеграцію з Claude за вихідні. Якщо ваша цінність була лише у «секретних промптах від експертів» — ви банкрут.
+            </p>
+          </div>
+          <div style={{ marginTop: '1.5em', paddingTop: '1em', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            <p style={{ margin: 0, fontSize: '0.9em' }}>
+              <strong style={{ color: '#f59e0b' }}>Контрхід:</strong> Глибока інтеграція у застарілі системи (Legacy ERP, On-premise). Будьте там, де ШІ самостійно не розбереться.
+            </p>
+          </div>
         </div>
-        <div data-accent="purple">
-          <h3 className="accent">Споживач → ChatGPT desktop</h3>
-          <p style={{ margin: '0.2em 0' }}>
-            B2C-обгортки над чатом — найкоротша смерть. ChatGPT, Claude і Gemini тепер мають десктоп-апи,
-            voice, memory; «зручніший інтерфейс над тим самим API» — функція, не продукт.
-          </p>
-          <p className="muted" style={{ margin: '0.2em 0' }}>
-            <strong>Контрхід:</strong> регуляція / довіра — там, де ChatGPT юридично не може жити (HIPAA,
-            financial compliance, gov-tech).
-          </p>
+
+        {/* B2C */}
+        <div className="tile" data-accent="purple" style={{ display: 'flex', flexDirection: 'column' }}>
+          <h3 className="accent" style={{ fontSize: '1.2em', marginBottom: '0.8em' }}>B2C Споживачі (Apps)</h3>
+          <div style={{ flexGrow: 1 }}>
+            <p style={{ margin: 0, lineHeight: 1.4, color: 'var(--text-dim)' }}>
+              <strong>Тенденція:</strong> «Зручніший інтерфейс для генерації текстів» — це більше не бізнес. Базові моделі (Gemini, ChatGPT) вже мають нативні десктоп-додатки, розпізнавання голосу та довгострокову пам'ять.
+            </p>
+          </div>
+          <div style={{ marginTop: '1.5em', paddingTop: '1em', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            <p style={{ margin: 0, fontSize: '0.9em' }}>
+              <strong style={{ color: '#c084fc' }}>Контрхід:</strong> Юридична та регуляторна відповідальність. Йдіть у ніші (медицина, уряд), де загальні чат-боти юридично не мають права працювати.
+            </p>
+          </div>
         </div>
       </div>
 
-      <p className="callout callout-yellow">
-        Тест: <em>якщо клієнт прочитає API-docs провайдера моделі — він ще потребує вас?</em>{' '}
-        Якщо «ні» — ваша роль = тимчасова обгортка. Купують у вас час до того, як вони самі набʼють руку.
-      </p>
+      <div className="callout callout-yellow" style={{ marginTop: '2em' }}>
+        <strong>Тест на виживання (Acid Test):</strong> <em>Якщо ваш клієнт завтра вранці прочитає офіційну документацію до API провайдера моделі — чи будете ви йому досі потрібні?</em> Якщо відповідь «ні», то клієнт просто купує у вас час, поки його команда не розбереться з технологією.
+      </div>
 
-      <p className="slide-footnote">
-        Klarna AI-агент — заявка про економію еквіваленту 700 FTE (Q1 2024 letter to shareholders).
-        Atlassian Rovo, Shopify Sidekick — приклади платформ, що дають LLM напряму девелоперам.
-        Картина — структурний тренд 2024–2026, не одне дослідження.
+      <p className="slide-footnote" style={{ marginTop: '1.5em', lineHeight: 1.4 }}>
+        Кейс Klarna (Q1 2024): ШІ-помічник виконує роботу еквівалентну 700 FTE, скорочуючи час вирішення тикетів з 11 до 2 хвилин. 
+        Структурний тренд 2024–2026: перехід від "AI-обгорток" до глибоких інтеграцій.
       </p>
-    </>
+    </div>
   );
 }
