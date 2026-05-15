@@ -11,13 +11,8 @@ import StartupsHeader from './StartupsHeader';
 import Disintermediation from './Disintermediation';
 import CapabilityVsAdoptionGap from './CapabilityVsAdoptionGap';
 import FormulaOneRain from './FormulaOneRain';
-import MvpCostCurve from './MvpCostCurve';
-import WrapperTrap from './WrapperTrap';
-import MoatsIn2026 from './MoatsIn2026';
-import MoatStress from './MoatStress';
-import BuildBuyOrchestrate from './BuildBuyOrchestrate';
 import JevonsParadox from './JevonsParadox';
-import Playbook90Day from './Playbook90Day';
+import BetterDecisions from './BetterDecisions';
 import VerificationTrustGapHeader from './VerificationTrustGapHeader';
 
 export const slides = [
@@ -32,14 +27,9 @@ export const slides = [
   VerificationTrustGapHeader,
   VerificationTrustGap,
   StartupsHeader,
-  Disintermediation,
   CapabilityVsAdoptionGap,
   FormulaOneRain,
-  MvpCostCurve,
-  WrapperTrap,
-  MoatsIn2026,
-  MoatStress,
-  BuildBuyOrchestrate,
+  Disintermediation,
   JevonsParadox,
-  Playbook90Day,
+  BetterDecisions,
 ];
